@@ -19,61 +19,53 @@ $active_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'integration';
 $plugin_name_slug = 'wp-tawk-to-integrator-settings'; // Matches the menu slug
 
 ?>
-<div class="wrap">
-    <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-    <p><?php esc_html_e('Configure your Tawk.to chat widget integration, appearance, behavior, and more.', 'wp-tawk-to-integrator'); ?></p>
-
-    <h2 class="nav-tab-wrapper">
-        <a href="?page=<?php echo esc_attr($plugin_name_slug); ?>&tab=integration" class="nav-tab <?php echo $active_tab == 'integration' ? 'nav-tab-active' : ''; ?>">
-            <?php esc_html_e('Integration', 'wp-tawk-to-integrator'); ?>
-        </a>
-        <a href="?page=<?php echo esc_attr($plugin_name_slug); ?>&tab=appearance" class="nav-tab <?php echo $active_tab == 'appearance' ? 'nav-tab-active' : ''; ?>">
-            <?php esc_html_e('Appearance', 'wp-tawk-to-integrator'); ?>
-        </a>
-        <a href="?page=<?php echo esc_attr($plugin_name_slug); ?>&tab=behavior" class="nav-tab <?php echo $active_tab == 'behavior' ? 'nav-tab-active' : ''; ?>">
-            <?php esc_html_e('Behavior', 'wp-tawk-to-integrator'); ?>
-        </a>
-        <a href="?page=<?php echo esc_attr($plugin_name_slug); ?>&tab=events" class="nav-tab <?php echo $active_tab == 'events' ? 'nav-tab-active' : ''; ?>">
-            <?php esc_html_e('Events', 'wp-tawk-to-integrator'); ?>
-        </a>
-        <a href="?page=<?php echo esc_attr($plugin_name_slug); ?>&tab=pro" class="nav-tab <?php echo $active_tab == 'pro' ? 'nav-tab-active' : ''; ?>">
-            <?php esc_html_e('Pro', 'wp-tawk-to-integrator'); ?>
-        </a>
-    </h2>
-
-    <form action="options.php" method="post">
+<div class="bg-gray-100 p-6 flex items-center justify-center">
+    <div class="max-w-4xl rounded-lg bg-white p-8 shadow-lg">
         <?php
-        settings_fields('wp-tawk-to-integrator_options_group');
+        // get page header
+        require_once __DIR__ . '/partials/page-header.php'
         ?>
-
-        <div class="tab-content" style="padding-top: 20px;">
+        <form action="options.php" method="post">
             <?php
-            // Use a switch statement to load the correct partial file
-            switch ($active_tab) {
-                case 'appearance':
-                    require_once __DIR__ . '/partials/tab-appearance.php';
-                    break;
-                case 'behavior':
-                    require_once __DIR__ . '/partials/tab-behavior.php';
-                    break;
-                case 'events':
-                    require_once __DIR__ . '/partials/tab-events.php';
-                    break;
-                case 'pro':
-                    require_once __DIR__ . '/partials/tab-pro.php';
-                    break;
-                case 'integration':
-                default:
-                    require_once __DIR__ . '/partials/tab-integration.php';
-                    break;
-            }
+            settings_fields('wp-tawk-to-integrator_options_group');
             ?>
-        </div>
 
-        <?php
-        // Moved the save button outside the conditional block
-        // so it appears on every tab, which is better UX.
-        submit_button(__('Save Settings', 'wp-tawk-to-integrator'));
-        ?>
-    </form>
+            <div id="tabs-button-wrapper" class="mb-6"></div>
+
+            <div id="tabs-content-wrapper" class="space-y-6">
+                <?php
+                // Load the correct partial file
+                require_once __DIR__ . '/partials/tab-appearance.php';
+
+                require_once __DIR__ . '/partials/tab-behavior.php';
+
+                require_once __DIR__ . '/partials/tab-events.php';
+
+                require_once __DIR__ . '/partials/tab-pro.php';
+
+                require_once __DIR__ . '/partials/tab-integration.php';
+                ?>
+            </div>
+
+
+
+            <!-- Form submission -->
+            <div class="pt-4">
+                <button
+                    id="form-submit-btn"
+                    class="bg-mint-2 hover:bg-sea-green focus:ring-mint-2 rounded-md px-6 py-2 font-semibold text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                    type="submit">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
+
+<?php
+
+// Moved the save button outside the conditional block
+// so it appears on every tab, which is better UX.
+// submit_button(__('Save Settings', 'wp-tawk-to-integrator'));
+
+?>
