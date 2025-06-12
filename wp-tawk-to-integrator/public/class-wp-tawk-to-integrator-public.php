@@ -84,45 +84,27 @@ class WP_Tawk_To_Integrator_Public {
         // $widget_id = isset($this->options['tawk_widget_id']) ? $this->options['tawk_widget_id'] : 'default'; // or specific widget name
 
         // if ( $property_id ) {
-        //     echo "<!-- WP Tawk.to Integrator - Start of Tawk.to Script -->
-";
-        //     echo "<script type="text/javascript">
-";
-        //     echo "var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-";
-        //     echo "(function(){
-";
-        //     echo "var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-";
-        //     echo "s1.async=true;
-";
+        //     echo "<!-- WP Tawk.to Integrator - Start of Tawk.to Script -->";
+        //     echo '<script type="text/javascript">';
+        //     echo "var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();";
+        //     echo "(function(){";
+        //     echo "var s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];";
+        //     echo "s1.async=true;";
         //     // Note: The URL should use the actual property_id and widget_id from settings
-        //     echo "s1.src='https://embed.tawk.to/" . esc_js($property_id) . "/" . esc_js($widget_id) . "';
-";
-        //     echo "s1.charset='UTF-8';
-";
-        //     echo "s1.setAttribute('crossorigin','*');
-";
-        //     echo "s0.parentNode.insertBefore(s1,s0);
-";
-        //     echo "})();
-";
-        //     echo "</script>
-";
-        //     echo "<!-- WP Tawk.to Integrator - End of Tawk.to Script -->
-";
+        //     echo "s1.src='https://embed.tawk.to/" . esc_js($property_id) . "/" . esc_js($widget_id) . "';";
+        //     echo "s1.charset='UTF-8';";
+        //     echo "s1.setAttribute('crossorigin','*');";
+        //     echo "s0.parentNode.insertBefore(s1,s0);";
+        //     echo "})();";
+        //     echo "</script>";
+        //     echo "<!-- WP Tawk.to Integrator - End of Tawk.to Script -->";
         // } else {
-        //     echo "<!-- WP Tawk.to Integrator: Tawk.to Property ID not set. -->
-";
+        //     echo "<!-- WP Tawk.to Integrator: Tawk.to Property ID not set. -->";
         // }
 
-        echo "<!-- WP Tawk.to Integrator: Placeholder for Tawk.to widget script. -->
-";
-        echo "<!-- Actual script will be embedded here based on plugin settings. -->
-";
-        echo "<!-- It will typically load from https://embed.tawk.to/PROPERTY_ID/WIDGET_ID -->
-";
-
+        echo "<!-- WP Tawk.to Integrator: Placeholder for Tawk.to widget script. -->";
+        echo "<!-- Actual script will be embedded here based on plugin settings. -->";
+        echo "<!-- It will typically load from https://embed.tawk.to/PROPERTY_ID/WIDGET_ID -->";
     }
 }
 ?>
