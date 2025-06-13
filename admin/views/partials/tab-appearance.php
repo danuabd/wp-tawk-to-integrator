@@ -96,10 +96,10 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch">
                         <input
+                            type="checkbox"
                             id="hide-for-administrator-checkbox"
                             name="wp-tawk-to-integrator_options[hide-for-administrator-role]"
                             value="<?php echo isset($options['hide-for-administrator-role']) ? esc_attr($options['hide-for-administrator-role']) : ''; ?>"
-                            type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
                             <?php echo (isset($options['hide-for-administrator-role']) && $options['hide-for-administrator-role'] === 1) ? 'checked' : ''; ?> />
@@ -112,10 +112,10 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch">
                         <input
+                            type="checkbox"
                             id="hide-for-editor-checkbox"
                             name="wp-tawk-to-integrator_options[hide-for-editor-role]"
                             value="<?php echo isset($options['hide-for-editor-role']) ? $options['hide-for-editor-role'] : '' ?>"
-                            type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
                             <?php echo (isset($options['hide-for-editor-role']) && $options['hide-for-editor-role'] === 1) ? 'checked' : '' ?> />
@@ -126,11 +126,12 @@ $options = get_option('wp-tawk-to-integrator_options');
                         class="text-sm font-medium text-gray-700">Editor</label>
                 </div>
                 <div class="mb-6 flex items-center space-x-3">
-                    <label class="switch"><input
+                    <label class="switch">
+                        <input
+                            type="checkbox"
                             id="hide-for-author-checkbox"
                             name="wp-tawk-to-integrator_options[hide-for-author-role]"
                             value="<?php echo isset($options['hide-for-author-role']) ? $options['hide-for-author-role'] : '' ?>"
-                            type=" checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
                             <?php echo (isset($options['hide-for-author-role']) && $options['hide-for-author-role'] === 1) ? 'checked' : ''; ?> />
@@ -139,14 +140,15 @@ $options = get_option('wp-tawk-to-integrator_options');
 
                     <label
                         for="hide-for-author-checkbox"
-                        class="text-sm font-medium text-gray-700">Author</label>
+                        class="text-sm font-medium text-gray-700">Author
+                    </label>
                 </div>
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch"><input
+                            type="checkbox"
                             id="hide-for-contributor-checkbox"
                             name="wp-tawk-to-integrator_options[hide-for-contributor-role]"
                             value="<?php echo isset($options['hide-for-contributor-role']) ? $options['hide-for-contributor-role'] : '' ?>"
-                            type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
                             <?php echo (isset($options['hide-for-contributor-role']) && $options['hide-for-contributor-role'] === 1) ? 'checked' : ''; ?> />
@@ -160,10 +162,10 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch">
                         <input
+                            type="checkbox"
                             id="hide-for-subscriber-checkbox"
                             name="wp-tawk-to-integrator_options[hide-for-subscriber-role]"
                             value="<?php echo isset($options['hide-for-subscriber-role']) ? $options['hide-for-subscriber-role'] : '' ?>"
-                            type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
                             <?php echo (isset($options['hide-for-subscriber-role']) && $options['hide-for-subscriber-role'] === 1) ? 'checked' : ''; ?> />
@@ -178,10 +180,10 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <div class="flex items-center space-x-3">
                     <label class="switch">
                         <input
+                            type="checkbox"
                             id="hide-for-customer-checkbox"
                             name="wp-tawk-to-integrator_options[hide-for-customer-role]"
                             value="<?php echo isset($options['hide-for-customer-role']) ? $options['hide-for-customer-role'] : '' ?>"
-                            type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
                             <?php echo (isset($options['hide-for-customer-role']) && $options['hide-for-customer-role'] === 1) ? 'checked' : ''; ?> />
