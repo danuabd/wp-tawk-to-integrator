@@ -57,11 +57,12 @@ class WP_Tawk_To_Integrator_Admin
     {
         add_menu_page(
             __('Configure Tawk.to Chat Widget', 'wp-tawk-to-integrator'), // Page Title
-            __('Configure Tawk.to Chat Widget', 'wp-tawk-to-integrator'), // Menu Title
+            __('WP Tawk.to Integrator', 'wp-tawk-to-integrator'), // Menu Title
             'manage_options',                               // Capability
             $this->plugin_name . '-settings',               // Menu Slug
             array($this, 'display_settings_page'),        // Callback function
-            'dashicons-format-chat'                         // Icon
+            'dashicons-format-chat', // Icon
+            99
         );
     }
 
@@ -100,15 +101,6 @@ class WP_Tawk_To_Integrator_Admin
             array($this, 'general_section_callback'), // Callback
             $this->plugin_name . '-settings'                // Page slug where to display
         );
-
-        // Example field (we'll add more specific fields per tab later)
-        add_settings_field(
-            'example_text_field',                           // ID
-            __('Example Text Field', 'wp-tawk-to-integrator'), // Title
-            array($this, 'example_text_field_render'),   // Callback to render the field
-            $this->plugin_name . '-settings',                // Page
-            $this->plugin_name . '_general_section'        // Section
-        );
     }
 
     /**
@@ -126,30 +118,6 @@ class WP_Tawk_To_Integrator_Admin
         }
         // Add sanitization for other fields as they are added
         return $sanitized_input;
-    }
-
-    /**
-     * Callback for the general section description.
-     *
-     * @since 1.0.0
-     */
-    public function general_section_callback()
-    {
-        echo '<p>' . esc_html__('These are some general settings for the WP Tawk.to Integrator plugin.', 'wp-tawk-to-integrator') . '</p>';
-    }
-
-    /**
-     * Render the example text field.
-     *
-     * @since 1.0.0
-     */
-    public function example_text_field_render()
-    {
-        $options = get_option($this->plugin_name . '_options');
-?>
-        <input type='text' name='<?php echo esc_attr($this->plugin_name . '_options[example_text_field]'); ?>'
-            value='<?php echo isset($options['example_text_field']) ? esc_attr($options['example_text_field']) : ''; ?>'>
-<?php
     }
 
     /**
@@ -198,4 +166,3 @@ class WP_Tawk_To_Integrator_Admin
         );
     }
 }
-?>

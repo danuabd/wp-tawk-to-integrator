@@ -15,7 +15,7 @@ if (! defined('WPINC')) {
 }
 
 // Get the active tab, default to 'integration'
-$active_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'integration';
+// $active_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'integration';
 $plugin_name_slug = 'wp-tawk-to-integrator-settings'; // Matches the menu slug
 
 ?>
