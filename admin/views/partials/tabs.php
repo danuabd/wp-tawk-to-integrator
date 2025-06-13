@@ -14,7 +14,6 @@ if (! defined('WPINC')) {
 }
 ?>
 
-
 <div class="flex space-x-1 border-b border-gray-200">
     <button
         data-relation="integration-section"

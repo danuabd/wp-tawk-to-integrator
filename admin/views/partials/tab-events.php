@@ -13,6 +13,8 @@ if (! defined('WPINC')) {
     die;
 }
 ?>
+
+<!-- Events Tab Content -->
 <div
     data-relation="events"
     id="events-section"
@@ -45,7 +47,7 @@ if (! defined('WPINC')) {
                 <label class="switch">
                     <input
                         id="enable-auto-page-tagging-toggle"
-                        name="enable-auto-page-tagging-toggle"
+                        name="enable-auto-page-tagging"
                         type="checkbox"
                         data-role="reveal"
                         data-elementId="ignore-pages-from-auto-tagging"
@@ -83,7 +85,7 @@ if (! defined('WPINC')) {
                     class="pages-to-ignore flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="hide-on-pages"
+                        name="pages-to-ignore-auto-tagging"
                         id="pages-to-ignore-tagging-input"
                         placeholder="Ex: 1123, 345, 23"
                         data-role="input-page-ids"
@@ -100,9 +102,7 @@ if (! defined('WPINC')) {
 
                 <div
                     class="mt-2 flex flex-wrap gap-1"
-                    id="ignored-tagging-pages">
-                    <!-- Ignored pages will be dynamically added here -->
-                </div>
+                    id="ignored-tagging-pages"></div>
             </div>
         </div>
 
@@ -115,7 +115,7 @@ if (! defined('WPINC')) {
                 <label class="switch">
                     <input
                         id="enable-action-based-targeting-toggle"
-                        name="enable-action-based-targeting-toggle"
+                        name="enable-action-based-targeting"
                         type="checkbox"
                         data-role="reveal"
                         data-elementId="action-based-tagging_rules-container"
@@ -149,7 +149,7 @@ if (! defined('WPINC')) {
                     class="pages-to-ignore flex items-center space-x-2 p-2 border border-gray-300 rounded-md mb-1">
                     <input
                         type="text"
-                        name="hide-on-pages"
+                        name="pages-to-ignore-action-based-targeting"
                         id="pages-to-ignore-action-based-tagging-input"
                         placeholder="Ex: tagName:[#el-id, .el-class], tagName2:[#el-id2, .el-cls2]"
                         data-displayId="ignored-action-based-tagging-pages"
@@ -162,7 +162,7 @@ if (! defined('WPINC')) {
                         Clear
                     </button>
                 </div>
-                <!-- ignored action-based tagging pages will appear here -->
+
                 <div
                     id="ignored-action-based-tagging-pages"
                     class="mt-2 flex flex-wrap gap-1"></div>
@@ -194,7 +194,7 @@ if (! defined('WPINC')) {
                 <label class="switch">
                     <input
                         id="enable-onload-customization-toggle"
-                        name="enable-onload-customization-toggle"
+                        name="enable-onload-customization"
                         type="checkbox"
                         data-role="reveal"
                         data-elementId="onLoad-customizations-fields"
@@ -217,7 +217,7 @@ if (! defined('WPINC')) {
                         class="max-w-2xs flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                         <input
                             type="number"
-                            name="delay-widget-display"
+                            name="widget-load-delay-time"
                             id="delay-widget-display"
                             min="0"
                             placeholder="1000 milliseconds = 1 second "
@@ -263,7 +263,7 @@ if (! defined('WPINC')) {
                 <label class="switch">
                     <input
                         id="enable-chat-event-action-toggle"
-                        name="enable-chat-event-action-toggle"
+                        name="enable-chat-event-action"
                         type="checkbox"
                         data-role="reveal"
                         data-elementId="chat-event-actions-fields"
@@ -333,7 +333,7 @@ if (! defined('WPINC')) {
             <div class="flex items-center space-x-3">
                 <label class="switch">
                     <input
-                        id="enable-prechat-submit-actions-toggle"
+                        id="enable-prechat-submit-actions"
                         name="enable-prechat-submit-actions-toggle"
                         type="checkbox"
                         data-role="reveal"
@@ -355,7 +355,7 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="capture-prechat-data-toggle"
-                            name="capture-prechat-data-toggle"
+                            name="capture-prechat-data"
                             type="checkbox"
                             role="switch"
                             class="toggle"

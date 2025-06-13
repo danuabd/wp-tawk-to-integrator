@@ -13,6 +13,8 @@ if (! defined('WPINC')) {
     die;
 }
 ?>
+
+<!-- Appearance tab content -->
 <div
     data-relation="appearance"
     id="appearance-section"
@@ -49,7 +51,7 @@ if (! defined('WPINC')) {
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="hide-on-pages"
+                        name="page-ids-to-hide"
                         placeholder="Page IDs"
                         id="hide-on-pages-input"
                         data-role="input-page-ids"
@@ -92,9 +94,8 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-administrator-checkbox"
-                            name="hide-for-administrator-checkbox"
+                            name="hide-for-administrator-role"
                             type="checkbox"
-                            value="administrator"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch" />
                         <span class="slider round"></span>
@@ -107,9 +108,8 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-editor-checkbox"
-                            name="hide-for-editor-checkbox"
+                            name="hide-for-editor-role"
                             type="checkbox"
-                            value="editor"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch" />
                         <span class="slider round"></span>
@@ -121,9 +121,8 @@ if (! defined('WPINC')) {
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch"><input
                             id="hide-for-author-checkbox"
-                            name="hide-for-author-checkbox"
+                            name="hide-for-author-role"
                             type="checkbox"
-                            value="author"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch" />
                         <span class="slider round"></span>
@@ -136,9 +135,8 @@ if (! defined('WPINC')) {
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch"><input
                             id="hide-for-contributor-checkbox"
-                            name="contributor"
+                            name="hide-for-contributor-role"
                             type="checkbox"
-                            value="contributor"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch" />
                         <span class="slider round"></span>
@@ -152,9 +150,8 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-subscriber-checkbox"
-                            name="subscriber"
+                            name="hide-for-subscriber-role"
                             type="checkbox"
-                            value="subscriber"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch" />
 
@@ -169,9 +166,8 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-customer-checkbox"
-                            name="customer"
+                            name="hide-for-customer-role"
                             type="checkbox"
-                            value="subscriber"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch" />
                         <span class="slider round"></span>
@@ -199,7 +195,7 @@ if (! defined('WPINC')) {
                 <input
                     checked
                     id="show-widget-for-guests-toggle"
-                    name="show-widget-for-guests-toggle"
+                    name="show-widget-for-guests"
                     type="checkbox"
                     role="switch"
                     class="toggle" />

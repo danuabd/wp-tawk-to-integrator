@@ -13,6 +13,8 @@ if (! defined('WPINC')) {
     die;
 }
 ?>
+
+<!-- Behavior tab content -->
 <div
     data-relation="behavior"
     id="behavior-section"
@@ -44,7 +46,7 @@ if (! defined('WPINC')) {
                         type="text"
                         name="maximize-on-element-click"
                         placeholder="#help-button or .chat-trigger"
-                        id="maximize-on-element-click"
+                        id="element-to-trigger-widget-when-clicked"
                         data-role="input-selector"
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
                     <button
@@ -76,7 +78,7 @@ if (! defined('WPINC')) {
             <label class="switch">
                 <input
                     id="auto-populate-user-data-toggle"
-                    name="auto-populate-user-data-toggle"
+                    name="auto-populate-user-data"
                     type="checkbox"
                     role="switch"
                     class="toggle" />
@@ -110,7 +112,7 @@ if (! defined('WPINC')) {
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="custom-attributes-input"
+                        name="custom-attributes"
                         placeholder="key_1:value_1, key_2:value_2"
                         data-role="input-custom-attributes"
                         id="custom-attributes-input"
@@ -144,7 +146,7 @@ if (! defined('WPINC')) {
             <label class="switch">
                 <input
                     id="enable-secure-mode-toggle"
-                    name="enable-secure-mode-toggle"
+                    name="enable-secure-mode"
                     type="checkbox"
                     data-role="reveal"
                     data-elementId="tawk-api-key-container"

@@ -13,6 +13,8 @@ if (! defined('WPINC')) {
     die;
 }
 ?>
+
+<!-- Integration tab content -->
 <div
     data-relation="integration"
     id="integration-section"
@@ -90,8 +92,7 @@ if (! defined('WPINC')) {
     <div class="mb-6 flex items-center space-x-3">
         <label class="switch">
             <input
-                checked
-                name="activate-widget-toggle"
+                name="activate-widget"
                 type="checkbox"
                 id="activate-widget-toggle"
                 class="toggle"
