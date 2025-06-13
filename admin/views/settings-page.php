@@ -19,6 +19,12 @@ if (! defined('WPINC')) {
 $plugin_name_slug = 'wp-tawk-to-integrator-settings'; // Matches the menu slug
 
 ?>
+<?php
+// ==========================================================
+// Display "Settings saved." notice
+settings_errors();
+// ==========================================================
+?>
 <div id="wp-tawk-to-integrator-wrapper" class="wp-tawk-to-integrator-wrapper bg-gray-100 p-6 flex items-center justify-center">
     <div class="max-w-4xl rounded-lg bg-white p-8 shadow-lg">
         <div class="plugin-header mb-8 flex items-center">
@@ -29,7 +35,7 @@ $plugin_name_slug = 'wp-tawk-to-integrator-settings'; // Matches the menu slug
         </div>
         <form id="wpti-admin-form"
             autocomplete="off"
-            enctype="multipart/form-data"
+            action="options.php"
             method="post">
             <?php
             settings_fields('wp-tawk-to-integrator_options_group');

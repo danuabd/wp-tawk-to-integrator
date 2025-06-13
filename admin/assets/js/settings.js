@@ -313,9 +313,11 @@ class y {
       this.formView.addChangeHandler(this._controlChange.bind(this)),
       this.formView.addInputHandler(this._controlInput.bind(this)),
       this.formView.addPasteHandler(this._controlPaste.bind(this)),
-      this.formView.addFocusOutHandler(this._controlFocusOut.bind(this)),
-      this.formView.addSubmitHandler(this._controlSubmit.bind(this)),
-      this.formView.addFormDataHandler(this._controlFormData.bind(this));
+      this.formView.addFocusOutHandler(this._controlFocusOut.bind(this));
+
+    // removed for post submission
+    // this.formView.addSubmitHandler(this._controlSubmit.bind(this)),
+    // this.formView.addFormDataHandler(this._controlFormData.bind(this));
   }
   _delayWidget(e) {
     const t = e.value;
