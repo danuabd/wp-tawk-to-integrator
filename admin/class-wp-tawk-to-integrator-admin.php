@@ -93,14 +93,6 @@ class WP_Tawk_To_Integrator_Admin
             $this->plugin_name . '_options',       // Option name
             array($this, 'sanitize_options')     // Sanitize callback
         );
-
-        // Add a general section (optional, but good for structure)
-        add_settings_section(
-            $this->plugin_name . '_general_section',        // ID
-            __('General Settings', 'wp-tawk-to-integrator'), // Title
-            array($this, 'general_section_callback'), // Callback
-            $this->plugin_name . '-settings'                // Page slug where to display
-        );
     }
 
     /**
