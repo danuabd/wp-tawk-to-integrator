@@ -12,6 +12,8 @@
 if (! defined('WPINC')) {
     die;
 }
+
+$options = get_option('wp-tawk-to-integrator_options');
 ?>
 
 <!-- Integration tab content -->
@@ -35,7 +37,8 @@ if (! defined('WPINC')) {
             class="property-id max-w-lg flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="text"
-                name="property-id"
+                name="wp-tawk-to-integrator_options[property-id]"
+                value="<?php echo isset($options['property-id']) ? esc_attr($options['property-id']) : ''; ?>"
                 placeholder="Enter your Tawk.to property ID"
                 id="property-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
@@ -54,7 +57,8 @@ if (! defined('WPINC')) {
             class="widget-id max-w-lg flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="text"
-                name="widget-id"
+                name="wp-tawk-to-integrator_options[widget-id]"
+                value="<?php echo isset($options['widget-id']) ? esc_attr($options['widget-id']) : ''; ?>"
                 placeholder="Enter your Tawk.to Widget ID (e.g., default)"
                 id="widget-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
@@ -74,7 +78,8 @@ if (! defined('WPINC')) {
             class="z-index max-w-48 flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="number"
-                name="z-index"
+                name="wp-tawk-to-integrator_options[z-index]"
+                value="<?php echo isset($options['z-index']) ? esc_attr($options['z-index']) : ''; ?>"
                 placeholder="Ex: 99"
                 min="0"
                 max="9999999"
@@ -92,7 +97,8 @@ if (! defined('WPINC')) {
     <div class="mb-6 flex items-center space-x-3">
         <label class="switch">
             <input
-                name="activate-widget"
+                name="wp-tawk-to-integrator_options[activate-widget]"
+                value="<?php echo isset($options['activate-widget']) ? esc_attr($options['activate-widget']) : ''; ?>"
                 type="checkbox"
                 id="activate-widget-toggle"
                 class="toggle"
