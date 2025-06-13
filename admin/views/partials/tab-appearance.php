@@ -12,6 +12,8 @@
 if (! defined('WPINC')) {
     die;
 }
+
+$options = get_option('wp-tawk-to-integrator_options');
 ?>
 
 <!-- Appearance tab content -->
@@ -51,7 +53,8 @@ if (! defined('WPINC')) {
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="page-ids-to-hide"
+                        name="wp-tawk-to-integrator_options[page-ids-to-hide]"
+                        value="<?php echo isset($options['page-ids-to-hide']) ? esc_attr($options['page-ids-to-hide']) : ''; ?>"
                         placeholder="Page IDs"
                         id="hide-on-pages-input"
                         data-role="input-page-ids"
@@ -94,10 +97,12 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-administrator-checkbox"
-                            name="hide-for-administrator-role"
+                            name="wp-tawk-to-integrator_options[hide-for-administrator-role]"
+                            value="<?php echo isset($options['hide-for-administrator-role']) ? esc_attr($options['hide-for-administrator-role']) : ''; ?>"
                             type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
-                            role="switch" />
+                            role="switch"
+                            <?php echo (isset($options['hide-for-administrator-role']) && $options['hide-for-administrator-role'] === 1) ? 'checked' : ''; ?> />
                         <span class="slider round"></span>
                     </label>
                     <label
@@ -108,10 +113,12 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-editor-checkbox"
-                            name="hide-for-editor-role"
+                            name="wp-tawk-to-integrator_options[hide-for-editor-role]"
+                            value="<?php echo isset($options['hide-for-editor-role']) ? $options['hide-for-editor-role'] : '' ?>"
                             type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
-                            role="switch" />
+                            role="switch"
+                            <?php echo (isset($options['hide-for-editor-role']) && $options['hide-for-editor-role'] === 1) ? 'checked' : '' ?> />
                         <span class="slider round"></span>
                     </label>
                     <label
@@ -121,10 +128,12 @@ if (! defined('WPINC')) {
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch"><input
                             id="hide-for-author-checkbox"
-                            name="hide-for-author-role"
-                            type="checkbox"
+                            name="wp-tawk-to-integrator_options[hide-for-author-role]"
+                            value="<?php echo isset($options['hide-for-author-role']) ? $options['hide-for-author-role'] : '' ?>"
+                            type=" checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
-                            role="switch" />
+                            role="switch"
+                            <?php echo (isset($options['hide-for-author-role']) && $options['hide-for-author-role'] === 1) ? 'checked' : ''; ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -135,10 +144,12 @@ if (! defined('WPINC')) {
                 <div class="mb-6 flex items-center space-x-3">
                     <label class="switch"><input
                             id="hide-for-contributor-checkbox"
-                            name="hide-for-contributor-role"
+                            name="wp-tawk-to-integrator_options[hide-for-contributor-role]"
+                            value="<?php echo isset($options['hide-for-contributor-role']) ? $options['hide-for-contributor-role'] : '' ?>"
                             type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
-                            role="switch" />
+                            role="switch"
+                            <?php echo (isset($options['hide-for-contributor-role']) && $options['hide-for-contributor-role'] === 1) ? 'checked' : ''; ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -150,10 +161,12 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-subscriber-checkbox"
-                            name="hide-for-subscriber-role"
+                            name="wp-tawk-to-integrator_options[hide-for-subscriber-role]"
+                            value="<?php echo isset($options['hide-for-subscriber-role']) ? $options['hide-for-subscriber-role'] : '' ?>"
                             type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
-                            role="switch" />
+                            role="switch"
+                            <?php echo (isset($options['hide-for-subscriber-role']) && $options['hide-for-subscriber-role'] === 1) ? 'checked' : ''; ?> />
 
                         <span class="slider round"></span>
                     </label>
@@ -166,10 +179,12 @@ if (! defined('WPINC')) {
                     <label class="switch">
                         <input
                             id="hide-for-customer-checkbox"
-                            name="hide-for-customer-role"
+                            name="wp-tawk-to-integrator_options[hide-for-customer-role]"
+                            value="<?php echo isset($options['hide-for-customer-role']) ? $options['hide-for-customer-role'] : '' ?>"
                             type="checkbox"
                             class="w-4 h-4 accent-green-600 toggle"
-                            role="switch" />
+                            role="switch"
+                            <?php echo (isset($options['hide-for-customer-role']) && $options['hide-for-customer-role'] === 1) ? 'checked' : ''; ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -195,10 +210,12 @@ if (! defined('WPINC')) {
                 <input
                     checked
                     id="show-widget-for-guests-toggle"
-                    name="show-widget-for-guests"
+                    name="wp-tawk-to-integrator_options[show-widget-for-guests]"
+                    value="<?php echo isset($options['show-widget-for-guests']) ? $options['show-widget-for-guests'] : '' ?>"
                     type="checkbox"
                     role="switch"
-                    class="toggle" />
+                    class="toggle"
+                    <?php echo (isset($options['show-widget-for-guests']) && $options['show-widget-for-guests'] === 1) ? 'checked' : ''; ?> />
                 <span class="slider round"></span>
             </label>
             <label
