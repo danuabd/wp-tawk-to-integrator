@@ -112,11 +112,55 @@ class WP_Tawk_To_Integrator_Admin
      */
     public function sanitize_options($input)
     {
+        // Create a new array to store our sanitized options
         $sanitized_input = array();
-        if (isset($input['example_text_field'])) {
-            $sanitized_input['example_text_field'] = sanitize_text_field($input['example_text_field']);
+
+        // --- Integration Tab ---
+        if (isset($input['property-id'])) {
+            $sanitized_input['property-id'] = sanitize_text_field($input['property-id']);
         }
-        // Add sanitization for other fields as they are added
+        if (isset($input['widget-id'])) {
+            $sanitized_input['widget-id'] = sanitize_text_field($input['widget-id']);
+        }
+        // absint ensures we get an absolute integer.
+        if (isset($input['z-index'])) {
+            $sanitized_input['z-index'] = absint($input['z-index']);
+        }
+        // For checkboxes/toggles, we check if they exist and save a 1 (for 'on') or 0 (for 'off').
+        $sanitized_input['activate-widget'] = (isset($input['activate-widget'])) ? 1 : 0;
+
+
+        // --- Appearance Tab ---
+        if (isset($input['page-ids-to-hide'])) {
+            $sanitized_input['page-ids-to-hide'] = sanitize_text_field($input['page-ids-to-hide']);
+        }
+        $sanitized_input['show-widget-for-guests'] = (isset($input['show-widget-for-guests'])) ? 1 : 0;
+        // Example for the role toggles
+        $roles_to_hide = ['administrator', 'editor', 'author', 'contributor', 'subscriber', 'customer'];
+        foreach ($roles_to_hide as $role) {
+            $key = 'hide-for-' . $role . '-role';
+            $sanitized_input[$key] = (isset($input[$key])) ? 1 : 0;
+        }
+
+
+        // --- Behavior Tab ---
+        if (isset($input['maximize-on-element-click'])) {
+            $sanitized_input['maximize-on-element-click'] = sanitize_text_field($input['maximize-on-element-click']);
+        }
+        $sanitized_input['auto-populate-user-data'] = (isset($input['auto-populate-user-data'])) ? 1 : 0;
+        if (isset($input['custom-attributes'])) {
+            $sanitized_input['custom-attributes'] = sanitize_text_field($input['custom-attributes']);
+        }
+        $sanitized_input['enable-secure-mode'] = (isset($input['enable-secure-mode'])) ? 1 : 0;
+        if (isset($input['tawk-api-key'])) {
+            // API keys can have special characters, so we just trim whitespace.
+            $sanitized_input['tawk-api-key'] = trim($input['tawk-api-key']);
+        }
+
+        // --- Events Tab ---
+        // (Sanitization logic for Events tab fields would go here)
+
+
         return $sanitized_input;
     }
 
