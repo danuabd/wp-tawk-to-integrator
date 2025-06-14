@@ -83,6 +83,18 @@ class WP_Tawk_To_Integrator_Public
      */
     public function embed_tawk_to_widget()
     {
-        // Example structure, actual script will come from Tawk.to
+        $saved_options = json_encode($this->options);
+        echo "<p>$saved_options</p>";
+
+?>
+
+        <script type="text/javascript">
+            // This come from Tawk.to
+            console.log(<?php json_encode($this->options); ?>);
+            console.log(<?php $this->plugin_name; ?>)
+        </script>
+
+<?php
+
     }
 }
