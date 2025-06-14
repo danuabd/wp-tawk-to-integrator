@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The public-facing functionality of the plugin.
  *
@@ -11,11 +12,12 @@
  * @subpackage WP_Tawk_To_Integrator/public
  */
 
-if ( ! defined( 'WPINC' ) ) {
+if (! defined('WPINC')) {
     die;
 }
 
-class WP_Tawk_To_Integrator_Public {
+class WP_Tawk_To_Integrator_Public
+{
 
     /**
      * The ID of this plugin.
@@ -51,11 +53,12 @@ class WP_Tawk_To_Integrator_Public {
      * @param    string    $plugin_name       The name of the plugin.
      * @param    string    $version    The version of this plugin.
      */
-    public function __construct( $plugin_name, $version ) {
+    public function __construct($plugin_name, $version)
+    {
         $this->plugin_name = $plugin_name;
         $this->version = $version;
         // Load the plugin's options. These would be used to get the Tawk.to Property ID, Widget ID etc.
-        $this->options = get_option( $this->plugin_name . '_options' );
+        $this->options = get_option($this->plugin_name . '_options');
     }
 
     /**
@@ -63,7 +66,8 @@ class WP_Tawk_To_Integrator_Public {
      *
      * @since    1.0.0
      */
-    public function enqueue_scripts() {
+    public function enqueue_scripts()
+    {
         // Example: Enqueue a public-facing script if needed.
         // For Tawk.to, the widget script is usually added directly to the footer.
         // wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-tawk-to-integrator-public.js', array( 'jquery' ), $this->version, true );
@@ -77,34 +81,8 @@ class WP_Tawk_To_Integrator_Public {
      *
      * @since    1.0.0
      */
-    public function embed_tawk_to_widget() {
+    public function embed_tawk_to_widget()
+    {
         // Example structure, actual script will come from Tawk.to
-        // Check if the necessary options (e.g., property_id, widget_id) are set
-        // $property_id = isset($this->options['tawk_property_id']) ? $this->options['tawk_property_id'] : null;
-        // $widget_id = isset($this->options['tawk_widget_id']) ? $this->options['tawk_widget_id'] : 'default'; // or specific widget name
-
-        // if ( $property_id ) {
-        //     echo "<!-- WP Tawk.to Integrator - Start of Tawk.to Script -->";
-        //     echo '<script type="text/javascript">';
-        //     echo "var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();";
-        //     echo "(function(){";
-        //     echo "var s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];";
-        //     echo "s1.async=true;";
-        //     // Note: The URL should use the actual property_id and widget_id from settings
-        //     echo "s1.src='https://embed.tawk.to/" . esc_js($property_id) . "/" . esc_js($widget_id) . "';";
-        //     echo "s1.charset='UTF-8';";
-        //     echo "s1.setAttribute('crossorigin','*');";
-        //     echo "s0.parentNode.insertBefore(s1,s0);";
-        //     echo "})();";
-        //     echo "</script>";
-        //     echo "<!-- WP Tawk.to Integrator - End of Tawk.to Script -->";
-        // } else {
-        //     echo "<!-- WP Tawk.to Integrator: Tawk.to Property ID not set. -->";
-        // }
-
-        echo "<!-- WP Tawk.to Integrator: Placeholder for Tawk.to widget script. -->";
-        echo "<!-- Actual script will be embedded here based on plugin settings. -->";
-        echo "<!-- It will typically load from https://embed.tawk.to/PROPERTY_ID/WIDGET_ID -->";
     }
 }
-?>
