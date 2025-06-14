@@ -12,6 +12,8 @@
 if (! defined('WPINC')) {
     die;
 }
+
+$options = get_option('wp-tawk-to-integrator_options');
 ?>
 
 <!-- Behavior tab content -->
@@ -44,7 +46,8 @@ if (! defined('WPINC')) {
                     class="trigger-selector flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="maximize-on-element-click"
+                        name="wp-tawk-to-integrator_options[maximize-on-element-click]"
+                        value="<?php echo isset($options['maximize-on-element-click']) ? $options['maximize-on-element-click'] : ''  ?>"
                         placeholder="#help-button or .chat-trigger"
                         id="element-to-trigger-widget-when-clicked"
                         data-role="input-selector"
@@ -78,10 +81,12 @@ if (! defined('WPINC')) {
             <label class="switch">
                 <input
                     id="auto-populate-user-data-toggle"
-                    name="auto-populate-user-data"
+                    name="wp-tawk-to-integrator_options[auto-populate-user-data]"
+                    value="<?php echo isset($options['auto-populate-user-data']) ? $options['auto-populate-user-data'] : ''  ?>"
                     type="checkbox"
                     role="switch"
-                    class="toggle" />
+                    class="toggle"
+                    <?php echo (isset($options['auto-populate-user-data']) && $options['auto-populate-user-data'] === 1) ? 'checked' : '' ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -112,7 +117,8 @@ if (! defined('WPINC')) {
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="custom-attributes"
+                        name="wp-tawk-to-integrator_options[custom-attributes]"
+                        value="<?php echo isset($options['custom-attributes']) ? $options['custom-attributes'] : '' ?>"
                         placeholder="key_1:value_1, key_2:value_2"
                         data-role="input-custom-attributes"
                         id="custom-attributes-input"
@@ -146,12 +152,14 @@ if (! defined('WPINC')) {
             <label class="switch">
                 <input
                     id="enable-secure-mode-toggle"
-                    name="enable-secure-mode"
+                    name="wp-tawk-to-integrator_options[enable-secure-mode]"
+                    value="<?php echo isset($options['enable-secure-mode']) ? $options['enable-secure-mode'] : ''  ?>"
                     type="checkbox"
                     data-role="reveal"
                     data-elementId="tawk-api-key-container"
                     role="switch"
-                    class="toggle" />
+                    class="toggle"
+                    <?php echo (isset($options['enable-secure-mode']) && $options['enable-secure-mode'] === 1) ? 'checked' : ''  ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -173,7 +181,8 @@ if (! defined('WPINC')) {
                     class="tawk-api-key flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="tawk-api-key"
+                        name="wp-tawk-to-integrator_options[tawk-api-key]"
+                        value="<?php echo isset($options['tawk-api-key']) ? $options['tawk-api-key'] : '' ?>"
                         placeholder="example: grffse32jhkiygfd32"
                         id="tawk-api-key-input"
                         data-role="tawk-api-key-input"
