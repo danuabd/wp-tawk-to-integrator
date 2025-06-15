@@ -11,6 +11,3 @@
  * @package    Wp_Tawk_To_Integrator
  * @subpackage Wp_Tawk_To_Integrator/admin/partials
  */
-?>
-
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
