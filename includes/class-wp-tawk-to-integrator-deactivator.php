@@ -8,29 +8,17 @@
  *
  * @package    Wp_Tawk_To_Integrator
  * @subpackage Wp_Tawk_To_Integrator/includes
- */
-
-/**
- * Fired during plugin deactivation.
- *
- * This class defines all code necessary to run during the plugin's deactivation.
- *
- * @since      1.0.0
- * @package    Wp_Tawk_To_Integrator
- * @subpackage Wp_Tawk_To_Integrator/includes
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
-class Wp_Tawk_To_Integrator_Deactivator {
+class Wp_Tawk_To_Integrator_Deactivator
+{
 
 	/**
-	 * Short Description. (use period)
+	 * Does nothing for now.
 	 *
-	 * Long Description.
+	 * In future updates I may implement some things here.
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
-
-	}
-
+	public static function deactivate() {}
 }
