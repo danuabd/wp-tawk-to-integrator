@@ -127,4 +127,18 @@ class Wp_Tawk_To_Integrator_Admin
 		// Include the settings page view
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/settings-page.php';
 	}
+
+	/**
+	 * Register the settings for this plugin.
+	 *
+	 * @since 1.0.0
+	 */
+	public function register_settings()
+	{
+		register_setting(
+			$this->plugin_name . '_options_group', // Option group
+			$this->plugin_name . '_options',       // Option name
+			array($this, 'sanitize_options')     // Sanitize callback
+		);
+	}
 }
