@@ -2,25 +2,19 @@
 
 /**
  * The admin-specific functionality of the plugin.
+ * 
+ * Defines the plugin name, version, and two examples hooks for how to
+ * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @link       https://danukaprasad.com
  * @since      1.0.0
  *
  * @package    Wp_Tawk_To_Integrator
  * @subpackage Wp_Tawk_To_Integrator/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Wp_Tawk_To_Integrator
- * @subpackage Wp_Tawk_To_Integrator/admin
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
-class Wp_Tawk_To_Integrator_Admin {
+class Wp_Tawk_To_Integrator_Admin
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,11 +41,11 @@ class Wp_Tawk_To_Integrator_Admin {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -59,7 +53,8 @@ class Wp_Tawk_To_Integrator_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +68,7 @@ class Wp_Tawk_To_Integrator_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-tawk-to-integrator-admin.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/wp-tawk-to-integrator-admin.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -82,7 +76,8 @@ class Wp_Tawk_To_Integrator_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,8 +91,6 @@ class Wp_Tawk_To_Integrator_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-tawk-to-integrator-admin.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-admin.js', array('jquery'), $this->version, false);
 	}
-
 }
