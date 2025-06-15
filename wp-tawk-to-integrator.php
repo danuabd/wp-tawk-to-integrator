@@ -30,13 +30,15 @@ if (! defined('WPINC')) {
  * Current plugin version.
  */
 define('WP_TAWK_TO_INTEGRATOR_VERSION', '1.0.0');
+define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('WP_TAWK_TO_INTEGRATOR_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 /**
  * The code that runs during plugin activation.
  */
 function activate_wp_tawk_to_integrator()
 {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-wp-tawk-to-integrator-activator.php';
+	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-activator.php';
 	Wp_Tawk_To_Integrator_Activator::activate();
 }
 
@@ -45,7 +47,7 @@ function activate_wp_tawk_to_integrator()
  */
 function deactivate_wp_tawk_to_integrator()
 {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-wp-tawk-to-integrator-deactivator.php';
+	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-deactivator.php';
 	Wp_Tawk_To_Integrator_Deactivator::deactivate();
 }
 
@@ -56,7 +58,7 @@ register_deactivation_hook(__FILE__, 'deactivate_wp_tawk_to_integrator');
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'includes/class-wp-tawk-to-integrator.php';
+require WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator.php';
 
 /**
  * Begins execution of the plugin.
