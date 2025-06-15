@@ -6,8 +6,8 @@
  * @link       https://danukaprasad.com
  * @since      1.0.0
  *
- * @package    WP_Tawk_To_Integrator
- * @subpackage WP_Tawk_To_Integrator/admin/views/partials
+ * @package    Wp_Tawk_To_Integrator
+ * @subpackage Wp_Tawk_To_Integrator/admin/partials/views
  */
 if (! defined('WPINC')) {
     die;
