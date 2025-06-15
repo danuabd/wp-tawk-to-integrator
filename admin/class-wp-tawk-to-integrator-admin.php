@@ -93,4 +93,22 @@ class Wp_Tawk_To_Integrator_Admin
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-admin.js', array('jquery'), $this->version, false);
 	}
+
+	/**
+	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_admin_menu()
+	{
+		add_menu_page(
+			__('Configure Tawk.to Chat Widget', 'wp-tawk-to-integrator'), // Page Title
+			__('WP Tawk.to Integrator', 'wp-tawk-to-integrator'), // Menu Title
+			'manage_options',                               // Capability
+			$this->plugin_name . '-settings',               // Menu Slug
+			array($this, 'display_settings_page'),        // Callback function
+			'dashicons-format-chat', // Icon
+			99
+		);
+	}
 }
