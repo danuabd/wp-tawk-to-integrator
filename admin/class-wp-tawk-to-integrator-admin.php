@@ -141,4 +141,97 @@ class Wp_Tawk_To_Integrator_Admin
 			array($this, 'sanitize_options')     // Sanitize callback
 		);
 	}
+
+	/**
+	 * Sanitize each setting field as needed.
+	 *
+	 * @since 1.0.0
+	 * @param array $input Contains all settings fields as array keys
+	 * @return array Sanitized array of options
+	 */
+	public function sanitize_options($input)
+	{
+		// Create a new array to store our sanitized options
+		$sanitized_input = array();
+
+		// --- Integration Tab ---
+		if (isset($input['property-id'])) {
+			$sanitized_input['property-id'] = sanitize_text_field($input['property-id']);
+		}
+		if (isset($input['widget-id'])) {
+			$sanitized_input['widget-id'] = sanitize_text_field($input['widget-id']);
+		}
+		// absint ensures we get an absolute integer.
+		if (isset($input['z-index'])) {
+			$sanitized_input['z-index'] = absint($input['z-index']);
+		}
+		// For checkboxes/toggles, we check if they exist and save a 1 (for 'on') or 0 (for 'off').
+		$sanitized_input['activate-widget'] = (isset($input['activate-widget'])) ? 1 : 0;
+
+
+		// --- Appearance Tab ---
+		if (isset($input['page-ids-to-hide'])) {
+			$sanitized_input['page-ids-to-hide'] = sanitize_text_field($input['page-ids-to-hide']);
+		}
+		$sanitized_input['show-widget-for-guests'] = (isset($input['show-widget-for-guests'])) ? 1 : 0;
+		// Example for the role toggles
+		$roles_to_hide = ['administrator', 'editor', 'author', 'contributor', 'subscriber', 'customer'];
+		foreach ($roles_to_hide as $role) {
+			$key = 'hide-for-' . $role . '-role';
+			$sanitized_input[$key] = (isset($input[$key])) ? 1 : 0;
+		}
+
+
+		// --- Behavior Tab ---
+		if (isset($input['maximize-on-element-click'])) {
+			$sanitized_input['maximize-on-element-click'] = sanitize_text_field($input['maximize-on-element-click']);
+		}
+		$sanitized_input['auto-populate-user-data'] = (isset($input['auto-populate-user-data'])) ? 1 : 0;
+		if (isset($input['custom-attributes'])) {
+			$sanitized_input['custom-attributes'] = sanitize_text_field($input['custom-attributes']);
+		}
+		$sanitized_input['enable-secure-mode'] = (isset($input['enable-secure-mode'])) ? 1 : 0;
+		if (isset($input['tawk-api-key'])) {
+			// API keys can have special characters, so we just trim whitespace.
+			$sanitized_input['tawk-api-key'] = trim($input['tawk-api-key']);
+		}
+
+		// --- Events Tab ---
+		$sanitized_input['enable-auto-page-tagging'] = (isset($input['enable-auto-page-tagging'])) ? 1 : 0;
+		if (isset($input['pages-to-ignore-auto-tagging'])) {
+			$sanitized_input['pages-to-ignore-auto-tagging'] = sanitize_text_field($input['pages-to-ignore-auto-tagging']);
+		}
+
+		$sanitized_input['enable-action-based-targeting'] = (isset($input['enable-action-based-targeting'])) ? 1 : 0;
+		if (isset($input['pages-to-ignore-action-based-targeting'])) {
+			$sanitized_input['pages-to-ignore-action-based-targeting'] = sanitize_text_field($input['pages-to-ignore-action-based-targeting']);
+		}
+
+		$sanitized_input['enable-onload-customization'] = (isset($input['enable-onload-customization'])) ? 1 : 0;
+		if (isset($input['widget-load-delay-time'])) {
+			$sanitized_input['widget-load-delay-time'] = absint($input['widget-load-delay-time']);
+		}
+		if (isset($input['custom-js-onload'])) {
+			// Using wp_kses_post to allow some HTML/script tags but prevent malicious code.
+			// For raw JS, you might just use trim(), but this is safer.
+			$sanitized_input['custom-js-onload'] = wp_kses_post($input['custom-js-onload']);
+		}
+
+		$sanitized_input['enable-chat-event-action'] = (isset($input['enable-chat-event-action'])) ? 1 : 0;
+		if (isset($input['custom-js-onchatstarted'])) {
+			$sanitized_input['custom-js-onchatstarted'] = wp_kses_post($input['custom-js-onchatstarted']);
+		}
+		if (isset($input['custom-js-onchatended'])) {
+			$sanitized_input['custom-js-onchatended'] = wp_kses_post($input['custom-js-onchatended']);
+		}
+
+		$sanitized_input['enable-prechat-submit-actions-toggle'] = (isset($input['enable-prechat-submit-actions-toggle'])) ? 1 : 0;
+		$sanitized_input['capture-prechat-data'] = (isset($input['capture-prechat-data'])) ? 1 : 0;
+		if (isset($input['custom-js-onprechatsubmit'])) {
+			$sanitized_input['custom-js-onprechatsubmit'] = wp_kses_post($input['custom-js-onprechatsubmit']);
+		}
+
+
+		return $sanitized_input;
+	}
 }
