@@ -111,4 +111,20 @@ class Wp_Tawk_To_Integrator_Admin
 			99
 		);
 	}
+
+
+	/**
+	 * Render the settings page for this plugin.
+	 *
+	 * @since    1.0.0
+	 */
+	public function display_settings_page()
+	{
+		// Check if the user has permissions to access this page
+		if (! current_user_can('manage_options')) {
+			return;
+		}
+		// Include the settings page view
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/settings-page.php';
+	}
 }
