@@ -8,19 +8,11 @@
  *
  * @package    Wp_Tawk_To_Integrator
  * @subpackage Wp_Tawk_To_Integrator/public
- */
-
-/**
- * The public-facing functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the public-facing stylesheet and JavaScript.
- *
- * @package    Wp_Tawk_To_Integrator
- * @subpackage Wp_Tawk_To_Integrator/public
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
-class Wp_Tawk_To_Integrator_Public {
+
+class Wp_Tawk_To_Integrator_Public
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,11 +39,11 @@ class Wp_Tawk_To_Integrator_Public {
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -59,7 +51,8 @@ class Wp_Tawk_To_Integrator_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +66,7 @@ class Wp_Tawk_To_Integrator_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-tawk-to-integrator-public.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/wp-tawk-to-integrator-public.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -82,7 +74,8 @@ class Wp_Tawk_To_Integrator_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,8 +89,6 @@ class Wp_Tawk_To_Integrator_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-tawk-to-integrator-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-public.js', array('jquery'), $this->version, false);
 	}
-
 }
