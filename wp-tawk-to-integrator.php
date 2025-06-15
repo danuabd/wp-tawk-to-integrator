@@ -3,10 +3,6 @@
 /**
  * The plugin bootstrap file
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
  *
  * @link              https://danukaprasad.com
  * @since             1.0.0
@@ -31,15 +27,12 @@ if (! defined('WPINC')) {
 }
 
 /**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * Current plugin version.
  */
 define('WP_TAWK_TO_INTEGRATOR_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-wp-tawk-to-integrator-activator.php
  */
 function activate_wp_tawk_to_integrator()
 {
@@ -49,7 +42,6 @@ function activate_wp_tawk_to_integrator()
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-wp-tawk-to-integrator-deactivator.php
  */
 function deactivate_wp_tawk_to_integrator()
 {
