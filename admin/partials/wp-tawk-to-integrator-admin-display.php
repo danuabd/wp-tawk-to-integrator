@@ -31,7 +31,7 @@ settings_errors();
         <div class="plugin-header mb-8 flex items-center">
             <?php
             // get page header
-            require_once __DIR__ . '/views/page-header.php'
+            require_once __DIR__ . '/views/header-view.php'
             ?>
         </div>
         <form id="wpti-admin-form"
@@ -46,7 +46,7 @@ settings_errors();
             <div id="tabs-button-wrapper" class="mb-6">
                 <?php
 
-                require_once __DIR__ . '/views/tabs.php';
+                require_once __DIR__ . '/views/tabs-view.php';
 
                 ?>
             </div>
@@ -55,15 +55,15 @@ settings_errors();
             <div id="tabs-content-wrapper" class="space-y-6">
                 <?php
                 // Load the correct partial file
-                require_once __DIR__ . '/views/tab-integration.php';
+                require_once __DIR__ . '/views/integration-view.php';
 
-                require_once __DIR__ . '/views/tab-appearance.php';
+                require_once __DIR__ . '/views/appearance-view.php';
 
-                require_once __DIR__ . '/views/tab-behavior.php';
+                require_once __DIR__ . '/views/behavior-view.php';
 
-                require_once __DIR__ . '/views/tab-events.php';
+                require_once __DIR__ . '/views/events-view.php';
 
-                require_once __DIR__ . '/views/tab-pro.php';
+                require_once __DIR__ . '/views/pro-view.php';
 
                 ?>
             </div>
