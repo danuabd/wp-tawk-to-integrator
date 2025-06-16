@@ -31,7 +31,7 @@ settings_errors();
         <div class="plugin-header mb-8 flex items-center">
             <?php
             // get page header
-            require_once __DIR__ . '/partials/page-header.php'
+            require_once __DIR__ . '/views/page-header.php'
             ?>
         </div>
         <form id="wpti-admin-form"
