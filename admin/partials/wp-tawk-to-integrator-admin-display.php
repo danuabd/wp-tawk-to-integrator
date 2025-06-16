@@ -46,7 +46,7 @@ settings_errors();
             <div id="tabs-button-wrapper" class="mb-6">
                 <?php
 
-                require_once __DIR__ . '/partials/tabs.php';
+                require_once __DIR__ . '/views/tabs.php';
 
                 ?>
             </div>
@@ -55,15 +55,15 @@ settings_errors();
             <div id="tabs-content-wrapper" class="space-y-6">
                 <?php
                 // Load the correct partial file
-                require_once __DIR__ . '/partials/tab-integration.php';
+                require_once __DIR__ . '/views/tab-integration.php';
 
-                require_once __DIR__ . '/partials/tab-appearance.php';
+                require_once __DIR__ . '/views/tab-appearance.php';
 
-                require_once __DIR__ . '/partials/tab-behavior.php';
+                require_once __DIR__ . '/views/tab-behavior.php';
 
-                require_once __DIR__ . '/partials/tab-events.php';
+                require_once __DIR__ . '/views/tab-events.php';
 
-                require_once __DIR__ . '/partials/tab-pro.php';
+                require_once __DIR__ . '/views/tab-pro.php';
 
                 ?>
             </div>
