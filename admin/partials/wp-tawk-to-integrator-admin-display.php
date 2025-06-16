@@ -70,8 +70,7 @@ settings_errors();
 
 
             <!-- Active tab (invisible field) -->
-            <input type="text" name="tab-active" id="tab-active" class="hidden" value="<?php echo isset($options['tab-active']) ? $options['tab-active'] : 'Integration'
-                                                                                        ?>">
+            <input type="hidden" name="wp-tawk-to-integrator_options[tab-active]" id="tab-active" value="<?php echo isset($options['tab-active']) ? esc_attr($options['tab-active']) : 'Integration' ?>">
 
             <!-- Form submission -->
             <div class="pt-4">
