@@ -216,21 +216,6 @@ class Wp_Tawk_To_Integrator_Admin
 			$sanitized_input['custom-js-onprechatsubmit'] = trim($input['custom-js-onprechatsubmit']);
 		}
 
-		if (isset($input['tab-active'])) {
-			// Define the list of allowed tabs
-			$allowed_tabs = ['Integration', 'Appearance', 'Behavior', 'Events'];
-
-			$tab = trim($input['tab-active']);
-			if (in_array($tab, $allowed_tabs, true)) {
-				$sanitized_input['tab-active'] = $tab;
-			} else {
-				$sanitized_input['tab-active'] = 'Integration';
-			}
-		} else {
-			// If 'tab-active' isn't set at all, also default to 'Integration'
-			$sanitized_input['tab-active'] = 'Integration';
-		}
-
 
 		return $sanitized_input;
 	}

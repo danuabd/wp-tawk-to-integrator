@@ -17,10 +17,7 @@ $options = get_option('wp-tawk-to-integrator_options');
 ?>
 
 <!-- Appearance tab content -->
-<div
-    data-relation="appearance"
-    id="appearance-section"
-    class="<?php echo str_contains($options['tab-active'], 'Appearance')  ? '' : 'hidden' ?> tab-content">
+<div>
     <!-- heading section -->
     <div class="mb-8">
         <h2 class="mb-2 text-xl font-semibold text-gray-700">

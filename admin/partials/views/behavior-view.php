@@ -17,10 +17,7 @@ $options = get_option('wp-tawk-to-integrator_options');
 ?>
 
 <!-- Behavior tab content -->
-<div
-    data-relation="behavior"
-    id="behavior-section"
-    class="<?php echo str_contains($options['tab-active'], 'Behavior')  ? '' : 'hidden' ?> tab-content space-y-6">
+<div>
     <div class="mb-8">
         <h2 class="text-xl font-semibold text-gray-700 mb-2">
             Behavior Settings

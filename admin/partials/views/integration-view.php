@@ -17,15 +17,7 @@ $options = get_option('wp-tawk-to-integrator_options');
 ?>
 
 <!-- Integration tab content -->
-<div
-    data-relation="integration"
-    id="integration-section"
-    class="<?php if (!isset($options['active-tab']) || str_contains($options['active-tab'], 'Integration')) {
-                echo 'tab-active';
-            } else {
-                echo 'tab-inactive';
-            }
-            ?> tab-content">
+<div>
     <div class="mb-7">
         <h2 class="mb-2 text-xl font-semibold text-gray-700">
             Integration Settings

@@ -17,10 +17,7 @@ $options = get_option('wp-tawk-to-integrator_options');
 ?>
 
 <!-- Events Tab Content -->
-<div
-    data-relation="events"
-    id="events-section"
-    class="<?php echo str_contains($options['tab-active'], 'Events')  ? '' : 'hidden' ?> tab-content space-y-6">
+<div>
     <div>
         <h2 class="text-xl font-semibold text-gray-700 mb-1">
             Events Configuration

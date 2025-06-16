@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The view for the "Pro" tab in the admin settings page.
+ * The view for the "Pro" tab content in the admin settings page.
  *
  * @link       https://danukaprasad.com
  * @since      1.0.0
@@ -13,10 +13,8 @@ if (! defined('WPINC')) {
     die;
 }
 ?>
-<div
-    data-relation="pro"
-    id="pro-section"
-    class="hidden tab-content pro-section-container my-6 space-y-6">
+
+<div>
     <div class="pro-section-overlay-text">
         Pro Features Coming Soon!
     </div>
