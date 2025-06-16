@@ -199,23 +199,21 @@ class Wp_Tawk_To_Integrator_Admin
 			$sanitized_input['widget-load-delay-time'] = absint($input['widget-load-delay-time']);
 		}
 		if (isset($input['custom-js-onload'])) {
-			// Using wp_kses_post to allow some HTML/script tags but prevent malicious code.
-			// For raw JS, you might just use trim(), but this is safer.
-			$sanitized_input['custom-js-onload'] = wp_kses_post($input['custom-js-onload']);
+			$sanitized_input['custom-js-onload'] = trim($input['custom-js-onload']);
 		}
 
 		$sanitized_input['enable-chat-event-action'] = (isset($input['enable-chat-event-action'])) ? 1 : 0;
 		if (isset($input['custom-js-onchatstarted'])) {
-			$sanitized_input['custom-js-onchatstarted'] = wp_kses_post($input['custom-js-onchatstarted']);
+			$sanitized_input['custom-js-onchatstarted'] = trim($input['custom-js-onchatstarted']);
 		}
 		if (isset($input['custom-js-onchatended'])) {
-			$sanitized_input['custom-js-onchatended'] = wp_kses_post($input['custom-js-onchatended']);
+			$sanitized_input['custom-js-onchatended'] = trim($input['custom-js-onchatended']);
 		}
 
 		$sanitized_input['enable-prechat-submit-actions-toggle'] = (isset($input['enable-prechat-submit-actions-toggle'])) ? 1 : 0;
 		$sanitized_input['capture-prechat-data'] = (isset($input['capture-prechat-data'])) ? 1 : 0;
 		if (isset($input['custom-js-onprechatsubmit'])) {
-			$sanitized_input['custom-js-onprechatsubmit'] = wp_kses_post($input['custom-js-onprechatsubmit']);
+			$sanitized_input['custom-js-onprechatsubmit'] = trim($input['custom-js-onprechatsubmit']);
 		}
 
 
