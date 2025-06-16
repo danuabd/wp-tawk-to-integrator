@@ -1,114 +1,63 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://danukaprasad.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# WP Tawk.to Integrator
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+* **Contributors:** ABD Prasad (danukaprasad.com)
+* **Tags:** tawk.to chat, tawk.to chat widget, tawk.to integration, live chat, chat plugin, wordpress chat, wordpress live chat
+* **Requires at least:** 5.0
+* **Tested up to:** 6.4
+* **Requires PHP:** 8.0
+* **Stable tag:** 1.0.0
+* **License:** GPL-3.0
+* **License URI:** https://www.gnu.org/licenses/gpl-3.0.en.html
+
+Integrate Tawk.to live chat into your WordPress site with easy setup and powerful customization options.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+The **WP Tawk.to Integrator** plugin offers a straightforward and robust solution for adding the Tawk.to live chat widget to your WordPress website. Beyond simple integration, it provides a dedicated settings page to manage your Tawk.to **Property ID** and **Widget ID**, ensuring a seamless connection.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Designed with **extensibility** in mind, this plugin lays a solid foundation for future enhancements related to widget appearance, behavior, and event handling. It adheres to WordPress plugin development best practices, making it reliable and easy to maintain.
 
-A few notes about the sections above:
+Key Features:
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+* **Core Tawk.to Widget Integration:** Handles the foundational setup and initialization of the Tawk.to widget, including defining essential constants and hooks for seamless operation.
+* **Intuitive Admin Dashboard:** Offers a dedicated WordPress admin interface for managing plugin settings, including organized view files for overall admin-side logic.
+* **Seamless Front-End Widget Display:** Manages the public-facing display of the Tawk.to chat widget, ensuring it is correctly embedded and interacts as expected on your website.
+* **Extensible Architecture:** Designed with an `includes` directory for shared libraries, core functionalities, and helper functions, facilitating future expansions and custom development.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `wp-tawk-to-integrator.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1.  **Upload:** Upload the `wp-tawk-to-integrator` folder to the `/wp-content/plugins/` directory.
+2.  **Activate:** Activate the plugin through the 'Plugins' menu in your WordPress dashboard.
+3.  **Configure:** Go to "**Configure Tawk.to Chat Widget**" in the WordPress admin menu (under "Settings" or a custom top-level menu item) to set up your Tawk.to Property ID and Widget ID.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Where do I find my Tawk.to Property ID and Widget ID? =
 
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
-
-== Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+You can find these IDs in your Tawk.to dashboard. After logging in, navigate to **Admin -> Property -> Chat Widget**. Your Property ID and Widget ID will be displayed there.
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+= 1.0.0 - 2023-12-08 =
+* Initial release of the plugin.
+* Basic plugin structure established.
+* Admin settings page with tabs implemented.
+* Placeholder for Tawk.to widget integration.
 
 == Upgrade Notice ==
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+= 1.0.0 =
+This is the initial release. No upgrade notice is required.
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
+== Planned Updates for the Future ==
 
-== Arbitrary section ==
+The **WP Tawk.to Integrator** plugin is continuously evolving with exciting new features planned to enhance its capabilities:
 
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+* **Advanced Visitor Information:** Future updates will enable passing custom attributes about logged-in WordPress users directly to Tawk.to, allowing for more personalized and informed chat interactions.
+* **Enhanced Tagging Features:**
+    * **Action-Based Tagging:** Users will be able to define rules to automatically apply specific tags to visitors when they click on designated elements on your site.
+    * **Automatic Page Tagging Enhancements:** Improved control over which pages are excluded from automatic tagging.
+* **Custom JavaScript API Event Actions:** Upcoming features will allow users to leverage Tawk.to's JavaScript API events for custom scripts, including:
+    * `onChatStarted` / `onChatEnded` Events: Execute custom code when a chat session begins or ends.
+    * `onPrechatSubmit` Events: Run custom scripts when the pre-chat form is submitted, with access to the submitted data.
+* **Pro Version Features:** A future Pro version will unlock advanced functionalities such as webhook integrations (e.g., Zapier), deeper WooCommerce and Easy Digital Downloads integration, customizable chat widget styling presets, and priority support.
