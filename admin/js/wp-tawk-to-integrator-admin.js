@@ -1,31 +1,31 @@
 (function () {
   const t = document.createElement("link").relList;
   if (t && t.supports && t.supports("modulepreload")) return;
-  for (const s of document.querySelectorAll('link[rel="modulepreload"]')) i(s);
-  new MutationObserver((s) => {
-    for (const r of s)
+  for (const i of document.querySelectorAll('link[rel="modulepreload"]')) s(i);
+  new MutationObserver((i) => {
+    for (const r of i)
       if (r.type === "childList")
         for (const o of r.addedNodes)
-          o.tagName === "LINK" && o.rel === "modulepreload" && i(o);
+          o.tagName === "LINK" && o.rel === "modulepreload" && s(o);
   }).observe(document, { childList: !0, subtree: !0 });
-  function e(s) {
+  function e(i) {
     const r = {};
     return (
-      s.integrity && (r.integrity = s.integrity),
-      s.referrerPolicy && (r.referrerPolicy = s.referrerPolicy),
-      s.crossOrigin === "use-credentials"
+      i.integrity && (r.integrity = i.integrity),
+      i.referrerPolicy && (r.referrerPolicy = i.referrerPolicy),
+      i.crossOrigin === "use-credentials"
         ? (r.credentials = "include")
-        : s.crossOrigin === "anonymous"
+        : i.crossOrigin === "anonymous"
         ? (r.credentials = "omit")
         : (r.credentials = "same-origin"),
       r
     );
   }
-  function i(s) {
-    if (s.ep) return;
-    s.ep = !0;
-    const r = e(s);
-    fetch(s.href, r);
+  function s(i) {
+    if (i.ep) return;
+    i.ep = !0;
+    const r = e(i);
+    fetch(i.href, r);
   }
 })();
 const h = 2e3,
@@ -36,7 +36,7 @@ class f {
     (this._alertBox = document.getElementById("custom-alert-box")),
       (this._alertOverlay = document.getElementById("custom-alert-overlay"));
   }
-  showAlert(t, e = "success", i = h, s = null) {
+  showAlert(t, e = "success", s = h, i = null) {
     this.alertTimeout && clearTimeout(this.alertTimeout),
       this._hideAlert(),
       (this._alertBox.innerHTML = ""),
@@ -53,7 +53,7 @@ class f {
     const r = document.createTextNode(t);
     this._alertBox.appendChild(r), this.addClasses(this._alertBox, e);
     let o = !1;
-    const a = s ? s.closest("div") : null;
+    const a = i ? i.closest("div") : null;
     if (a) {
       const n = getComputedStyle(a),
         l = a.parentElement,
@@ -88,7 +88,7 @@ class f {
           this._alertBox.classList.contains("mt-3") &&
             parseFloat(getComputedStyle(this._alertBox).marginTop);
       } else this.addClasses(this._alertBox, "fixed-alert");
-      this.alertTimeout = setTimeout(this._hideAlert.bind(this), i);
+      this.alertTimeout = setTimeout(this._hideAlert.bind(this), s);
     }
   }
   _hideAlert() {
@@ -98,12 +98,12 @@ class f {
   addClasses(t, ...e) {
     t &&
       t.classList &&
-      t.classList.add(...e.filter((i) => typeof i == "string"));
+      t.classList.add(...e.filter((s) => typeof s == "string"));
   }
   removeClasses(t, ...e) {
     t &&
       t.classList &&
-      t.classList.remove(...e.filter((i) => typeof i == "string"));
+      t.classList.remove(...e.filter((s) => typeof s == "string"));
   }
 }
 class g {
@@ -134,14 +134,14 @@ class g {
     );
   }
   showMultipleItems(t, e) {
-    const i = document.getElementById(e);
-    if (!i) return console.error("Input container could not be found");
-    (i.innerHTML = ""),
+    const s = document.getElementById(e);
+    if (!s) return console.error("Input container could not be found");
+    (s.innerHTML = ""),
       !(t.length < 1) &&
-        t.forEach((s) => {
-          if (s) {
-            const r = this._createItemEl(s);
-            i.insertAdjacentElement("beforeend", r);
+        t.forEach((i) => {
+          if (i) {
+            const r = this._createItemEl(i);
+            s.insertAdjacentElement("beforeend", r);
           }
         });
   }
@@ -181,11 +181,11 @@ class p {
     this.form.addEventListener("formdata", t);
   }
 }
-class v {
+class b {
   constructor(t, e) {
     (this.tabsContainerID = t),
       (this.tabsContentContainerId = e),
-      (this.activeTab = document.getElementById("active-tab")),
+      (this.activeTab = document.getElementById("tab-active")),
       this._checkTabsExist();
   }
   _checkTabsExist() {
@@ -201,24 +201,23 @@ class v {
       );
   }
   _hideAllTabs() {
-    Array.from(this.tabsContainer.querySelectorAll("button")).forEach((e) => {
-      e.classList.contains("tab-active") && e.classList.add("tab-inactive");
+    Array.from(this.tabsContainer.querySelectorAll(".tab-btn")).forEach((e) => {
+      e.classList.remove("tab-active");
     });
   }
   _hideAllTabsContents() {
     Array.from(
       this.tabsContentContainer.querySelectorAll(".tab-content")
     ).forEach((e) => {
-      e.classList.contains("hidden") || e.classList.add("hidden");
+      e.classList.add("hidden");
     });
   }
   showTab(t) {
     if (!t) return console.error("Provided tab does not exist");
     this._hideAllTabs(),
-      t.classList.remove("tab-inactive"),
       t.classList.add("tab-active"),
-      (this.activeTab.value = t.textContent.trim()),
-      this._showTabContent(t.dataset.relation);
+      this._showTabContent(t.dataset.relation),
+      window.history.pushState({}, "", t.href);
   }
   _showTabContent(t) {
     const e = document.getElementById(t);
@@ -226,7 +225,7 @@ class v {
     this._hideAllTabsContents(), e.classList.remove("hidden");
   }
 }
-class b {
+class v {
   toggleChecked(t) {
     t.hasAttribute("checked")
       ? t.removeAttribute("checked")
@@ -244,17 +243,17 @@ class b {
   resetToggles(t) {
     const e = document.getElementById(t);
     if (!e) return console.error("Toggle container is not found");
-    e.querySelectorAll("input[type='checkbox']").forEach((s) => {
-      s.hasAttribute("checked") && s.click();
+    e.querySelectorAll("input[type='checkbox']").forEach((i) => {
+      i.hasAttribute("checked") && i.click();
     });
   }
 }
-class _ {
+class C {
   constructor() {
     (this.alertView = new f()),
       (this.formView = new p("wpti-admin-form", "form-submit-btn")),
-      (this.tabsView = new v("tabs-button-wrapper", "tabs-content-wrapper")),
-      (this.toggleView = new b()),
+      (this.tabsView = new b("tabs-button-wrapper", "tabs-content-wrapper")),
+      (this.toggleView = new v()),
       (this.fieldView = new g()),
       this._addControllers();
   }
@@ -282,57 +281,57 @@ class _ {
       t.value = this._removeLastCharacter(e);
       return;
     }
-    const i = this._createMultiplePageIdItems(t.value);
-    this.fieldView.showMultipleItems(i, t.dataset.displayid);
+    const s = this._createMultiplePageIdItems(t.value);
+    this.fieldView.showMultipleItems(s, t.dataset.displayid);
   }
   _sanitizeCSSSelectorInput(t) {
     let e = t.value;
-    const i = t.selectionStart;
+    const s = t.selectionStart;
     if (e) {
       if ((e.length > 0 && !/^[#.]/.test(e) && (e = ""), e.length > 1)) {
-        const s = e[0],
+        const i = e[0],
           o = e.substring(1).replace(/[^a-zA-Z0-9\-_]/g, "");
-        e = s + o;
+        e = i + o;
       }
-      (t.value = e), t.setSelectionRange(i, i);
+      (t.value = e), t.setSelectionRange(s, s);
     }
   }
   _sanitizeCustomAttributesInput(t, e) {
-    let i;
-    e ? (i = e.clipboardData.getData("text")) : (i = t.value);
-    let s = t.selectionStart,
-      r = i.replace(/[^a-zA-Z0-9\-_:, ]/g, "");
+    let s;
+    e ? (s = e.clipboardData.getData("text")) : (s = t.value);
+    let i = t.selectionStart,
+      r = s.replace(/[^a-zA-Z0-9\-_:, ]/g, "");
     if (/^\s*,/.test(r)) {
       const a = r.length;
-      (r = r.replace(/^\s*,/, "")), (s -= a - r.length);
+      (r = r.replace(/^\s*,/, "")), (i -= a - r.length);
     }
     const o = /([^,:\s])\s+([^,:\s])/g;
-    if ((o.test(r) && ((r = r.replace(o, "$1, $2")), s++), r.endsWith(","))) {
+    if ((o.test(r) && ((r = r.replace(o, "$1, $2")), i++), r.endsWith(","))) {
       const a = r.slice(0, -1),
         n = a.lastIndexOf(",");
       a.substring(n + 1).includes(":") || (r = r.slice(0, -1));
     }
     (r = r.replace(/,{2,}/g, ",").replace(/:{2,}/g, ":")),
       (t.value = r),
-      t.setSelectionRange(Math.max(0, s), Math.max(0, s));
+      t.setSelectionRange(Math.max(0, i), Math.max(0, i));
   }
   _validatePageIDs(t) {
     const e = t.value.trim();
-    let i,
-      s = !1;
+    let s,
+      i = !1;
     return (
-      /\d\s+\d/.test(e) && (i = "Cannot contain spaces without a separator"),
+      /\d\s+\d/.test(e) && (s = "Cannot contain spaces without a separator"),
       /,,/.test(e) &&
-        (i = "Contain 2 commas together without a value in middle"),
-      /^\d+(,\s*\d+)*,?$/.test(e) || (i = "Contains invalid characters"),
-      i && (this.alertView.showAlert(i, "error"), (s = !0)),
-      s
+        (s = "Contain 2 commas together without a value in middle"),
+      /^\d+(,\s*\d+)*,?$/.test(e) || (s = "Contains invalid characters"),
+      s && (this.alertView.showAlert(s, "error"), (i = !0)),
+      i
     );
   }
   _validateCSSSelector(t) {
     const e = t.value.trim();
     if (!e) return;
-    let i = !1;
+    let s = !1;
     return (
       /^[#\.][a-zA-Z0-9\-_]+$/.test(e) ||
         ((t.value = ""),
@@ -340,27 +339,27 @@ class _ {
           "Selector must start with # or . and have a valid name (e.g., #my-id or .my-class)",
           "error"
         ),
-        (i = !0)),
-      i
+        (s = !0)),
+      s
     );
   }
   _validateWidgetDelay(t) {
     const e = u,
-      i = m;
-    let s = parseFloat(t.value),
+      s = m;
+    let i = parseFloat(t.value),
       r = !1;
-    if (!isNaN(s))
+    if (!isNaN(i))
       return (
-        s < e
+        i < e
           ? ((t.value = e),
             this.alertView.showAlert(
-              `Provided value (${s}} is lesser than minimum value (${e})`
+              `Provided value (${i}} is lesser than minimum value (${e})`
             ),
             (r = !0))
-          : s > i &&
-            ((t.value = i),
+          : i > s &&
+            ((t.value = s),
             this.alertView.showAlert(
-              `Provided value (${s}} is greater than minimum value (${e})`
+              `Provided value (${i}} is greater than minimum value (${e})`
             ),
             (r = !0)),
         r
@@ -369,35 +368,44 @@ class _ {
   _validateCustomAttributes(t) {
     const e = t.value.trim();
     if (!e) return;
-    const i = e.split(",");
-    let s = !1;
-    for (const r of i) {
+    const s = e.split(",");
+    let i = !1;
+    for (const r of s) {
       const o = r.trim();
       if (o === "") {
-        s = !0;
+        i = !0;
         break;
       }
       const a = o.split(":");
       if (a.length !== 2 || !a[0].trim() || !a[1].trim()) {
-        s = !0;
+        i = !0;
         break;
       }
     }
     return (
-      s
+      i
         ? (this.alertView.showAlert(
             'Invalid format. Use "key:value" pairs, separated by commas (e.g., name:John, plan:pro).',
             "error"
           ),
           (t.value = ""))
         : ((t.style.borderColor = ""), t.classList.add("border-green-500")),
-      s
+      i
     );
   }
+  setCurrentTab() {
+    const t = new URL(window.location.href),
+      e = new URLSearchParams(t.search),
+      s =
+        document.getElementById(e.get("tab")) ||
+        document.getElementById("integration");
+    this.tabsView.showTab(s);
+  }
   _controlClicks(t) {
-    const e = t.target.closest("button");
+    const e = t.target.closest("button") || t.target.closest(".tab-btn");
     e &&
-      (e.classList.contains("tab-btn") && this.tabsView.showTab(e),
+      (e.classList.contains("tab-btn") &&
+        (t.preventDefault(), this.tabsView.showTab(e)),
       e.dataset.role === "reset" &&
         this.toggleView.resetToggles(e.dataset.itemscontainer),
       e.dataset.role === "clear" &&
@@ -405,11 +413,11 @@ class _ {
   }
   _controlChange(t) {
     const e = t.target,
-      i = e.closest("input[role='switch']");
+      s = e.closest("input[role='switch']");
     e.closest("input[type='text']"),
-      i &&
-        (this.toggleView.toggleChecked(i),
-        i.dataset.role === "reveal" && this.toggleView.revealElement(i));
+      s &&
+        (this.toggleView.toggleChecked(s),
+        s.dataset.role === "reveal" && this.toggleView.revealElement(s));
   }
   _controlInput(t) {
     const e = t.target;
@@ -427,8 +435,8 @@ class _ {
     const e = t.target;
     if (!e.getAttribute("type") !== "text") {
       if (e.dataset.role === "tawk-api-key-input" && !e.value) {
-        const i = document.getElementById(e.dataset.toggleid);
-        return this.toggleView.resetToggle(i);
+        const s = document.getElementById(e.dataset.toggleid);
+        return this.toggleView.resetToggle(s);
       }
       e.dataset.role === "input-selector" && this._validateCSSSelector(e),
         e.id === "custom-attributes-input" && this._validateCustomAttributes(e),
@@ -464,10 +472,10 @@ class _ {
   }
   _controlFormData(t) {
     const e = t.formData;
-    for (const [i, s] of e.entries())
-      s && console.log(`Key: ${i}, Value: ${s}`);
+    for (const [s, i] of e.entries())
+      i && console.log(`Key: ${s}, Value: ${i}`);
   }
 }
 window.addEventListener("load", function () {
-  new _();
+  new C().setCurrentTab();
 });
