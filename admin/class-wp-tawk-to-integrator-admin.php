@@ -35,6 +35,15 @@ class Wp_Tawk_To_Integrator_Admin
 	private $version;
 
 	/**
+	 * The hook suffix for the settings page.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string
+	 */
+	private $settings_page_hook_suffix;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -52,9 +61,14 @@ class Wp_Tawk_To_Integrator_Admin
 	 * Register the stylesheets for the admin area.
 	 *
 	 * @since    1.0.0
+	 * @param    string $hook_suffix The hook suffix for the current admin page.
 	 */
-	public function enqueue_styles()
+	public function enqueue_styles($hook_suffix)
 	{
+		// 1. Only load styles in plugin admin settings page
+		if ($hook_suffix !== $this->settings_page_hook_suffix) {
+			return;
+		}
 
 		// Enqueue material icons CSS
 		wp_enqueue_style(
@@ -74,8 +88,12 @@ class Wp_Tawk_To_Integrator_Admin
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts()
+	public function enqueue_scripts($hook_suffix)
 	{
+		// 1. Only load scripts in plugin admin settings page
+		if ($hook_suffix !== $this->settings_page_hook_suffix) {
+			return;
+		}
 
 		// Enqueue admin settings JS
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-admin.js', array(), filemtime(plugin_dir_path(__FILE__) . 'js/wp-tawk-to-integrator-admin.js'), true);
@@ -88,7 +106,7 @@ class Wp_Tawk_To_Integrator_Admin
 	 */
 	public function add_admin_menu()
 	{
-		add_menu_page(
+		$this->settings_page_hook_suffix = add_menu_page(
 			__('Configure Tawk.to Chat Widget', 'wp-tawk-to-integrator'), // Page Title
 			__('WP Tawk.to Integrator', 'wp-tawk-to-integrator'), // Menu Title
 			'manage_options',                               // Capability
