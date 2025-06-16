@@ -112,7 +112,7 @@ class Wp_Tawk_To_Integrator_Admin
 			return;
 		}
 		// Include the settings page view
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/settings-page.php';
+		require_once plugin_dir_path(__FILE__) . 'partials/wp-tawk-to-integrator-admin-display.php';
 	}
 
 	/**
