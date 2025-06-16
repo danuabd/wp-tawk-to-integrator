@@ -56,19 +56,17 @@ class Wp_Tawk_To_Integrator_Admin
 	public function enqueue_styles()
 	{
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Tawk_To_Integrator_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wp_Tawk_To_Integrator_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		// Enqueue material icons CSS
+		wp_enqueue_style(
+			$this->plugin_name . 'material-icons',
+			"https://fonts.googleapis.com/icon?family=Material+Icons+Outlined",
+			array(),
+			$this->version
 
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/wp-tawk-to-integrator-admin.css', array(), $this->version, 'all');
+		);
+
+		// Enqueue admin settings CSS
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/wp-tawk-to-integrator-admin.css', array(), filemtime(plugin_dir_path(__FILE__) . 'css/wp-tawk-to-integrator-admin.css'));
 	}
 
 	/**
@@ -79,19 +77,8 @@ class Wp_Tawk_To_Integrator_Admin
 	public function enqueue_scripts()
 	{
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Tawk_To_Integrator_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wp_Tawk_To_Integrator_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-admin.js', array('jquery'), $this->version, false);
+		// Enqueue admin settings JS
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-admin.js', array(), filemtime(plugin_dir_path(__FILE__) . 'js/wp-tawk-to-integrator-admin.js'), true);
 	}
 
 	/**
