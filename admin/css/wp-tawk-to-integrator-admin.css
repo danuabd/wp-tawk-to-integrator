@@ -24,19 +24,6 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-blur: initial;
-      --tw-brightness: initial;
-      --tw-contrast: initial;
-      --tw-grayscale: initial;
-      --tw-hue-rotate: initial;
-      --tw-invert: initial;
-      --tw-opacity: initial;
-      --tw-saturate: initial;
-      --tw-sepia: initial;
-      --tw-drop-shadow: initial;
-      --tw-drop-shadow-color: initial;
-      --tw-drop-shadow-alpha: 100%;
-      --tw-drop-shadow-size: initial;
     }
   }
 }
@@ -485,6 +472,9 @@
   .flex-1 {
     flex: 1 !important;
   }
+  .cursor-not-allowed {
+    cursor: not-allowed !important;
+  }
   .list-inside {
     list-style-position: inside !important;
   }
@@ -606,9 +596,6 @@
   .border-green-500 {
     border-color: var(--color-green-500) !important;
   }
-  .border-red-500 {
-    border-color: var(--color-red-500) !important;
-  }
   .bg-gray-100 {
     background-color: var(--color-gray-100) !important;
   }
@@ -703,6 +690,9 @@
   .text-gray-800 {
     color: var(--color-gray-800) !important;
   }
+  .text-red-500 {
+    color: var(--color-red-500) !important;
+  }
   .text-white {
     color: var(--color-white) !important;
   }
@@ -720,12 +710,6 @@
       0 1px 2px -1px var(--tw-shadow-color, #0000001a) !important;
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
       var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow) !important;
-  }
-  .blur {
-    --tw-blur: blur(8px) !important;
-    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
-      var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
-      var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
   }
   @media (hover: hover) {
     .hover\:bg-red-600:hover {
@@ -811,19 +795,32 @@ body {
 .admin-content-bg {
   background-color: #f0f0f1;
 }
-.tab-active {
+.tab-btn {
+  color: #374151;
+  box-shadow: none;
+  background-color: #f3f4f6;
+  border-bottom: 2px solid #0000;
+  outline: none;
+}
+.tab-btn:link,
+.tab-btn:visited,
+.tab-btn:focus,
+.tab-btn:hover,
+.tab-btn:active {
+  cursor: pointer;
+  background-color: #e5e7eb;
+}
+.tab-active,
+.tab-active:link,
+.tab-active:visited,
+.tab-active:focus,
+.tab-active:hover,
+.tab-active:active {
   background-color: var(--mint-2);
   color: #fff;
   border-bottom: 2px solid var(--mint-2);
-}
-.tab-inactive {
-  color: #374151;
-  background-color: #f3f4f6;
-  border-bottom: 2px solid #0000;
-}
-.tab-inactive:hover {
-  cursor: pointer;
-  background-color: #e5e7eb;
+  box-shadow: none;
+  outline: none;
 }
 .switch {
   width: 50px;
@@ -1076,57 +1073,4 @@ button {
   syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
-}
-@property --tw-blur {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-brightness {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-contrast {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-grayscale {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-hue-rotate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-invert {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-opacity {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-saturate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-sepia {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-drop-shadow {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-drop-shadow-color {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-drop-shadow-alpha {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 100%;
-}
-@property --tw-drop-shadow-size {
-  syntax: "*";
-  inherits: false;
 }
