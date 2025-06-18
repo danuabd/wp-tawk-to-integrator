@@ -152,7 +152,7 @@ settings_errors();
             $settings_page_url = menu_page_url('wp-tawk-to-integrator-settings', false);
             $redirect_url      = add_query_arg('tab', $active_tab, $settings_page_url);
             ?>
-            <input type="hidden" name="_wp_http_referer" value="<?php echo esc_url($redirect_url); ?>" />
+            <input type="hidden" id="active_tab_url" name="_wp_http_referer" value="<?php echo esc_url($redirect_url); ?>" />
         </form>
     </div>
 </div>

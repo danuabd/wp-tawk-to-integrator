@@ -146,7 +146,7 @@ class g {
         });
   }
 }
-class p {
+class b {
   constructor(t, e) {
     (this._formId = t), (this._submitterId = e), this._init();
   }
@@ -177,11 +177,8 @@ class p {
   addSubmitHandler(t) {
     this.form.addEventListener("submit", t);
   }
-  addFormDataHandler(t) {
-    this.form.addEventListener("formdata", t);
-  }
 }
-class b {
+class p {
   constructor(t, e) {
     (this.tabsContainerID = t),
       (this.tabsContentContainerId = e),
@@ -218,7 +215,7 @@ class b {
       t.classList.add("tab-active"),
       this._showTabContent(t.dataset.relation),
       window.history.pushState({}, "", t.href);
-    const e = document.querySelector('input[name="_wp_http_referer"]');
+    const e = document.getElementById("active_tab_url");
     e && (e.value = t.href);
   }
   _showTabContent(t) {
@@ -253,8 +250,8 @@ class v {
 class _ {
   constructor() {
     (this.alertView = new f()),
-      (this.formView = new p("wpti-admin-form", "form-submit-btn")),
-      (this.tabsView = new b("tabs-button-wrapper", "tabs-content-wrapper")),
+      (this.formView = new b("wpti-admin-form", "form-submit-btn")),
+      (this.tabsView = new p("tabs-button-wrapper", "tabs-content-wrapper")),
       (this.toggleView = new v()),
       (this.fieldView = new g()),
       this._addControllers();
@@ -264,7 +261,8 @@ class _ {
       this.formView.addChangeHandler(this._controlChange.bind(this)),
       this.formView.addInputHandler(this._controlInput.bind(this)),
       this.formView.addPasteHandler(this._controlPaste.bind(this)),
-      this.formView.addFocusOutHandler(this._controlFocusOut.bind(this));
+      this.formView.addFocusOutHandler(this._controlFocusOut.bind(this)),
+      this.formView.addSubmitHandler(this._controlSubmit.bind(this));
   }
   _removeLastCharacter(t) {
     return t.slice(0, t.length - 1);
@@ -401,7 +399,7 @@ class _ {
       s =
         document.getElementById(e.get("tab")) ||
         document.getElementById("integration");
-    this.tabsView.showTab(s);
+    this.tabsView.showTab(s), console.log("Current URL is: ", t);
   }
   _controlClicks(t) {
     const e = t.target.closest("button") || t.target.closest(".tab-btn");
@@ -462,20 +460,16 @@ class _ {
         this._validateCustomAttributes() && t.preventDefault());
   }
   _controlSubmit(t) {
-    if ((t.preventDefault(), t.submitter !== this.formView.formSubmitter))
+    if (t.submitter !== this.formView.formSubmitter)
       return (
-        console.log(t.submitter),
-        console.log(this.formView.formSubmitter),
+        console.error(
+          `Event submitter: ${t.submitter}. Form submitter: ${this.formView.formSubmitter}`
+        ),
         this.alertView.showAlert(
           "Event submitter is not same as submit button",
           "error"
         )
       );
-  }
-  _controlFormData(t) {
-    const e = t.formData;
-    for (const [s, i] of e.entries())
-      i && console.log(`Key: ${s}, Value: ${i}`);
   }
 }
 window.addEventListener("load", function () {
