@@ -30,8 +30,20 @@ if (! defined('WPINC')) {
  * Current plugin version.
  */
 define('WP_TAWK_TO_INTEGRATOR_VERSION', '1.0.0');
+
+/**
+ * Plugin directory.
+ */
 define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
+
+/**
+ * Plugin URL.
+ */
 define('WP_TAWK_TO_INTEGRATOR_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+/**
+ * Plugin options key.
+ */
 define('WP_TAWK_TO_INTEGRATOR_OPTIONS_KEY', 'wp-tawk-to-integrator_options');
 
 /**
