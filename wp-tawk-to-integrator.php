@@ -32,8 +32,7 @@ if (! defined('WPINC')) {
 define('WP_TAWK_TO_INTEGRATOR_VERSION', '1.0.0');
 define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WP_TAWK_TO_INTEGRATOR_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_KEY', 'wp-tawk-to-integrator_options_group');
-define('WP_TAWK_TO_INTEGRATOR_OPTION_KEY', 'wp-tawk-to-integrator_options');
+define('WP_TAWK_TO_INTEGRATOR_OPTIONS_KEY', 'wp-tawk-to-integrator_options');
 
 /**
  * The code that runs during plugin activation.
@@ -41,7 +40,7 @@ define('WP_TAWK_TO_INTEGRATOR_OPTION_KEY', 'wp-tawk-to-integrator_options');
 function activate_wp_tawk_to_integrator()
 {
 	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-activator.php';
-	Wp_Tawk_To_Integrator_Activator::activate();
+	Wp_Tawk_To_Integrator_Activator::activate(WP_TAWK_TO_INTEGRATOR_OPTIONS_KEY);
 }
 
 /**

@@ -20,5 +20,5 @@ class Wp_Tawk_To_Integrator_Activator
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {}
+	public static function activate($plugin_name) {}
 }
