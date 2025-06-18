@@ -218,6 +218,8 @@ class b {
       t.classList.add("tab-active"),
       this._showTabContent(t.dataset.relation),
       window.history.pushState({}, "", t.href);
+    const e = document.querySelector('input[name="_wp_http_referer"]');
+    e && (e.value = t.href);
   }
   _showTabContent(t) {
     const e = document.getElementById(t);
@@ -248,7 +250,7 @@ class v {
     });
   }
 }
-class C {
+class _ {
   constructor() {
     (this.alertView = new f()),
       (this.formView = new p("wpti-admin-form", "form-submit-btn")),
@@ -477,5 +479,5 @@ class C {
   }
 }
 window.addEventListener("load", function () {
-  new C().setCurrentTab();
+  new _().setCurrentTab();
 });
