@@ -96,64 +96,44 @@ settings_errors();
 
             <!-- Tabs content -->
             <div id="tabs-content-wrapper" class="space-y-6">
+                <!-- Integration -->
                 <div
                     data-relation="integration"
                     id="integration-section"
-                    class="<?php $active_tab !== 'integration' ? 'hidden' : '' ?> tab-content">
-                    <?php
-
-                    // Integration view
-                    require_once __DIR__ . '/views/integration-view.php';
-
-                    ?>
+                    class="tab-content <?php echo 'integration' === $active_tab ? '' : 'hidden'; ?>">
+                    <?php require_once __DIR__ . '/views/integration-view.php'; ?>
                 </div>
 
+                <!-- Appearance -->
                 <div
                     data-relation="appearance"
                     id="appearance-section"
-                    class="<?php $active_tab !== 'appearance' ? 'hidden' : '' ?> tab-content">
-                    <?php
-
-                    // Appearance view
-                    require_once __DIR__ . '/views/appearance-view.php';
-
-                    ?>
+                    class="tab-content <?php echo 'appearance' === $active_tab ? '' : 'hidden'; ?>">
+                    <?php require_once __DIR__ . '/views/appearance-view.php'; ?>
                 </div>
 
+                <!-- Behavior -->
                 <div
                     data-relation="behavior"
                     id="behavior-section"
-                    class="<?php $active_tab !== 'behavior' ? 'hidden' : '' ?> tab-content space-y-6">
-                    <?php
-
-                    // Behavior view
-                    require_once __DIR__ . '/views/behavior-view.php';
-
-                    ?>
+                    class="tab-content space-y-6 <?php echo 'behavior' === $active_tab ? '' : 'hidden'; ?>">
+                    <?php require_once __DIR__ . '/views/behavior-view.php'; ?>
                 </div>
 
+                <!-- Events -->
                 <div
                     data-relation="events"
                     id="events-section"
-                    class="<?php $active_tab !== 'events' ? 'hidden' : '' ?> tab-content space-y-6">
-                    <?php
-
-                    // Events view
-                    require_once __DIR__ . '/views/events-view.php';
-
-                    ?>
+                    class="tab-content space-y-6 <?php echo 'events' === $active_tab ? '' : 'hidden'; ?>">
+                    <?php require_once __DIR__ . '/views/events-view.php'; ?>
                 </div>
 
+                <!-- Pro -->
                 <div
                     data-relation="pro"
                     id="pro-section"
-                    class="<?php $active_tab !== 'pro' ? 'hidden' : '' ?> tab-content pro-section-container my-6 space-y-6">
-                    <?php
-
-                    // Pro view
-                    require_once __DIR__ . '/views/pro-view.php';
-
-                    ?>
+                    class="tab-content pro-section-container my-6 space-y-6 <?php echo 'pro' === $active_tab ? '' : 'hidden'; ?>">
+                    <?php require_once __DIR__ . '/views/pro-view.php'; ?>
                 </div>
             </div>
 
