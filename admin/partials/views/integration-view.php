@@ -100,7 +100,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                 id="activate-widget-toggle"
                 class="toggle"
                 role="switch"
-                <?php echo (isset($options['activate-widget']) &&  $options['activate-widget'] === 1) ? 'checked' : ''; ?> />
+                <?php echo (isset($options['activate-widget']) &&  $options['activate-widget'] === '1') ? 'checked' : ''; ?> />
             <span class="slider round"></span>
         </label>
         <label

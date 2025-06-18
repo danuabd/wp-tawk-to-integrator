@@ -83,7 +83,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['auto-populate-user-data']) && $options['auto-populate-user-data'] === 1) ? 'checked' : '' ?> />
+                    <?php echo (isset($options['auto-populate-user-data']) && $options['auto-populate-user-data'] === '1') ? 'checked' : '' ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -156,7 +156,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                     data-elementId="tawk-api-key-container"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['enable-secure-mode']) && $options['enable-secure-mode'] === 1) ? 'checked' : ''  ?> />
+                    <?php echo (isset($options['enable-secure-mode']) && $options['enable-secure-mode'] === '1') ? 'checked' : ''  ?> />
                 <span class="slider round"></span>
             </label>
             <label
