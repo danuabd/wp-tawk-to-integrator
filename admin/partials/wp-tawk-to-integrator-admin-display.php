@@ -53,7 +53,7 @@ settings_errors();
                         data-relation="integration-section"
                         id="integration"
                         role="button"
-                        class="<?php echo $active_tab === 'integration' ? 'tab-active' : ''; ?> tab-btn rounded-t-md px-6 py-3 text-sm font-medium">
+                        class="tab-btn rounded-t-md px-6 py-3 text-sm font-medium <?php echo $active_tab === 'integration' ? 'tab-active' : ''; ?>">
                         Integration
                     </a>
                     <a
@@ -61,7 +61,7 @@ settings_errors();
                         data-relation="appearance-section"
                         id="appearance"
                         role="button"
-                        class="<?php echo $active_tab === 'appearance' ? 'tab-active' : ''; ?> tab-btn rounded-t-md px-6 py-3 text-sm font-medium">
+                        class="tab-btn rounded-t-md px-6 py-3 text-sm font-medium <?php echo $active_tab === 'appearance' ? 'tab-active' : ''; ?>">
                         Appearance
                     </a>
                     <a
@@ -69,7 +69,7 @@ settings_errors();
                         data-relation="behavior-section"
                         id="behavior"
                         role="button"
-                        class="<?php echo $active_tab === 'behavior' ? 'tab-active' : ''; ?> tab-btn rounded-t-md px-6 py-3 text-sm font-medium">
+                        class="tab-btn rounded-t-md px-6 py-3 text-sm font-medium <?php echo $active_tab === 'behavior' ? 'tab-active' : ''; ?>">
                         Behavior
                     </a>
                     <a
@@ -77,7 +77,7 @@ settings_errors();
                         data-relation="events-section"
                         id="events"
                         role="button"
-                        class="<?php echo $active_tab === 'events' ? 'tab-active' : ''; ?> tab-btn rounded-t-md px-6 py-3 text-sm font-medium">
+                        class="tab-btn rounded-t-md px-6 py-3 text-sm font-medium <?php echo $active_tab === 'events' ? 'tab-active' : ''; ?>">
                         Events
                     </a>
                     <a
@@ -85,7 +85,7 @@ settings_errors();
                         data-relation="pro-section"
                         id="pro"
                         role="button"
-                        class="<?php echo $active_tab === 'pro' ? 'tab-active' : ''; ?> tab-btn relative rounded-t-md px-6 py-3 text-sm font-medium">
+                        class="tab-btn relative rounded-t-md px-6 py-3 text-sm font-medium <?php echo $active_tab === 'pro' ? 'tab-active' : ''; ?>">
                         Pro
                         <span
                             class="material-icons-outlined text-mint-2 absolute top-1 right-1 text-sm"
