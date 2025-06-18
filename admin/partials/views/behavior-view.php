@@ -43,8 +43,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     class="trigger-selector flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[maximize-on-element-click]"
-                        value="<?php echo isset($options['maximize-on-element-click']) ? $options['maximize-on-element-click'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[widget_maximize_element_input]"
+                        value="<?php echo isset($options['widget_maximize_element_input']) ? $options['widget_maximize_element_input'] : ''  ?>"
                         placeholder="#help-button or .chat-trigger"
                         id="element-to-trigger-widget-when-clicked"
                         data-role="input-selector"
@@ -52,7 +52,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <button
                         type="button"
                         data-role="clear"
-                        data-elementId="maximize-on-element-click"
+                        data-elementId="element-to-trigger-widget-when-clicked"
                         class="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 text-sm">
                         Clear
                     </button>
@@ -78,12 +78,12 @@ $options = get_option('wp-tawk-to-integrator_options');
             <label class="switch">
                 <input
                     id="auto-populate-user-data-toggle"
-                    name="wp-tawk-to-integrator_options[auto-populate-user-data]"
-                    value="<?php echo isset($options['auto-populate-user-data']) ? $options['auto-populate-user-data'] : ''  ?>"
+                    name="wp-tawk-to-integrator_options[auto_populate_userdata_check]"
+                    value="<?php echo isset($options['auto_populate_userdata_check']) ? $options['auto_populate_userdata_check'] : ''  ?>"
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['auto-populate-user-data']) && $options['auto-populate-user-data'] === '1') ? 'checked' : '' ?> />
+                    <?php echo (isset($options['auto_populate_userdata_check']) && $options['auto_populate_userdata_check'] === '1') ? 'checked' : '' ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -114,8 +114,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[custom-attributes]"
-                        value="<?php echo isset($options['custom-attributes']) ? $options['custom-attributes'] : '' ?>"
+                        name="wp-tawk-to-integrator_options[custom_attributes_check]"
+                        value="<?php echo isset($options['custom_attributes_check']) ? $options['custom_attributes_check'] : '' ?>"
                         placeholder="key_1:value_1, key_2:value_2"
                         data-role="input-custom-attributes"
                         id="custom-attributes-input"
@@ -149,14 +149,14 @@ $options = get_option('wp-tawk-to-integrator_options');
             <label class="switch">
                 <input
                     id="enable-secure-mode-toggle"
-                    name="wp-tawk-to-integrator_options[enable-secure-mode]"
-                    value="<?php echo isset($options['enable-secure-mode']) ? $options['enable-secure-mode'] : ''  ?>"
+                    name="wp-tawk-to-integrator_options[secure_mode_check]"
+                    value="<?php echo isset($options['secure_mode_check']) ? $options['secure_mode_check'] : ''  ?>"
                     type="checkbox"
                     data-role="reveal"
                     data-elementId="tawk-api-key-container"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['enable-secure-mode']) && $options['enable-secure-mode'] === '1') ? 'checked' : ''  ?> />
+                    <?php echo (isset($options['secure_mode_check']) && $options['secure_mode_check'] === '1') ? 'checked' : ''  ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -178,8 +178,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     class="tawk-api-key flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[tawk-api-key]"
-                        value="<?php echo isset($options['tawk-api-key']) ? $options['tawk-api-key'] : '' ?>"
+                        name="wp-tawk-to-integrator_options[tawk_api_key_input]"
+                        value="<?php echo isset($options['tawk_api_key_input']) ? $options['tawk_api_key_input'] : '' ?>"
                         placeholder="example: grffse32jhkiygfd32"
                         id="tawk-api-key-input"
                         data-role="tawk-api-key-input"

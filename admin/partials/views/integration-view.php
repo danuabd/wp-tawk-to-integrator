@@ -34,8 +34,8 @@ $options = get_option('wp-tawk-to-integrator_options');
             class="property-id max-w-lg flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="text"
-                name="wp-tawk-to-integrator_options[property-id]"
-                value="<?php echo isset($options['property-id']) ? esc_attr($options['property-id']) : ''; ?>"
+                name="wp-tawk-to-integrator_options[property_id_input]"
+                value="<?php echo isset($options['property_id_input']) ? esc_attr($options['property_id_input']) : ''; ?>"
                 placeholder="Enter your Tawk.to property ID"
                 id="property-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
@@ -54,8 +54,8 @@ $options = get_option('wp-tawk-to-integrator_options');
             class="widget-id max-w-lg flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="text"
-                name="wp-tawk-to-integrator_options[widget-id]"
-                value="<?php echo isset($options['widget-id']) ? esc_attr($options['widget-id']) : ''; ?>"
+                name="wp-tawk-to-integrator_options[widget_id_input]"
+                value="<?php echo isset($options['widget_id_input']) ? esc_attr($options['widget_id_input']) : ''; ?>"
                 placeholder="Enter your Tawk.to Widget ID (e.g., default)"
                 id="widget-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
@@ -75,8 +75,8 @@ $options = get_option('wp-tawk-to-integrator_options');
             class="z-index max-w-48 flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="number"
-                name="wp-tawk-to-integrator_options[z-index]"
-                value="<?php echo isset($options['z-index']) ? esc_attr($options['z-index']) : ''; ?>"
+                name="wp-tawk-to-integrator_options[z_index_input]"
+                value="<?php echo isset($options['z_index_input']) ? esc_attr($options['z_index_input']) : ''; ?>"
                 placeholder="Ex: 99"
                 min="0"
                 max="9999999"
@@ -94,13 +94,13 @@ $options = get_option('wp-tawk-to-integrator_options');
     <div class="mb-6 flex items-center space-x-3">
         <label class="switch">
             <input
-                name="wp-tawk-to-integrator_options[activate-widget]"
-                value="<?php echo isset($options['activate-widget']) ? esc_attr($options['activate-widget']) : ''; ?>"
+                name="wp-tawk-to-integrator_options[activate_widget_check]"
+                value="<?php echo isset($options['activate_widget_check']) ? esc_attr($options['activate_widget_check']) : ''; ?>"
                 type="checkbox"
                 id="activate-widget-toggle"
                 class="toggle"
                 role="switch"
-                <?php echo (isset($options['activate-widget']) &&  $options['activate-widget'] === '1') ? 'checked' : ''; ?> />
+                <?php echo (isset($options['activate_widget_check']) &&  $options['activate_widget_check'] === '1') ? 'checked' : ''; ?> />
             <span class="slider round"></span>
         </label>
         <label

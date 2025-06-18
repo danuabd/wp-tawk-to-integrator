@@ -50,8 +50,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[page-ids-to-hide]"
-                        value="<?php echo isset($options['page-ids-to-hide']) ? esc_attr($options['page-ids-to-hide']) : ''; ?>"
+                        name="wp-tawk-to-integrator_options[pages_to_hide_input]"
+                        value="<?php echo isset($options['pages_to_hide_input']) ? esc_attr($options['pages_to_hide_input']) : ''; ?>"
                         placeholder="Page IDs"
                         id="hide-on-pages-input"
                         data-role="input-page-ids"
@@ -95,11 +95,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         <input
                             type="checkbox"
                             id="hide-for-administrator-checkbox"
-                            name="wp-tawk-to-integrator_options[hide-for-administrator-role]"
-                            value="<?php echo isset($options['hide-for-administrator-role']) ? esc_attr($options['hide-for-administrator-role']) : ''; ?>"
+                            name="wp-tawk-to-integrator_options[hide_widget_admin_role_check]"
+                            value="<?php echo isset($options['hide_widget_admin_role_check']) ? esc_attr($options['hide_widget_admin_role_check']) : ''; ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo (isset($options['hide-for-administrator-role']) && $options['hide-for-administrator-role'] === '1') ? 'checked' : ''; ?> />
+                            <?php echo (isset($options['hide_widget_admin_role_check']) && $options['hide_widget_admin_role_check'] === '1') ? 'checked' : ''; ?> />
                         <span class="slider round"></span>
                     </label>
                     <label
@@ -111,11 +111,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         <input
                             type="checkbox"
                             id="hide-for-editor-checkbox"
-                            name="wp-tawk-to-integrator_options[hide-for-editor-role]"
-                            value="<?php echo isset($options['hide-for-editor-role']) ? $options['hide-for-editor-role'] : '' ?>"
+                            name="wp-tawk-to-integrator_options[hide_widget_editor_role_check]"
+                            value="<?php echo isset($options['hide_widget_editor_role_check']) ? $options['hide_widget_editor_role_check'] : '' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo (isset($options['hide-for-editor-role']) && $options['hide-for-editor-role'] === '') ? 'checked' : '' ?> />
+                            <?php echo (isset($options['hide_widget_editor_role_check']) && $options['hide_widget_editor_role_check'] === '') ? 'checked' : '' ?> />
                         <span class="slider round"></span>
                     </label>
                     <label
@@ -127,12 +127,12 @@ $options = get_option('wp-tawk-to-integrator_options');
                         <input
                             type="checkbox"
                             id="hide-for-author-checkbox"
-                            name="wp-tawk-to-integrator_options[hide-for-author-role]"
-                            value="<?php echo isset($options['hide-for-author-role']) ? $options['hide-for-author-role'] : '' ?>"
+                            name="wp-tawk-to-integrator_options[hide_widget_author_role_check]"
+                            value="<?php echo isset($options['hide_widget_author_role_check']) ? $options['hide_widget_author_role_check'] : '' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo (isset($options['hide-for-author-role']) && $options['hide-for-author-role'] === '') ? 'checked' : ''; ?> />
-                        <span class="slider round"></span>
+                            <?php echo (isset($options['hide_widget_author_role_check']) && $options['hide_widget_author_role_check'] === '') ? 'checked' : ''; ?> />
+                        <span class="slider round"></span>_check
                     </label>
 
                     <label
@@ -144,11 +144,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <label class="switch"><input
                             type="checkbox"
                             id="hide-for-contributor-checkbox"
-                            name="wp-tawk-to-integrator_options[hide-for-contributor-role]"
-                            value="<?php echo isset($options['hide-for-contributor-role']) ? $options['hide-for-contributor-role'] : '' ?>"
+                            name="wp-tawk-to-integrator_options[hide_widget_contributor_role_check]"
+                            value="<?php echo isset($options['hide_widget_contributor_role_check']) ? $options['hide_widget_contributor_role_check'] : '' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo (isset($options['hide-for-contributor-role']) && $options['hide-for-contributor-role'] === '1') ? 'checked' : ''; ?> />
+                            <?php echo (isset($options['hide_widget_contributor_role_check']) && $options['hide_widget_contributor_role_check'] === '1') ? 'checked' : ''; ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -161,11 +161,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         <input
                             type="checkbox"
                             id="hide-for-subscriber-checkbox"
-                            name="wp-tawk-to-integrator_options[hide-for-subscriber-role]"
-                            value="<?php echo isset($options['hide-for-subscriber-role']) ? $options['hide-for-subscriber-role'] : '' ?>"
+                            name="wp-tawk-to-integrator_options[hide_widget_subscriber_role_check]"
+                            value="<?php echo isset($options['hide_widget_subscriber_role_check']) ? $options['hide_widget_subscriber_role_check'] : '' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo (isset($options['hide-for-subscriber-role']) && $options['hide-for-subscriber-role'] === '1') ? 'checked' : ''; ?> />
+                            <?php echo (isset($options['hide_widget_subscriber_role_check']) && $options['hide_widget_subscriber_role_check'] === '1') ? 'checked' : ''; ?> />
 
                         <span class="slider round"></span>
                     </label>
@@ -179,11 +179,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         <input
                             type="checkbox"
                             id="hide-for-customer-checkbox"
-                            name="wp-tawk-to-integrator_options[hide-for-customer-role]"
-                            value="<?php echo isset($options['hide-for-customer-role']) ? $options['hide-for-customer-role'] : '' ?>"
+                            name="wp-tawk-to-integrator_options[hide_widget_customer_role_check]"
+                            value="<?php echo isset($options['hide_widget_customer_role_check']) ? $options['hide_widget_customer_role_check'] : '' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo (isset($options['hide-for-customer-role']) && $options['hide-for-customer-role'] === '1') ? 'checked' : ''; ?> />
+                            <?php echo (isset($options['hide_widget_customer_role_check']) && $options['hide_widget_customer_role_check'] === '1') ? 'checked' : ''; ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -209,12 +209,12 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <input
                     checked
                     id="show-widget-for-guests-toggle"
-                    name="wp-tawk-to-integrator_options[show-widget-for-guests]"
-                    value="<?php echo isset($options['show-widget-for-guests']) ? $options['show-widget-for-guests'] : '' ?>"
+                    name="wp-tawk-to-integrator_options[show_widgets_to_guest_check]"
+                    value="<?php echo isset($options['show_widgets_to_guest_check']) ? $options['show_widgets_to_guest_check'] : '' ?>"
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['show-widget-for-guests']) && $options['show-widget-for-guests'] === '1') ? 'checked' : ''; ?> />
+                    <?php echo (isset($options['show_widgets_to_guest_check']) && $options['show_widgets_to_guest_check'] === '1') ? 'checked' : ''; ?> />
                 <span class="slider round"></span>
             </label>
             <label

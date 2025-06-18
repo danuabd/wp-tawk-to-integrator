@@ -47,8 +47,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="checkbox"
                         id="enable-auto-page-tagging-toggle"
-                        name="wp-tawk-to-integrator_options[enable-auto-page-tagging]"
-                        value="<?php echo isset($options['enable-auto-page-tagging']) ? $options['enable-auto-page-tagging'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[auto_page_tagging_check]"
+                        value="<?php echo isset($options['auto_page_tagging_check']) ? $options['auto_page_tagging_check'] : ''  ?>"
                         data-role="reveal"
                         data-elementId="ignore-pages-from-auto-tagging"
                         role="switch"
@@ -85,8 +85,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     class="pages-to-ignore flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[pages-to-ignore-auto-tagging]"
-                        value="<?php echo isset($options['pages-to-ignore-auto-tagging']) ? $options['pages-to-ignore-auto-tagging'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[ignore_auto_tagging_input]"
+                        value="<?php echo isset($options['ignore_auto_tagging_input']) ? $options['ignore_auto_tagging_input'] : ''  ?>"
                         id="pages-to-ignore-tagging-input"
                         placeholder="Ex: 1123, 345, 23"
                         data-role="input-page-ids"
@@ -117,8 +117,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="checkbox"
                         id="enable-action-based-targeting-toggle"
-                        name="wp-tawk-to-integrator_options[enable-action-based-targeting]"
-                        value="<?php echo isset($options['enable-action-based-targeting']) ? $options['enable-action-based-targeting'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[action_based_targeting_check]"
+                        value="<?php echo isset($options['action_based_targeting_check']) ? $options['action_based_targeting_check'] : ''  ?>"
                         data-role="reveal"
                         data-elementId="action-based-tagging_rules-container"
                         role="switch"
@@ -151,8 +151,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     class="pages-to-ignore flex items-center space-x-2 p-2 border border-gray-300 rounded-md mb-1">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[pages-to-ignore-action-based-targeting]"
-                        value="<?php echo isset($options['pages-to-ignore-action-based-targeting']) ? $options['pages-to-ignore-action-based-targeting'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[ignore_action_based_targeting_input]"
+                        value="<?php echo isset($options['ignore_action_based_targeting_input']) ? $options['ignore_action_based_targeting_input'] : ''  ?>"
                         id="pages-to-ignore-action-based-tagging-input"
                         placeholder="Ex: tagName:[#el-id, .el-class], tagName2:[#el-id2, .el-cls2]"
                         data-displayId="ignored-action-based-tagging-pages"
@@ -198,8 +198,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="checkbox"
                         id="enable-onload-customization-toggle"
-                        name="wp-tawk-to-integrator_options[enable-onload-customization]"
-                        value="<?php echo isset($options['enable-onload-customization']) ? $options['enable-onload-customization'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[widget_onload_customize_check]"
+                        value="<?php echo isset($options['widget_onload_customize_check']) ? $options['widget_onload_customize_check'] : ''  ?>"
                         data-role="reveal"
                         data-elementId="onLoad-customizations-fields"
                         role="switch"
@@ -221,8 +221,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                         class="max-w-2xs flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                         <input
                             type="number"
-                            name="wp-tawk-to-integrator_options[widget-load-delay-time]"
-                            value="<?php echo isset($options['widget-load-delay-time']) ? $options['widget-load-delay-time'] : ''  ?>"
+                            name="wp-tawk-to-integrator_options[widget_render_delay_input]"
+                            value="<?php echo isset($options['widget_render_delay_input']) ? $options['widget_render_delay_input'] : ''  ?>"
                             id="delay-widget-display"
                             min="0"
                             placeholder="1000 milliseconds = 1 second "
@@ -242,8 +242,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <div
                         class="flex flex-col gap-2 items-start space-x-2 p-2 border border-gray-300 rounded-md">
                         <textarea
-                            name="wp-tawk-to-integrator_options[custom-js-onload]"
-                            value="<?php echo isset($options['custom-js-onload']) ? $options['custom-js-onload'] : ''  ?>"
+                            name="wp-tawk-to-integrator_options[custom_js_onload]"
+                            value="<?php echo isset($options['custom_js_onload']) ? $options['custom_js_onload'] : ''  ?>"
                             class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                             id="custom-js-onload"
                             rows="4"></textarea>
@@ -270,8 +270,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="checkbox"
                         id="enable-chat-event-action-toggle"
-                        name="wp-tawk-to-integrator_options[enable-chat-event-action]"
-                        value="<?php echo isset($options['enable-chat-event-action']) ? $options['enable-chat-event-action'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[chat_event_action_check]"
+                        value="<?php echo isset($options['chat_event_action_check']) ? $options['chat_event_action_check'] : ''  ?>"
                         data-role="reveal"
                         data-elementId="chat-event-actions-fields"
                         role="switch"
@@ -295,8 +295,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <div
                         class="flex items-center space-x-2 p-2 border border-gray-300 rounded-md mb-2">
                         <textarea
-                            name="wp-tawk-to-integrator_options[custom-js-onchatstarted]"
-                            value="<?php echo isset($options['custom-js-onchatstarted']) ? $options['custom-js-onchatstarted'] : ''  ?>"
+                            name="wp-tawk-to-integrator_options[custom_js_on_chat_started_input]"
+                            value="<?php echo isset($options['custom_js_on_chat_started_input']) ? $options['custom_js_on_chat_started_input'] : ''  ?>"
                             class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                             id="custom-js-onchatstarted"
                             rows="4"></textarea>
@@ -316,8 +316,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                         <textarea
                             class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                             id="custom-js-onchatended"
-                            name="wp-tawk-to-integrator_options[custom-js-onchatended]"
-                            value="<?php echo isset($options['custom-js-onchatended']) ? $options['custom-js-onchatended'] : ''  ?>"
+                            name="wp-tawk-to-integrator_options[custom_js_on_chat_ended_input]"
+                            value="<?php echo isset($options['custom_js_on_chat_ended_input']) ? $options['custom_js_on_chat_ended_input'] : ''  ?>"
                             rows="4"></textarea>
                     </div>
                     <p class="mt-1 text-xs text-gray-500">
@@ -344,8 +344,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="checkbox"
                         id="enable-prechat-submit-actions"
-                        name="wp-tawk-to-integrator_options[enable-prechat-submit-actions]"
-                        value="<?php echo isset($options['enable-prechat-submit-actions']) ? $options['enable-prechat-submit-actions'] : ''  ?>"
+                        name="wp-tawk-to-integrator_options[pre_chat_submit_action_check]"
+                        value="<?php echo isset($options['pre_chat_submit_action_check']) ? $options['pre_chat_submit_action_check'] : ''  ?>"
                         data-role="reveal"
                         data-elementId="prechat-submit-actions-fields"
                         role="switch"
@@ -366,8 +366,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                         <input
                             type="checkbox"
                             id="capture-prechat-data-toggle"
-                            name="wp-tawk-to-integrator_options[capture-prechat-data]"
-                            value="<?php echo isset($options['capture-prechat-data']) ? $options['capture-prechat-data'] : ''  ?>"
+                            name="wp-tawk-to-integrator_options[capture_pre_chat_data_check]"
+                            value="<?php echo isset($options['capture_pre_chat_data_check']) ? $options['capture_pre_chat_data_check'] : ''  ?>"
                             role="switch"
                             class="toggle"
                             disabled />
@@ -391,8 +391,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <div
                         class="flex items-center space-x-2 p-2 border border-gray-300 rounded-md mb-2">
                         <textarea
-                            name="wp-tawk-to-integrator_options[custom-js-onprechatsubmit]"
-                            value="<?php echo isset($options['custom-js-onprechatsubmit']) ? $options['custom-js-onprechatsubmit'] : ''  ?>"
+                            name="wp-tawk-to-integrator_options[custom_js_on_chat_submit_input]"
+                            value="<?php echo isset($options['custom_js_on_chat_submit_input']) ? $options['custom_js_on_chat_submit_input'] : ''  ?>"
                             class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                             id="custom-js-onprechatsubmit"
                             rows="4"></textarea>
