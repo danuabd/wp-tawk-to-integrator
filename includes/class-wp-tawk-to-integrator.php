@@ -144,6 +144,8 @@ class Wp_Tawk_To_Integrator
 
 		$plugin_admin = new Wp_Tawk_To_Integrator_Admin($this->get_plugin_name(), $this->get_version());
 
+		$this->loader->add_action('admin_init', $plugin_admin, 'redirect_on_activation');
+
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 

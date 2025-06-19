@@ -46,7 +46,7 @@ class Wp_Tawk_To_Integrator_Activator
 			'property_id' => '',
 			'widget_id' => '',
 			'z_index' => '',
-			'activate_widget_check' => '0',
+			'activate_widget_check' => '1',
 			'pages_to_hide_input' => '',
 			'hide_widget_admin_role_check' => '0',
 			'hide_widget_editor_role_check' => '0',

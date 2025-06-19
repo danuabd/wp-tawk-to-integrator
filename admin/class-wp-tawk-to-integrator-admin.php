@@ -99,6 +99,28 @@ class Wp_Tawk_To_Integrator_Admin
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-admin.js', array(), filemtime(plugin_dir_path(__FILE__) . 'js/wp-tawk-to-integrator-admin.js'), true);
 	}
 
+
+	/**
+	 * Redirect to settings page after activation.
+	 *
+	 * @since    1.0.0
+	 */
+	public function redirect_on_activation()
+	{
+
+		if (get_transient('wpti_redirect_on_activation')) {
+			// Delete the transient so this only runs once.
+			delete_transient('wpti_redirect_on_activation');
+
+			// Build the redirect URL using the plugin_name property from the class.
+			$redirect_url = admin_url('admin.php?page=' . $this->plugin_name . '-settings');
+
+			// Perform the safe redirect.
+			wp_safe_redirect($redirect_url);
+			exit;
+		}
+	}
+
 	/**
 	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
 	 *
