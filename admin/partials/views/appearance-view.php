@@ -132,7 +132,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
                             <?php echo (isset($options['hide_widget_author_role_check']) && $options['hide_widget_author_role_check'] === '') ? 'checked' : ''; ?> />
-                        <span class="slider round"></span>_check
+                        <span class="slider round"></span>
                     </label>
 
                     <label

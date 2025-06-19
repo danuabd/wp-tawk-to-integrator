@@ -399,7 +399,7 @@ class _ {
       s =
         document.getElementById(e.get("tab")) ||
         document.getElementById("integration");
-    this.tabsView.showTab(s), console.log("Current URL is: ", t);
+    this.tabsView.showTab(s);
   }
   _controlClicks(t) {
     const e = t.target.closest("button") || t.target.closest(".tab-btn");
