@@ -45,7 +45,7 @@ settings_errors();
             settings_fields('wp-tawk-to-integrator_options_group');
             ?>
 
-            <!-- Tabs -->
+            <!-- Tabs convenience -->
             <div id="tabs-button-wrapper" class="mb-6">
                 <div class="flex space-x-1 border-b border-gray-200">
                     <a

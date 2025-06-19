@@ -57,7 +57,7 @@ class Wp_Tawk_To_Integrator_Activator
 			'show_widget_to_guest' => '1',
 			'widget_maximize_element_input' => '',
 			'auto_populate_userdata_check' => '0',
-			'custom_attributes_check' => '0',
+			'custom_attributes_input' => '',
 			'secure_mode_check' => '0',
 			'tawk_api_key_input' => '',
 			'auto_page_tagging_check' => '0',

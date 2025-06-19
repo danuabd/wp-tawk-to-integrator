@@ -114,8 +114,8 @@ $options = get_option('wp-tawk-to-integrator_options');
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[custom_attributes_check]"
-                        value="<?php echo isset($options['custom_attributes_check']) ? $options['custom_attributes_check'] : '' ?>"
+                        name="wp-tawk-to-integrator_options[custom_attributes_input]"
+                        value="<?php echo isset($options['custom_attributes_input']) ? $options['custom_attributes_input'] : '' ?>"
                         placeholder="key_1:value_1, key_2:value_2"
                         data-role="input-custom-attributes"
                         id="custom-attributes-input"

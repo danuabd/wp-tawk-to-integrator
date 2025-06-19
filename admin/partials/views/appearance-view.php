@@ -209,12 +209,12 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <input
                     checked
                     id="show-widget-for-guests-toggle"
-                    name="wp-tawk-to-integrator_options[show_widgets_to_guest_check]"
-                    value="<?php echo isset($options['show_widgets_to_guest_check']) ? $options['show_widgets_to_guest_check'] : '' ?>"
+                    name="wp-tawk-to-integrator_options[show_widget_to_guest_check]"
+                    value="<?php echo isset($options['show_widget_to_guest_check']) ? $options['show_widget_to_guest_check'] : '' ?>"
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['show_widgets_to_guest_check']) && $options['show_widgets_to_guest_check'] === '1') ? 'checked' : ''; ?> />
+                    <?php echo (isset($options['show_widget_to_guest_check']) && $options['show_widget_to_guest_check'] === '1') ? 'checked' : ''; ?> />
                 <span class="slider round"></span>
             </label>
             <label
