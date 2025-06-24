@@ -111,8 +111,9 @@ $options = get_option('wp-tawk-to-integrator_options');
             class="space-y-4 p-4 border border-gray-200 rounded-md mt-4">
             <h4 class="text-md font-semibold text-gray-700">
                 Action-Based Tagging (On Element Click)
+                <span class="text-red-500">**Coming soon...</span>
             </h4>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-3 blur-[2px]">
                 <label class="switch">
                     <input
                         type="checkbox"
@@ -124,7 +125,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                         role="switch"
                         class="toggle"
                         disabled />
-                    <span class="slider round"></span>
+                    <span class="slider round cursor-not-allowed"></span>
                 </label>
                 <label
                     class="text-sm font-medium text-gray-700"
@@ -241,12 +242,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         for="custom-js-onload">Custom JavaScript for `onLoad` Event</label>
                     <div
                         class="flex flex-col gap-2 items-start space-x-2 p-2 border border-gray-300 rounded-md">
-                        <textarea
+                        <code
                             name="wp-tawk-to-integrator_options[custom_js_onload]"
                             value="<?php echo isset($options['custom_js_onload']) ? $options['custom_js_onload'] : ''  ?>"
-                            class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                            id="custom-js-onload"
-                            rows="4"></textarea>
+                            class="block w-full h-auto p-0.5 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+                            id="custom-js-onload"></code>
                     </div>
 
                     <p class="mt-1 text-xs text-gray-500">
@@ -264,8 +264,9 @@ $options = get_option('wp-tawk-to-integrator_options');
             class="space-y-4 p-4 border border-gray-200 rounded-md mt-4">
             <h4 class="text-md font-semibold text-gray-700">
                 `onChatStarted` / `onChatEnded` Event Actions
+                <span class="text-red-500">**Coming soon...</span>
             </h4>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-3 blur-[2px]">
                 <label class="switch">
                     <input
                         type="checkbox"
@@ -278,7 +279,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                         class="toggle"
                         disabled
                         title="Coming soon..." />
-                    <span class="slider round"></span>
+                    <span class="slider round cursor-not-allowed"></span>
                 </label>
                 <label
                     class="text-sm font-medium text-gray-700"
@@ -294,12 +295,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         for="custom-js-onchatstarted">Custom JavaScript for `onChatStarted` Event</label>
                     <div
                         class="flex items-center space-x-2 p-2 border border-gray-300 rounded-md mb-2">
-                        <textarea
+                        <code
                             name="wp-tawk-to-integrator_options[custom_js_on_chat_started_input]"
                             value="<?php echo isset($options['custom_js_on_chat_started_input']) ? $options['custom_js_on_chat_started_input'] : ''  ?>"
-                            class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                            id="custom-js-onchatstarted"
-                            rows="4"></textarea>
+                            class="block w-full h-auto p-0.5 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+                            id="custom-js-onchatstarted"></code>
                     </div>
                     <p class="mt-1 text-xs text-gray-500">
                         Code runs when a chat session starts. Example:
@@ -313,12 +313,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         for="custom-js-onchatended">Custom JavaScript for `onChatEnded` Event</label>
                     <div
                         class="flex items-center space-x-2 p-2 border border-gray-300 rounded-md mb-2">
-                        <textarea
-                            class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+                        <code
+                            class="block w-full h-auto p-0.5 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                             id="custom-js-onchatended"
                             name="wp-tawk-to-integrator_options[custom_js_on_chat_ended_input]"
-                            value="<?php echo isset($options['custom_js_on_chat_ended_input']) ? $options['custom_js_on_chat_ended_input'] : ''  ?>"
-                            rows="4"></textarea>
+                            value="<?php echo isset($options['custom_js_on_chat_ended_input']) ? $options['custom_js_on_chat_ended_input'] : ''  ?>"></code>
                     </div>
                     <p class="mt-1 text-xs text-gray-500">
                         Code runs when a chat session ends. Example:
@@ -338,8 +337,9 @@ $options = get_option('wp-tawk-to-integrator_options');
             class="space-y-4 p-4 border border-gray-200 rounded-md mt-4">
             <h4 class="text-md font-semibold text-gray-700">
                 `onPrechatSubmit` Event Actions
+                <span class="text-red-500">**Coming soon...</span>
             </h4>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-3 blur-[2px]">
                 <label class="switch">
                     <input
                         type="checkbox"
@@ -351,8 +351,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                         role="switch"
                         class="toggle"
                         disabled />
-
-                    <span class="slider round"></span>
+                    <span class="slider round cursor-not-allowed"></span>
                 </label>
                 <label
                     class="text-sm font-medium text-gray-700"
@@ -390,12 +389,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                         for="custom-js-onprechatsubmit">Custom JavaScript for `onPrechatSubmit` Event</label>
                     <div
                         class="flex items-center space-x-2 p-2 border border-gray-300 rounded-md mb-2">
-                        <textarea
+                        <code
                             name="wp-tawk-to-integrator_options[custom_js_on_chat_submit_input]"
                             value="<?php echo isset($options['custom_js_on_chat_submit_input']) ? $options['custom_js_on_chat_submit_input'] : ''  ?>"
-                            class="block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                            id="custom-js-onprechatsubmit"
-                            rows="4"></textarea>
+                            class="block w-full h-auto p-0.5 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+                            id="custom-js-onprechatsubmit"></code>
                     </div>
 
                     <p class="text-xs text-gray-500">

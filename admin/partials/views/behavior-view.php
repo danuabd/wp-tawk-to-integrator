@@ -100,6 +100,7 @@ $options = get_option('wp-tawk-to-integrator_options');
         <div class="space-y-4 pt-4">
             <h4 class="text-md mb-4 font-semibold text-gray-700">
                 Pass Custom Attributes for Logged-in Users
+                <span class="text-red-500">**Coming soon...</span>
             </h4>
             <p class="text-gray-600 text-sm">
                 Send additional relevant data about logged-in WordPress
@@ -111,15 +112,16 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <span class="mb-2 block text-sm font-medium text-gray-700">Add custom attributes:
                 </span>
                 <div
-                    class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
+                    class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 blur-[2px] rounded-md">
                     <input
+                        disabled
                         type="text"
                         name="wp-tawk-to-integrator_options[custom_attributes_input]"
                         value="<?php echo isset($options['custom_attributes_input']) ? $options['custom_attributes_input'] : '' ?>"
                         placeholder="key_1:value_1, key_2:value_2"
                         data-role="input-custom-attributes"
                         id="custom-attributes-input"
-                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm cursor-not-allowed" />
                     <button
                         type="button"
                         data-role="clear"
