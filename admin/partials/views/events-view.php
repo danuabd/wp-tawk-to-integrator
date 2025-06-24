@@ -88,7 +88,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                         name="wp-tawk-to-integrator_options[ignore_auto_tagging_input]"
                         value="<?php echo isset($options['ignore_auto_tagging_input']) ? $options['ignore_auto_tagging_input'] : ''  ?>"
                         id="pages-to-ignore-tagging-input"
-                        placeholder="Ex: 1123, 345, 23"
+                        placeholder="1123, 345, 23"
                         data-role="input-page-ids"
                         data-displayId="ignored-tagging-pages"
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
@@ -154,7 +154,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                         name="wp-tawk-to-integrator_options[ignore_action_based_targeting_input]"
                         value="<?php echo isset($options['ignore_action_based_targeting_input']) ? $options['ignore_action_based_targeting_input'] : ''  ?>"
                         id="pages-to-ignore-action-based-tagging-input"
-                        placeholder="Ex: tagName:[#el-id, .el-class], tagName2:[#el-id2, .el-cls2]"
+                        placeholder="tagName:[#el-id, .el-class], tagName2:[#el-id2, .el-cls2]"
                         data-displayId="ignored-action-based-tagging-pages"
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
                     <button
