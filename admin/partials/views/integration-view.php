@@ -95,7 +95,7 @@ $options = get_option('wp-tawk-to-integrator_options');
         <label class="switch">
             <input
                 name="wp-tawk-to-integrator_options[activate_widget_check]"
-                value="<?php echo isset($options['activate_widget_check']) ? esc_attr($options['activate_widget_check']) : ''; ?>"
+                value="1"
                 type="checkbox"
                 id="activate-widget-toggle"
                 class="toggle"

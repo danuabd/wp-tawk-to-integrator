@@ -79,7 +79,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <input
                     id="auto-populate-user-data-toggle"
                     name="wp-tawk-to-integrator_options[auto_populate_userdata_check]"
-                    value="<?php echo isset($options['auto_populate_userdata_check']) ? $options['auto_populate_userdata_check'] : ''  ?>"
+                    value="1"
                     type="checkbox"
                     role="switch"
                     class="toggle"
@@ -152,7 +152,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <input
                     id="enable-secure-mode-toggle"
                     name="wp-tawk-to-integrator_options[secure_mode_check]"
-                    value="<?php echo isset($options['secure_mode_check']) ? $options['secure_mode_check'] : ''  ?>"
+                    value="1"
                     type="checkbox"
                     data-role="reveal"
                     data-elementId="tawk-api-key-container"
