@@ -78,7 +78,7 @@ $options = get_option('wp-tawk-to-integrator_options');
         class="sub-sec-usr-visibility mb-8 space-y-4 border-t border-gray-200 pt-4">
         <div class="mb-6">
             <h3 class="mb-4 text-lg font-semibold text-gray-700">
-                User visibility
+                Hide Widget For
             </h3>
             <p class="text-sm text-gray-600">
                 Determine which WordPress user roles can see the Tawk.to
