@@ -35,7 +35,7 @@ $options = get_option('wp-tawk-to-integrator_options');
             <input
                 type="text"
                 name="wp-tawk-to-integrator_options[property_id_input]"
-                value="<?php echo isset($options['property_id_input']) ? esc_attr($options['property_id_input']) : ''; ?>"
+                value="<?php echo esc_attr($options['property_id_input']) ?>"
                 placeholder="1241211x44x6x67x27xx5"
                 id="property-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
@@ -55,7 +55,7 @@ $options = get_option('wp-tawk-to-integrator_options');
             <input
                 type="text"
                 name="wp-tawk-to-integrator_options[widget_id_input]"
-                value="<?php echo isset($options['widget_id_input']) ? esc_attr($options['widget_id_input']) : ''; ?>"
+                value="<?php echo esc_attr($options['widget_id_input']) ?>"
                 placeholder="1xxx4x8xx"
                 id="widget-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
@@ -76,7 +76,7 @@ $options = get_option('wp-tawk-to-integrator_options');
             <input
                 type="number"
                 name="wp-tawk-to-integrator_options[z_index_input]"
-                value="<?php echo isset($options['z_index_input']) ? esc_attr($options['z_index_input']) : ''; ?>"
+                value="<?php esc_attr($options['z_index_input']) ?>"
                 placeholder="999"
                 min="1"
                 max="9999999"

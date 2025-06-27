@@ -51,7 +51,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="text"
                         name="wp-tawk-to-integrator_options[pages_to_hide_input]"
-                        value="<?php echo isset($options['pages_to_hide_input']) ? esc_attr($options['pages_to_hide_input']) : ''; ?>"
+                        value="<?php echo esc_attr($options['pages_to_hide_input']) ?>"
                         placeholder="568, 4452, 231"
                         id="hide-on-pages-input"
                         data-role="input-page-ids"

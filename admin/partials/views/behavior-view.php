@@ -44,7 +44,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="text"
                         name="wp-tawk-to-integrator_options[widget_maximize_element_input]"
-                        value="<?php echo isset($options['widget_maximize_element_input']) ? $options['widget_maximize_element_input'] : ''  ?>"
+                        value="<?php echo $options['widget_maximize_element_input'] ?>"
                         placeholder="#help-button or .chat-trigger"
                         id="element-to-trigger-widget-when-clicked"
                         data-role="input-selector"
@@ -79,11 +79,11 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <input
                     id="auto-populate-user-data-toggle"
                     name="wp-tawk-to-integrator_options[auto_populate_userdata_check]"
-                    value="1"
+                    value="<?php echo $options['auto_populate_userdata_check'] ?>"
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['auto_populate_userdata_check']) && $options['auto_populate_userdata_check'] === '1') ? 'checked' : '' ?> />
+                    <?php echo $options['auto_populate_userdata_check'] === 1 ? 'checked' : '' ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -114,14 +114,14 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <div
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 blur-[2px] rounded-md">
                     <input
-                        disabled
                         type="text"
                         name="wp-tawk-to-integrator_options[custom_attributes_input]"
-                        value="<?php echo isset($options['custom_attributes_input']) ? $options['custom_attributes_input'] : '' ?>"
+                        value="<?php echo $options['custom_attributes_input'] ?>"
                         placeholder="key_1:value_1, key_2:value_2"
                         data-role="input-custom-attributes"
                         id="custom-attributes-input"
-                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm cursor-not-allowed" />
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm cursor-not-allowed"
+                        disabled />
                     <button
                         type="button"
                         data-role="clear"
@@ -152,13 +152,13 @@ $options = get_option('wp-tawk-to-integrator_options');
                 <input
                     id="enable-secure-mode-toggle"
                     name="wp-tawk-to-integrator_options[secure_mode_check]"
-                    value="1"
+                    value="<?php echo $options['secure_mode_check'] ?>"
                     type="checkbox"
                     data-role="reveal"
                     data-elementId="tawk-api-key-container"
                     role="switch"
                     class="toggle"
-                    <?php echo (isset($options['secure_mode_check']) && $options['secure_mode_check'] === '1') ? 'checked' : ''  ?> />
+                    <?php echo $options['secure_mode_check'] === 1 ? 'checked' : ''  ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -181,7 +181,7 @@ $options = get_option('wp-tawk-to-integrator_options');
                     <input
                         type="text"
                         name="wp-tawk-to-integrator_options[tawk_api_key_input]"
-                        value="<?php echo isset($options['tawk_api_key_input']) ? $options['tawk_api_key_input'] : '' ?>"
+                        value="<?php echo $options['tawk_api_key_input'] ?>"
                         placeholder="01xx8219xxx7xxxx39x8xxxxxxxx1258xxx"
                         id="tawk-api-key-input"
                         data-role="tawk-api-key-input"
