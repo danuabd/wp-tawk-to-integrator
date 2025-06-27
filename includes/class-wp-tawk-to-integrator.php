@@ -38,6 +38,24 @@ class Wp_Tawk_To_Integrator
 	protected $plugin_name;
 
 	/**
+	 * The unique identifier of this plugin options.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_option_name    The string used to uniquely identify this plugin options.
+	 */
+	protected $plugin_options_name;
+
+	/**
+	 * The unique identifier of this plugin options group.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_option_name    The string used to uniquely identify this plugin options group.
+	 */
+	protected $plugin_options_group;
+
+	/**
 	 * The current version of the plugin.
 	 *
 	 * @since    1.0.0
@@ -63,6 +81,8 @@ class Wp_Tawk_To_Integrator
 			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'wp-tawk-to-integrator';
+		$this->plugin_options_name = $this->plugin_name . '_options';
+		$this->plugin_options_group = $this->plugin_name . '_options_group';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -142,7 +162,7 @@ class Wp_Tawk_To_Integrator
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Wp_Tawk_To_Integrator_Admin($this->get_plugin_name(), $this->get_version());
+		$plugin_admin = new Wp_Tawk_To_Integrator_Admin($this->get_plugin_meta());
 
 		$this->loader->add_action('admin_init', $plugin_admin, 'redirect_on_activation');
 
@@ -151,6 +171,8 @@ class Wp_Tawk_To_Integrator
 
 		$this->loader->add_action('admin_menu', $plugin_admin, 'add_admin_menu');
 		$this->loader->add_action('admin_init', $plugin_admin, 'register_settings');
+
+		$this->loader->add_action('admin_init', $plugin_admin, 'handle_plugin_reset');
 	}
 
 	/**
@@ -213,5 +235,40 @@ class Wp_Tawk_To_Integrator
 	public function get_version()
 	{
 		return $this->version;
+	}
+
+	/**
+	 * Retrieve the options name of the plugin.
+	 *
+	 * @since     1.0.0
+	 * @return    string    The options name of the plugin.
+	 */
+	public function get_options_name()
+	{
+		return $this->plugin_options_name;
+	}
+
+	/**
+	 * Retrieve the options group of the plugin.
+	 *
+	 * @since     1.0.0
+	 * @return    string    The options group of the plugin.
+	 */
+	public function get_options_group()
+	{
+		return $this->plugin_options_group;
+	}
+
+	/**
+	 * Retrieve the meta data of the plugin.
+	 *
+	 * @since     1.0.0
+	 * @return    string    The meta data of the plugin.
+	 */
+	public function get_plugin_meta()
+	{
+		$meta = array('name' => $this->get_plugin_name(), 'version' => $this->version, 'options_name' => $this->get_options_name(), 'options_group' => $this->get_options_group());
+
+		return $meta;
 	}
 }

@@ -71,6 +71,27 @@ register_activation_hook(__FILE__, 'activate_wp_tawk_to_integrator');
 register_deactivation_hook(__FILE__, 'deactivate_wp_tawk_to_integrator');
 
 /**
+ * Add plugin links
+ */
+function plugins_table_links($links)
+{
+	$plugin_name = get_plugin_data(plugin_basename(__FILE__), false, false);
+
+	$reset_url = wp_nonce_url(
+		admin_url('plugins.php?plugin=' . $plugin_name . '&action=reset'),
+		'reset_all_settings'
+	);
+
+	$custom_links = [
+		'<a href="' . $reset_url . '" onclick="return confirm(\'Are you sure you want to reset all plugin settings?\');">Reset Settings</a>'
+	];
+
+	return array_merge($custom_links, $links);
+}
+
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'plugins_table_links');
+
+/**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */

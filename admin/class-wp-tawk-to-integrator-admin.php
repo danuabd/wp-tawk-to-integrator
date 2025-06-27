@@ -17,22 +17,40 @@ class Wp_Tawk_To_Integrator_Admin
 {
 
 	/**
-	 * The ID of this plugin.
+	 * The plugin name of this plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string    $plugin_name    The plugin name of this plugin.
 	 */
 	private $plugin_name;
 
 	/**
-	 * The version of this plugin.
+	 * The plugin version of this plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string    $plugin_version    The plugin version of this plugin.
 	 */
-	private $version;
+	private $plugin_version;
+
+	/**
+	 * The plugin options name of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_option_name    The plugin options name of this plugin.
+	 */
+	private $plugin_options_name;
+
+	/**
+	 * The plugin options group of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_options_group    The plugin options group of this plugin.
+	 */
+	private $plugin_options_group;
 
 	/**
 	 * The hook suffix for the settings page.
@@ -47,14 +65,15 @@ class Wp_Tawk_To_Integrator_Admin
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      array    $plugin_meta       The meta data of this plugin.
 	 */
-	public function __construct($plugin_name, $version)
+	public function __construct($plugin_meta)
 	{
 
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->plugin_name = $plugin_meta['name'];
+		$this->plugin_version = $plugin_meta['version'];
+		$this->plugin_options_name = $plugin_meta['options_name'];
+		$this->plugin_options_group = $plugin_meta['options_group'];
 	}
 
 	/**
@@ -75,7 +94,7 @@ class Wp_Tawk_To_Integrator_Admin
 			$this->plugin_name . 'material-icons',
 			"https://fonts.googleapis.com/icon?family=Material+Icons+Outlined",
 			array(),
-			$this->version
+			$this->plugin_version
 
 		);
 
@@ -163,8 +182,8 @@ class Wp_Tawk_To_Integrator_Admin
 	public function register_settings()
 	{
 		register_setting(
-			$this->plugin_name . '_options_group', // Option group
-			$this->plugin_name . '_options',       // Option name
+			$this->plugin_options_group, // Option group
+			$this->plugin_options_name,       // Option name
 			array($this, 'sanitize_options')     // Sanitize callback
 		);
 	}
@@ -258,5 +277,39 @@ class Wp_Tawk_To_Integrator_Admin
 
 
 		return $sanitized_input;
+	}
+
+	/**
+	 * Reset the settings for this plugin.
+	 *
+	 * @since 1.0.0
+	 */
+	function handle_plugin_reset()
+	{
+		if (
+			isset($_GET['plugin'], $_GET['action']) &&
+			$_GET['plugin'] === $this->plugin_name &&
+			$_GET['action'] === 'reset' &&
+			check_admin_referer('reset_all_settings')
+		) {
+			if (! class_exists('Plugin_Name_Activator')) {
+				require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-' . $this->plugin_name . '-activator.php';
+			}
+
+			// Delete the plugin option(s)
+			delete_option($this->plugin_options_name);
+
+			// Add default options
+			Wp_Tawk_To_Integrator_Activator::set_default_options($this->plugin_options_name);
+
+			// Optional: Add an admin notice (temporary)
+			add_action('admin_notices', function () {
+				echo '<div class="notice notice-success is-dismissible"><p>Plugin settings have been reset.</p></div>';
+			});
+
+			// Redirect to avoid repeat action on refresh
+			wp_safe_redirect(admin_url('plugins.php?reset-success=true'));
+			exit;
+		}
 	}
 }
