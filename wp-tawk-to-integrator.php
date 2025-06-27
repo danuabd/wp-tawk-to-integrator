@@ -75,11 +75,15 @@ register_deactivation_hook(__FILE__, 'deactivate_wp_tawk_to_integrator');
  */
 function plugins_table_links($links)
 {
-	$plugin_name = get_plugin_data(plugin_basename(__FILE__), false, false);
+	if (! function_exists('get_plugin_data')) {
+		require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+	}
+
+	$plugin_name = get_plugin_data(__FILE__)['TextDomain'];
 
 	$reset_url = wp_nonce_url(
 		admin_url('plugins.php?plugin=' . $plugin_name . '&action=reset'),
-		'reset_all_settings'
+		'reset_plugin_settings'
 	);
 
 	$custom_links = [

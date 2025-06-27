@@ -290,8 +290,9 @@ class Wp_Tawk_To_Integrator_Admin
 			isset($_GET['plugin'], $_GET['action']) &&
 			$_GET['plugin'] === $this->plugin_name &&
 			$_GET['action'] === 'reset' &&
-			check_admin_referer('reset_all_settings')
+			check_admin_referer('reset_plugin_settings')
 		) {
+
 			if (! class_exists('Plugin_Name_Activator')) {
 				require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-' . $this->plugin_name . '-activator.php';
 			}
@@ -306,10 +307,6 @@ class Wp_Tawk_To_Integrator_Admin
 			add_action('admin_notices', function () {
 				echo '<div class="notice notice-success is-dismissible"><p>Plugin settings have been reset.</p></div>';
 			});
-
-			// Redirect to avoid repeat action on refresh
-			wp_safe_redirect(admin_url('plugins.php?reset-success=true'));
-			exit;
 		}
 	}
 }
