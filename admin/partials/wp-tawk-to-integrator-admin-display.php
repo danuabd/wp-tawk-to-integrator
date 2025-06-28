@@ -42,7 +42,7 @@ settings_errors();
             action="options.php"
             method="post">
             <?php
-            settings_fields('wp-tawk-to-integrator_options_group');
+            settings_fields(WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME);
             ?>
 
             <!-- Tabs convenience -->

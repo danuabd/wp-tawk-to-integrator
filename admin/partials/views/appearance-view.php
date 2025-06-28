@@ -13,7 +13,7 @@ if (! defined('WPINC')) {
     die;
 }
 
-$options = get_option('wp-tawk-to-integrator_options');
+$options = get_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME);
 ?>
 
 <!-- Appearance tab content -->

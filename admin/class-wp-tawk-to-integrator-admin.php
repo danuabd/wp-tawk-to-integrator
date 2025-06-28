@@ -35,24 +35,6 @@ class Wp_Tawk_To_Integrator_Admin
 	private $plugin_version;
 
 	/**
-	 * The plugin options name of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_option_name    The plugin options name of this plugin.
-	 */
-	private $plugin_options_name;
-
-	/**
-	 * The plugin options group of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_options_group    The plugin options group of this plugin.
-	 */
-	private $plugin_options_group;
-
-	/**
 	 * The hook suffix for the settings page.
 	 *
 	 * @since    1.0.0
@@ -72,8 +54,6 @@ class Wp_Tawk_To_Integrator_Admin
 
 		$this->plugin_name = $plugin_meta['name'];
 		$this->plugin_version = $plugin_meta['version'];
-		$this->plugin_options_name = $plugin_meta['options_name'];
-		$this->plugin_options_group = $plugin_meta['options_group'];
 	}
 
 	/**
@@ -182,8 +162,8 @@ class Wp_Tawk_To_Integrator_Admin
 	public function register_settings()
 	{
 		register_setting(
-			$this->plugin_options_group, // Option group
-			$this->plugin_options_name,       // Option name
+			WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME, // Option group
+			WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME,       // Option name
 			array($this, 'sanitize_options')     // Sanitize callback
 		);
 	}
@@ -297,11 +277,8 @@ class Wp_Tawk_To_Integrator_Admin
 				require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-' . $this->plugin_name . '-activator.php';
 			}
 
-			// Delete the plugin option(s)
-			delete_option($this->plugin_options_name);
-
 			// Add default options
-			Wp_Tawk_To_Integrator_Activator::set_default_options($this->plugin_options_name);
+			Wp_Tawk_To_Integrator_Activator::set_default_options();
 
 			// Optional: Add an admin notice (temporary)
 			add_action('admin_notices', function () {

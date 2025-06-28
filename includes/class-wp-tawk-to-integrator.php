@@ -38,24 +38,6 @@ class Wp_Tawk_To_Integrator
 	protected $plugin_name;
 
 	/**
-	 * The unique identifier of this plugin options.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_option_name    The string used to uniquely identify this plugin options.
-	 */
-	protected $plugin_options_name;
-
-	/**
-	 * The unique identifier of this plugin options group.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_option_name    The string used to uniquely identify this plugin options group.
-	 */
-	protected $plugin_options_group;
-
-	/**
 	 * The current version of the plugin.
 	 *
 	 * @since    1.0.0
@@ -81,8 +63,6 @@ class Wp_Tawk_To_Integrator
 			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'wp-tawk-to-integrator';
-		$this->plugin_options_name = $this->plugin_name . '_options';
-		$this->plugin_options_group = $this->plugin_name . '_options_group';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -238,28 +218,6 @@ class Wp_Tawk_To_Integrator
 	}
 
 	/**
-	 * Retrieve the options name of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The options name of the plugin.
-	 */
-	public function get_options_name()
-	{
-		return $this->plugin_options_name;
-	}
-
-	/**
-	 * Retrieve the options group of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The options group of the plugin.
-	 */
-	public function get_options_group()
-	{
-		return $this->plugin_options_group;
-	}
-
-	/**
 	 * Retrieve the meta data of the plugin.
 	 *
 	 * @since     1.0.0
@@ -267,8 +225,7 @@ class Wp_Tawk_To_Integrator
 	 */
 	public function get_plugin_meta()
 	{
-		$meta = array('name' => $this->get_plugin_name(), 'version' => $this->version, 'options_name' => $this->get_options_name(), 'options_group' => $this->get_options_group());
-
+		$meta = array('name' => $this->get_plugin_name(), 'version' => $this->version);
 		return $meta;
 	}
 }

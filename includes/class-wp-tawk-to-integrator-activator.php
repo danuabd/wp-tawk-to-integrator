@@ -12,8 +12,6 @@
  */
 class Wp_Tawk_To_Integrator_Activator
 {
-	private $options_key;
-
 	/**
 	 * Start from clean slate.
 	 *
@@ -21,13 +19,13 @@ class Wp_Tawk_To_Integrator_Activator
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate($options_key)
+	public static function activate()
 	{
-		if ($options_key) {
+		if (get_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME)) {
 			return;
 		}
 
-		self::set_default_options($options_key);
+		self::set_default_options(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);
 	}
 
 	/**
@@ -39,7 +37,7 @@ class Wp_Tawk_To_Integrator_Activator
 	 * @since 1.0.0
 	 * @param string $options_key The key for the plugin's options in the database.
 	 */
-	public static function set_default_options($options_key)
+	public static function set_default_options()
 	{
 		// Define the array of default settings.
 		$default_options = array(
@@ -75,7 +73,12 @@ class Wp_Tawk_To_Integrator_Activator
 			'custom_js_on_chat_submit' => '',
 		);
 
+		// Remove option if exists
+		if (get_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME)) {
+			delete_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);
+		}
+
 		// Add the option to the database.
-		add_option($options_key, $default_options);
+		add_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME, $default_options);
 	}
 }

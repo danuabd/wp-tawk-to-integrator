@@ -15,4 +15,4 @@ if (! defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 // Delete the main plugin options.
-delete_option('wp-tawk-to-integrator_options');
+delete_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);

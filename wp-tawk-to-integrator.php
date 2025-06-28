@@ -57,7 +57,7 @@ define('WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME', 'wp-tawk-to-integrator_options');
 function activate_wp_tawk_to_integrator()
 {
 	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-activator.php';
-	Wp_Tawk_To_Integrator_Activator::activate(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);
+	Wp_Tawk_To_Integrator_Activator::activate();
 
 	// Set a transient flag to redirect on the next admin page load.
 	set_transient('wpti_redirect_on_activation', true, 30);
