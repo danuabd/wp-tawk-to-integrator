@@ -68,20 +68,20 @@ class Wp_Tawk_To_Integrator_Public
 		// --- Step 1: Guard Clauses - Check if we should show the widget at all ---
 
 		// Is the widget globally disabled?
-		if (empty($this->options['activate-widget'])) {
+		if (empty($this->options['activate_widget'])) {
 			return; // Do nothing.
 		}
 
 		// Are the required IDs missing?
-		$property_id = isset($this->options['property-id']) ? $this->options['property-id'] : '';
-		$widget_id   = isset($this->options['widget-id']) ? $this->options['widget-id'] : '';
+		$property_id = isset($this->options['property_id']) ? $this->options['property_id'] : '';
+		$widget_id   = isset($this->options['widget_id']) ? $this->options['widget_id'] : '';
 		if (empty($property_id) || empty($widget_id)) {
 			echo "";
 			return;
 		}
 
 		// Should we hide on this specific page?
-		$pages_to_hide_str = isset($this->options['page-ids-to-hide']) ? $this->options['page-ids-to-hide'] : '';
+		$pages_to_hide_str = isset($this->options['pages_to_hide']) ? $this->options['pages_to_hide'] : '';
 		if (! empty($pages_to_hide_str)) {
 			$pages_to_hide = array_map('trim', explode(',', $pages_to_hide_str));
 			if (is_page($pages_to_hide) || is_single($pages_to_hide)) {
@@ -94,14 +94,14 @@ class Wp_Tawk_To_Integrator_Public
 		if (is_user_logged_in()) {
 			$user_roles = (array) $current_user->roles;
 			foreach ($user_roles as $role) {
-				$option_key = 'hide-for-' . $role . '-role';
+				$option_key = 'hide_widget_' . $role . '_role';
 				if (! empty($this->options[$option_key])) {
 					return; // Hide for this user role.
 				}
 			}
 		} else {
 			// User is a guest (not logged in).
-			if (empty($this->options['show-widget-for-guests'])) {
+			if (empty($this->options['show_widget_to_guest'])) {
 				return; // Do not show for guests.
 			}
 		}
@@ -117,7 +117,7 @@ class Wp_Tawk_To_Integrator_Public
 	 */
 	private function render_main_widget_script($property_id, $widget_id)
 	{
-		$z_index = isset($this->options['z-index']) && $this->options['z-index'] ? absint($this->options['z-index']) : 'auto';
+		$z_index = isset($this->options['z_index']) && $this->options['z_index'] ? absint($this->options['z_index']) : 'auto';
 ?>
 		<script type="text/javascript">
 			var Tawk_API = Tawk_API || {};
@@ -154,7 +154,7 @@ class Wp_Tawk_To_Integrator_Public
 
 				<?php
 				// --- BEHAVIOR TAB: Maximize on element click ---
-				$maximize_selector = isset($this->options['maximize-on-element-click']) ? $this->options['maximize-on-element-click'] : '';
+				$maximize_selector = isset($this->options['widget_maximize_element']) ? $this->options['widget_maximize_element'] : '';
 				if (! empty($maximize_selector)) :
 				?>
 					document.querySelectorAll('<?php echo esc_js($maximize_selector); ?>').forEach(function(element) {
@@ -169,8 +169,8 @@ class Wp_Tawk_To_Integrator_Public
 			<?php if (is_user_logged_in()) : ?>
 				<?php
 				// --- BEHAVIOR TAB: Secure Mode ---
-				$api_key = isset($this->options['tawk-api-key']) ? $this->options['tawk-api-key'] : '';
-				if (! empty($this->options['enable-secure-mode']) && ! empty($api_key)) :
+				$api_key = isset($this->options['tawk_api_key']) ? $this->options['tawk_api_key'] : '';
+				if (! empty($this->options['secure_mode']) && ! empty($api_key)) :
 					$hash = hash_hmac("sha256", $current_user->user_email, $api_key);
 				?>
 					Tawk_API.visitor = {
@@ -180,7 +180,7 @@ class Wp_Tawk_To_Integrator_Public
 					};
 				<?php
 				// --- BEHAVIOR TAB: Auto-populate user data (if secure mode is off) ---
-				elseif (! empty($this->options['auto-populate-user-data'])) :
+				elseif (! empty($this->options['auto_populate_userdata'])) :
 				?>
 					Tawk_API.visitor = {
 						name: '<?php echo esc_js($current_user->display_name); ?>',
@@ -191,7 +191,7 @@ class Wp_Tawk_To_Integrator_Public
 
 				<?php
 				// --- BEHAVIOR TAB: Custom Attributes ---
-				$custom_attributes_str = isset($this->options['custom-attributes']) ? $this->options['custom-attributes'] : '';
+				$custom_attributes_str = isset($this->options['custom_attributes']) ? $this->options['custom_attributes'] : '';
 				if (! empty($custom_attributes_str)) :
 					$attributes = array();
 					$pairs = explode(',', $custom_attributes_str);
