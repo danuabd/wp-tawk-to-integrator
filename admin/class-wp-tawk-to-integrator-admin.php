@@ -289,7 +289,7 @@ class Wp_Tawk_To_Integrator_Admin
 		) {
 
 			if (! class_exists('Plugin_Name_Activator')) {
-				require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-' . $this->plugin_name . '-activator.php';
+				require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-' . $this->plugin_name . '-activator.php';
 			}
 
 			// Add default options
