@@ -10,8 +10,15 @@
  * @subpackage Wp_Tawk_To_Integrator/includes
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
+
+/**
+ * Get config class
+ */
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/wp-tawk-to-integrator-config.php';
+
 class Wp_Tawk_To_Integrator_Activator
 {
+
 	/**
 	 * Start from clean slate.
 	 *
@@ -21,11 +28,11 @@ class Wp_Tawk_To_Integrator_Activator
 	 */
 	public static function activate()
 	{
-		if (get_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME)) {
+		if (get_option(Wp_Tawk_To_Integrator_Config::get_option_name())) {
 			return;
 		}
 
-		self::set_default_options(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);
+		self::set_default_options(Wp_Tawk_To_Integrator_Config::get_option_name());
 	}
 
 	/**
@@ -74,11 +81,11 @@ class Wp_Tawk_To_Integrator_Activator
 		);
 
 		// Remove option if exists
-		if (get_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME)) {
-			delete_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);
+		if (get_option(Wp_Tawk_To_Integrator_Config::get_option_name())) {
+			delete_option(Wp_Tawk_To_Integrator_Config::get_option_name());
 		}
 
 		// Add the option to the database.
-		add_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME, $default_options);
+		add_option(Wp_Tawk_To_Integrator_Config::get_option_name(), $default_options);
 	}
 }

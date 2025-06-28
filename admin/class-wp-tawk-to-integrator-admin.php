@@ -13,6 +13,12 @@
  * @subpackage Wp_Tawk_To_Integrator/admin
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
+
+/**
+ * Get Config class
+ */
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+
 class Wp_Tawk_To_Integrator_Admin
 {
 
@@ -35,6 +41,15 @@ class Wp_Tawk_To_Integrator_Admin
 	private $plugin_version;
 
 	/**
+	 * The url of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_url    The url of this plugin.
+	 */
+	private $plugin_url;
+
+	/**
 	 * The hook suffix for the settings page.
 	 *
 	 * @since    1.0.0
@@ -47,13 +62,13 @@ class Wp_Tawk_To_Integrator_Admin
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      array    $plugin_meta       The meta data of this plugin.
 	 */
-	public function __construct($plugin_meta)
+	public function __construct()
 	{
 
-		$this->plugin_name = $plugin_meta['name'];
-		$this->plugin_version = $plugin_meta['version'];
+		$this->plugin_name = Wp_Tawk_To_Integrator_Config::get_plugin_name();
+		$this->plugin_version = Wp_Tawk_To_Integrator_Config::get_plugin_version();
+		$this->plugin_url = Wp_Tawk_To_Integrator_Config::get_plugin_url();
 	}
 
 	/**
@@ -79,7 +94,7 @@ class Wp_Tawk_To_Integrator_Admin
 		);
 
 		// Enqueue admin settings CSS
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/wp-tawk-to-integrator-admin.css', array(), filemtime(plugin_dir_path(__FILE__) . 'css/wp-tawk-to-integrator-admin.css'));
+		wp_enqueue_style($this->plugin_name, $this->plugin_url . 'css/wp-tawk-to-integrator-admin.css', array(), filemtime(plugin_dir_path(__FILE__) . 'css/wp-tawk-to-integrator-admin.css'));
 	}
 
 	/**
@@ -95,7 +110,7 @@ class Wp_Tawk_To_Integrator_Admin
 		}
 
 		// Enqueue admin settings JS
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-tawk-to-integrator-admin.js', array(), filemtime(plugin_dir_path(__FILE__) . 'js/wp-tawk-to-integrator-admin.js'), true);
+		wp_enqueue_script($this->plugin_name, $this->plugin_url . 'js/wp-tawk-to-integrator-admin.js', array(), filemtime(plugin_dir_path(__FILE__) . 'js/wp-tawk-to-integrator-admin.js'), true);
 	}
 
 
@@ -151,7 +166,7 @@ class Wp_Tawk_To_Integrator_Admin
 			return;
 		}
 		// Include the settings page view
-		require_once plugin_dir_path(__FILE__) . 'partials/wp-tawk-to-integrator-admin-display.php';
+		require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'partials/wp-tawk-to-integrator-admin-display.php';
 	}
 
 	/**
@@ -162,8 +177,8 @@ class Wp_Tawk_To_Integrator_Admin
 	public function register_settings()
 	{
 		register_setting(
-			WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME, // Option group
-			WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME,       // Option name
+			Wp_Tawk_To_Integrator_Config::get_option_group(), // Option group
+			Wp_Tawk_To_Integrator_Config::get_option_name(),       // Option name
 			array($this, 'sanitize_options')     // Sanitize callback
 		);
 	}

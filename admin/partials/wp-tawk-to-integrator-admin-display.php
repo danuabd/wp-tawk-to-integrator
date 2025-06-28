@@ -15,6 +15,11 @@ if (! defined('WPINC')) {
     die;
 }
 
+/**
+ * Get Config class
+ */
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+
 // Define the allowed tabs
 $allowed_tabs = ['integration', 'appearance', 'behavior', 'events', 'pro'];
 
@@ -42,7 +47,7 @@ settings_errors();
             action="options.php"
             method="post">
             <?php
-            settings_fields(WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME);
+            settings_fields(Wp_Tawk_To_Integrator_Config::get_option_name());
             ?>
 
             <!-- Tabs convenience -->

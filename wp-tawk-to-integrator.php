@@ -26,30 +26,12 @@ if (! defined('WPINC')) {
 	die;
 }
 
-/**
- * Current plugin version.
- */
-define('WP_TAWK_TO_INTEGRATOR_VERSION', '1.0.0');
-
-/**
- * Plugin directory.
- */
 define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 /**
- * Plugin URL.
+ * Get plugin config class
  */
-define('WP_TAWK_TO_INTEGRATOR_PLUGIN_URL', plugin_dir_url(__FILE__));
-
-/**
- * Plugin options group name.
- */
-define('WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME', 'wp-tawk-to-integrator_options');
-
-/**
- * Plugin options name.
- */
-define('WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME', 'wp-tawk-to-integrator_options');
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
 
 /**
  * The code that runs during plugin activation.
@@ -80,14 +62,9 @@ register_deactivation_hook(__FILE__, 'deactivate_wp_tawk_to_integrator');
  */
 function plugins_table_links($links)
 {
-	if (! function_exists('get_plugin_data')) {
-		require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-	}
-
-	$plugin_name = get_plugin_data(__FILE__)['TextDomain'];
 
 	$reset_url = wp_nonce_url(
-		admin_url('plugins.php?plugin=' . $plugin_name . '&action=reset'),
+		admin_url('plugins.php?plugin=' . Wp_Tawk_To_Integrator_Config::get_plugin_name() . '&action=reset'),
 		'reset_plugin_settings'
 	);
 

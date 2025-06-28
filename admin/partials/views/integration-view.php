@@ -13,7 +13,12 @@ if (! defined('WPINC')) {
     die;
 }
 
-$options = get_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME);
+/**
+ * Get Config class
+ */
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+
+$options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
 ?>
 
 <!-- Integration tab content -->

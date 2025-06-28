@@ -11,7 +11,7 @@
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
 
-class Plugin_Name_Config
+class Wp_Tawk_To_Integrator_Config
 {
     /**
      * Get plugin name
@@ -22,9 +22,17 @@ class Plugin_Name_Config
     }
 
     /**
+     * Get plugin version
+     */
+    public static function get_plugin_version()
+    {
+        return '1.0.0';
+    }
+
+    /**
      * Get main plugin file path
      */
-    public static function get_main_file()
+    public static function get_main_file_path()
     {
         return plugin_dir_path(__DIR__) . '../' . self::get_plugin_name() . '.php';
     }
@@ -34,7 +42,7 @@ class Plugin_Name_Config
      */
     public static function get_plugin_path()
     {
-        return plugin_dir_path(self::get_main_file());
+        return plugin_dir_path(self::get_main_file_path());
     }
 
     /**
@@ -42,7 +50,7 @@ class Plugin_Name_Config
      */
     public static function get_plugin_url()
     {
-        return plugin_dir_url(self::get_main_file());
+        return plugin_dir_url(self::get_main_file_path());
     }
 
     /**

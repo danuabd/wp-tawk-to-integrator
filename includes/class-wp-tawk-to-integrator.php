@@ -15,6 +15,12 @@
  * @subpackage Wp_Tawk_To_Integrator/includes
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
+
+/**
+ * Get config class
+ */
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+
 class Wp_Tawk_To_Integrator
 {
 
@@ -47,6 +53,15 @@ class Wp_Tawk_To_Integrator
 	protected $version;
 
 	/**
+	 * The plugin path of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_path    The plugin path of the plugin.
+	 */
+	protected $plugin_path;
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -57,12 +72,10 @@ class Wp_Tawk_To_Integrator
 	 */
 	public function __construct()
 	{
-		if (defined('WP_TAWK_TO_INTEGRATOR_VERSION')) {
-			$this->version = WP_TAWK_TO_INTEGRATOR_VERSION;
-		} else {
-			$this->version = '1.0.0';
-		}
-		$this->plugin_name = 'wp-tawk-to-integrator';
+
+		$this->plugin_name = Wp_Tawk_To_Integrator_Config::get_plugin_name();
+		$this->version = Wp_Tawk_To_Integrator_Config::get_plugin_version();
+		$this->plugin_path = Wp_Tawk_To_Integrator_Config::get_plugin_path();
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -93,24 +106,24 @@ class Wp_Tawk_To_Integrator
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-wp-tawk-to-integrator-loader.php';
+		require_once $this->plugin_path . 'includes/class-wp-tawk-to-integrator-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-wp-tawk-to-integrator-i18n.php';
+		require_once $this->plugin_path . 'includes/class-wp-tawk-to-integrator-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-wp-tawk-to-integrator-admin.php';
+		require_once $this->plugin_path . 'admin/class-wp-tawk-to-integrator-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-wp-tawk-to-integrator-public.php';
+		require_once $this->plugin_path . 'public/class-wp-tawk-to-integrator-public.php';
 
 		$this->loader = new Wp_Tawk_To_Integrator_Loader();
 	}
@@ -142,7 +155,7 @@ class Wp_Tawk_To_Integrator
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Wp_Tawk_To_Integrator_Admin($this->get_plugin_meta());
+		$plugin_admin = new Wp_Tawk_To_Integrator_Admin();
 
 		$this->loader->add_action('admin_init', $plugin_admin, 'redirect_on_activation');
 
@@ -165,7 +178,7 @@ class Wp_Tawk_To_Integrator
 	private function define_public_hooks()
 	{
 
-		$plugin_public = new Wp_Tawk_To_Integrator_Public($this->get_plugin_name(), $this->get_version());
+		$plugin_public = new Wp_Tawk_To_Integrator_Public();
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles', 99999);
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
@@ -184,18 +197,6 @@ class Wp_Tawk_To_Integrator
 	}
 
 	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The name of the plugin.
-	 */
-	public function get_plugin_name()
-	{
-		return $this->plugin_name;
-	}
-
-	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
@@ -204,28 +205,5 @@ class Wp_Tawk_To_Integrator
 	public function get_loader()
 	{
 		return $this->loader;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The version number of the plugin.
-	 */
-	public function get_version()
-	{
-		return $this->version;
-	}
-
-	/**
-	 * Retrieve the meta data of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The meta data of the plugin.
-	 */
-	public function get_plugin_meta()
-	{
-		$meta = array('name' => $this->get_plugin_name(), 'version' => $this->version);
-		return $meta;
 	}
 }
