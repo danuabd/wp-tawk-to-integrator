@@ -14,5 +14,7 @@ if (! defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }
 
+include_once plugin_dir_path(__FILE__) . 'includes/class-wp-tawk-to-integrator-config.php';
+
 // Delete the main plugin options.
-delete_option(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);
+delete_option(Wp_Tawk_To_Integrator_Config::get_option_name());

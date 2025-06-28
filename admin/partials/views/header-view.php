@@ -95,6 +95,6 @@ if (! defined('WPINC')) {
     </h1>
     <p class="mt-1 text-gray-600">
         Need support settings up your widget?
-        <a class="text-mint-2 hover:underline" href="#">create a support ticket from here</a>.
+        <a class="text-mint-2 hover:underline" href="https://danukaprasad.com/plugins/wp-tawk-to-integrator">create a support ticket from here</a>.
     </p>
 </div>

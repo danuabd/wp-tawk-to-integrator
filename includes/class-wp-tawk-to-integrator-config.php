@@ -34,7 +34,7 @@ class Wp_Tawk_To_Integrator_Config
      */
     public static function get_main_file_path()
     {
-        return plugin_dir_path(__DIR__) . '../' . self::get_plugin_name() . '.php';
+        return plugin_dir_path(__FILE__) . '../' . self::get_plugin_name() . '.php';
     }
 
     /**
@@ -42,7 +42,7 @@ class Wp_Tawk_To_Integrator_Config
      */
     public static function get_plugin_path()
     {
-        return plugin_dir_path(self::get_main_file_path());
+        return (plugin_dir_path(self::get_main_file_path()));
     }
 
     /**
@@ -67,5 +67,13 @@ class Wp_Tawk_To_Integrator_Config
     public static function get_option_group()
     {
         return self::get_plugin_name() . '_options_group';
+    }
+
+    public static function get_default_options()
+    {
+        // Define the array of default settings.
+        return array(
+            'show_widget_to_guest' => 'on',
+        );
     }
 }

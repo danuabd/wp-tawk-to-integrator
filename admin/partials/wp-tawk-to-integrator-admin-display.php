@@ -47,7 +47,7 @@ settings_errors();
             action="options.php"
             method="post">
             <?php
-            settings_fields(Wp_Tawk_To_Integrator_Config::get_option_name());
+            settings_fields(Wp_Tawk_To_Integrator_Config::get_option_group());
             ?>
 
             <!-- Tabs convenience -->

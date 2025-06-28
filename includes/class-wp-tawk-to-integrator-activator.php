@@ -14,7 +14,7 @@
 /**
  * Get config class
  */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/wp-tawk-to-integrator-config.php';
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
 
 class Wp_Tawk_To_Integrator_Activator
 {
@@ -46,39 +46,6 @@ class Wp_Tawk_To_Integrator_Activator
 	 */
 	public static function set_default_options()
 	{
-		// Define the array of default settings.
-		$default_options = array(
-			'property_id' => '',
-			'widget_id' => '',
-			'z_index' => '',
-			'activate_widget' => '0',
-			'pages_to_hide' => '',
-			'hide_widget_admin_role' => '0',
-			'hide_widget_editor_role' => '0',
-			'hide_widget_author_role' => '0',
-			'hide_widget_contributor_role' => '0',
-			'hide_widget_subscriber_role' => '0',
-			'hide_widget_customer_role' => '0',
-			'show_widget_to_guest' => '1',
-			'widget_maximize_element' => '',
-			'auto_populate_userdata' => '0',
-			'custom_attributes' => '',
-			'secure_mode' => '0',
-			'tawk_api_key' => '',
-			'auto_page_tagging' => '0',
-			'ignore_auto_tagging' => '',
-			'action_based_targeting' => '0',
-			'ignore_action_based_targeting' => '',
-			'widget_onload_customize' => '0',
-			'widget_render_delay' => '0',
-			'custom_js_onload' => '',
-			'chat_event_action' => '0',
-			'custom_js_on_chat_started' => '',
-			'custom_js_on_chat_ended' => '',
-			'pre_chat_submit_action' => '0',
-			'capture_pre_chat_data' => '0',
-			'custom_js_on_chat_submit' => '',
-		);
 
 		// Remove option if exists
 		if (get_option(Wp_Tawk_To_Integrator_Config::get_option_name())) {
@@ -86,6 +53,6 @@ class Wp_Tawk_To_Integrator_Activator
 		}
 
 		// Add the option to the database.
-		add_option(Wp_Tawk_To_Integrator_Config::get_option_name(), $default_options);
+		add_option(Wp_Tawk_To_Integrator_Config::get_option_name(), Wp_Tawk_To_Integrator_Config::get_default_options());
 	}
 }

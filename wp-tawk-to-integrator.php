@@ -31,7 +31,7 @@ define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 /**
  * Get plugin config class
  */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+require_once path_join(WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR, 'includes/class-wp-tawk-to-integrator-config.php');
 
 /**
  * The code that runs during plugin activation.

@@ -18,7 +18,17 @@ if (! defined('WPINC')) {
  */
 require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
 
+/**
+ * Get attributes helper functions
+ */
+require_once dirname(__DIR__) . '/attributes-helper.php';
+
 $options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
+
+$element_trigger_widget = $options['widget_maximize_element'] ?? '';
+$auto_populate_userdata = $options['auto_populate_userdata'] ?? '';
+$secure_mode = $options['secure_mode'] ?? '';
+$tawk_api_key = $options['tawk_api_key'] ?? '';
 ?>
 
 <!-- Behavior tab content -->
@@ -49,11 +59,12 @@ $options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
                     <input
                         type="text"
                         name="wp-tawk-to-integrator_options[widget_maximize_element]"
-                        value="<?php echo $options['widget_maximize_element'] ?>"
+                        value="<?php echo $element_trigger_widget ?>"
                         placeholder="#help-button or .chat-trigger"
                         id="element-to-trigger-widget-when-clicked"
                         data-role="input-selector"
-                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+                        <?php echo create_value_attr($element_trigger_widget) ?> />
                     <button
                         type="button"
                         data-role="clear"
@@ -84,11 +95,10 @@ $options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
                 <input
                     id="auto-populate-user-data-toggle"
                     name="wp-tawk-to-integrator_options[auto_populate_userdata]"
-                    value="<?php echo $options['auto_populate_userdata'] ?>"
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo $options['auto_populate_userdata'] === 1 ? 'checked' : '' ?> />
+                    <?php echo create_checked_attr($auto_populate_userdata) ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -120,8 +130,8 @@ $options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 blur-[2px] rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[custom_attributes]"
-                        value="<?php echo $options['custom_attributes'] ?>"
+                        name="wp-tawk-to-integrator_options"
+                        value=""
                         placeholder="key_1:value_1, key_2:value_2"
                         data-role="input-custom-attributes"
                         id="custom-attributes-input"
@@ -157,13 +167,12 @@ $options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
                 <input
                     id="enable-secure-mode-toggle"
                     name="wp-tawk-to-integrator_options[secure_mode]"
-                    value="<?php echo $options['secure_mode'] ?>"
                     type="checkbox"
                     data-role="reveal"
                     data-elementId="tawk-api-key-container"
                     role="switch"
                     class="toggle"
-                    <?php echo $options['secure_mode'] === 1 ? 'checked' : ''  ?> />
+                    <?php echo create_checked_attr($secure_mode) ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -186,12 +195,12 @@ $options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
                     <input
                         type="text"
                         name="wp-tawk-to-integrator_options[tawk_api_key]"
-                        value="<?php echo $options['tawk_api_key'] ?>"
                         placeholder="01xx8219xxx7xxxx39x8xxxxxxxx1258xxx"
                         id="tawk-api-key-input"
                         data-role="tawk-api-key-input"
                         data-toggleId="enable-secure-mode-toggle"
-                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+                        <?php echo create_value_attr($tawk_api_key) ?> />
                     <button
                         type="button"
                         data-role="clear"

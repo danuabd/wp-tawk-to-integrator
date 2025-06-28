@@ -41,13 +41,22 @@ class Wp_Tawk_To_Integrator_Admin
 	private $plugin_version;
 
 	/**
-	 * The url of this plugin.
+	 * The path of this directory.
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $plugin_url    The url of this plugin.
+	 * @var      string    $directory_path    The path of this directory.
 	 */
-	private $plugin_url;
+	private $directory_path;
+
+	/**
+	 * The url of this directory.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $directory_url    The url of this directory.
+	 */
+	private $directory_url;
 
 	/**
 	 * The hook suffix for the settings page.
@@ -68,7 +77,8 @@ class Wp_Tawk_To_Integrator_Admin
 
 		$this->plugin_name = Wp_Tawk_To_Integrator_Config::get_plugin_name();
 		$this->plugin_version = Wp_Tawk_To_Integrator_Config::get_plugin_version();
-		$this->plugin_url = Wp_Tawk_To_Integrator_Config::get_plugin_url();
+		$this->directory_url = plugin_dir_url(__FILE__);
+		$this->directory_path = plugin_dir_path(__FILE__);
 	}
 
 	/**
@@ -94,7 +104,7 @@ class Wp_Tawk_To_Integrator_Admin
 		);
 
 		// Enqueue admin settings CSS
-		wp_enqueue_style($this->plugin_name, $this->plugin_url . 'css/wp-tawk-to-integrator-admin.css', array(), filemtime(plugin_dir_path(__FILE__) . 'css/wp-tawk-to-integrator-admin.css'));
+		wp_enqueue_style($this->plugin_name, $this->directory_url . 'css/wp-tawk-to-integrator-admin.css', array(), filemtime($this->directory_path . 'css/wp-tawk-to-integrator-admin.css'));
 	}
 
 	/**
@@ -110,7 +120,7 @@ class Wp_Tawk_To_Integrator_Admin
 		}
 
 		// Enqueue admin settings JS
-		wp_enqueue_script($this->plugin_name, $this->plugin_url . 'js/wp-tawk-to-integrator-admin.js', array(), filemtime(plugin_dir_path(__FILE__) . 'js/wp-tawk-to-integrator-admin.js'), true);
+		wp_enqueue_script($this->plugin_name, $this->directory_url . 'js/wp-tawk-to-integrator-admin.js', array(), filemtime($this->directory_path . 'js/wp-tawk-to-integrator-admin.js'), true);
 	}
 
 
@@ -166,7 +176,7 @@ class Wp_Tawk_To_Integrator_Admin
 			return;
 		}
 		// Include the settings page view
-		require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'partials/wp-tawk-to-integrator-admin-display.php';
+		require_once $this->directory_path . 'partials/wp-tawk-to-integrator-admin-display.php';
 	}
 
 	/**
@@ -270,6 +280,7 @@ class Wp_Tawk_To_Integrator_Admin
 			$sanitized_value['custom_js_on_chat_submit'] = trim($input['custom_js_on_chat_submit']);
 		}
 
+		error_log(print_r($sanitized_value, true));
 
 		return $sanitized_value;
 	}
