@@ -24,7 +24,7 @@ class Wp_Tawk_To_Integrator_Activator
 	public static function activate($options_key)
 	{
 		if ($options_key) {
-			delete_option($options_key);
+			return;
 		}
 
 		self::set_default_options($options_key);
