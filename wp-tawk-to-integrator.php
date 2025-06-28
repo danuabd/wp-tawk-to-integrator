@@ -42,9 +42,14 @@ define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WP_TAWK_TO_INTEGRATOR_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 /**
- * Plugin options key.
+ * Plugin options group name.
  */
-define('WP_TAWK_TO_INTEGRATOR_OPTIONS_KEY', 'wp-tawk-to-integrator_options');
+define('WP_TAWK_TO_INTEGRATOR_OPTIONS_GROUP_NAME', 'wp-tawk-to-integrator_options');
+
+/**
+ * Plugin options name.
+ */
+define('WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME', 'wp-tawk-to-integrator_options');
 
 /**
  * The code that runs during plugin activation.
@@ -52,7 +57,7 @@ define('WP_TAWK_TO_INTEGRATOR_OPTIONS_KEY', 'wp-tawk-to-integrator_options');
 function activate_wp_tawk_to_integrator()
 {
 	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-activator.php';
-	Wp_Tawk_To_Integrator_Activator::activate(WP_TAWK_TO_INTEGRATOR_OPTIONS_KEY);
+	Wp_Tawk_To_Integrator_Activator::activate(WP_TAWK_TO_INTEGRATOR_OPTIONS_NAME);
 
 	// Set a transient flag to redirect on the next admin page load.
 	set_transient('wpti_redirect_on_activation', true, 30);
