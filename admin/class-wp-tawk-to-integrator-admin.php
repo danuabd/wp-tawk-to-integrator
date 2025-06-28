@@ -218,7 +218,7 @@ class Wp_Tawk_To_Integrator_Admin
 		// Example for the role toggles
 		$roles_to_hide = ['administrator', 'editor', 'author', 'contributor', 'subscriber', 'customer'];
 		foreach ($roles_to_hide as $role) {
-			$key = 'hide_widget_' . $role . '_role_check';
+			$key = 'hide_widget_' . $role . '_role';
 			$sanitized_value[$key] = (isset($input[$key])) ? 1 : 0;
 		}
 
