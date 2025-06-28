@@ -198,85 +198,85 @@ class Wp_Tawk_To_Integrator_Admin
 	public function sanitize_options($input)
 	{
 		// Create a new array to store our sanitized options
-		$sanitized_input = array();
+		$sanitized_value = array();
 
 		// --- Integration Tab ---
-		if (isset($input['property_id_input'])) {
-			$sanitized_input['property_id_input'] = sanitize_text_field($input['property_id_input']);
+		if (isset($input['property_id'])) {
+			$sanitized_value['property_id'] = sanitize_text_field($input['property_id']);
 		}
-		if (isset($input['widget_id_input'])) {
-			$sanitized_input['widget_id_input'] = sanitize_text_field($input['widget_id_input']);
+		if (isset($input['widget_id'])) {
+			$sanitized_value['widget_id'] = sanitize_text_field($input['widget_id']);
 		}
 		// absint ensures we get an absolute integer.
-		if (isset($input['z_index_input'])) {
-			$sanitized_input['z_index_input'] = absint($input['z_index_input']);
+		if (isset($input['z_index'])) {
+			$sanitized_value['z_index'] = absint($input['z_index']);
 		}
 		// For checkboxes/toggles, we check if they exist and save a 1 (for 'on') or 0 (for 'off').
-		$sanitized_input['activate_widget_check'] = (isset($input['activate_widget_check'])) ? 1 : 0;
+		$sanitized_value['activate_widget'] = (isset($input['activate_widget'])) ? 1 : 0;
 
 
 		// --- Appearance Tab ---
-		if (isset($input['pages_to_hide_input'])) {
-			$sanitized_input['pages_to_hide_input'] = sanitize_text_field($input['pages_to_hide_input']);
+		if (isset($input['pages_to_hide'])) {
+			$sanitized_value['pages_to_hide'] = sanitize_text_field($input['pages_to_hide']);
 		}
-		$sanitized_input['show_widget_to_guest'] = (isset($input['show_widget_to_guest'])) ? 1 : 0;
+		$sanitized_value['show_widget_to_guest'] = (isset($input['show_widget_to_guest'])) ? 1 : 0;
 		// Example for the role toggles
 		$roles_to_hide = ['administrator', 'editor', 'author', 'contributor', 'subscriber', 'customer'];
 		foreach ($roles_to_hide as $role) {
 			$key = 'hide_widget_' . $role . '_role_check';
-			$sanitized_input[$key] = (isset($input[$key])) ? 1 : 0;
+			$sanitized_value[$key] = (isset($input[$key])) ? 1 : 0;
 		}
 
 
 		// --- Behavior Tab ---
-		if (isset($input['widget_maximize_element_input'])) {
-			$sanitized_input['widget_maximize_element_input'] = sanitize_text_field($input['widget_maximize_element_input']);
+		if (isset($input['widget_maximize_element'])) {
+			$sanitized_value['widget_maximize_element'] = sanitize_text_field($input['widget_maximize_element']);
 		}
-		$sanitized_input['auto_populate_userdata_check'] = (isset($input['auto_populate_userdata_check'])) ? 1 : 0;
-		if (isset($input['custom_attributes_input'])) {
-			$sanitized_input['custom_attributes_input'] = sanitize_text_field($input['custom_attributes_input']);
+		$sanitized_value['auto_populate_userdata'] = (isset($input['auto_populate_userdata'])) ? 1 : 0;
+		if (isset($input['custom_attributes'])) {
+			$sanitized_value['custom_attributes'] = sanitize_text_field($input['custom_attributes']);
 		}
-		$sanitized_input['secure_mode_check'] = (isset($input['secure_mode_check'])) ? 1 : 0;
-		if (isset($input['tawk_api_key_input'])) {
+		$sanitized_value['secure_mode'] = (isset($input['secure_mode'])) ? 1 : 0;
+		if (isset($input['tawk_api_key'])) {
 			// API keys can have special characters, so we just trim whitespace.
-			$sanitized_input['tawk_api_key_input'] = trim($input['tawk_api_key_input']);
+			$sanitized_value['tawk_api_key'] = trim($input['tawk_api_key']);
 		}
 
 		// --- Events Tab ---
-		$sanitized_input['auto_page_tagging_check'] = (isset($input['auto_page_tagging_check'])) ? 1 : 0;
-		if (isset($input['ignore_auto_tagging_input'])) {
-			$sanitized_input['ignore_auto_tagging_input'] = sanitize_text_field($input['ignore_auto_tagging_input']);
+		$sanitized_value['auto_page_tagging'] = (isset($input['auto_page_tagging'])) ? 1 : 0;
+		if (isset($input['ignore_auto_tagging'])) {
+			$sanitized_value['ignore_auto_tagging'] = sanitize_text_field($input['ignore_auto_tagging']);
 		}
 
-		$sanitized_input['action_based_targeting_check'] = (isset($input['action_based_targeting_check'])) ? 1 : 0;
-		if (isset($input['ignore_action_based_targeting_input'])) {
-			$sanitized_input['ignore_action_based_targeting_input'] = sanitize_text_field($input['ignore_action_based_targeting_input']);
+		$sanitized_value['action_based_targeting'] = (isset($input['action_based_targeting'])) ? 1 : 0;
+		if (isset($input['ignore_action_based_targeting'])) {
+			$sanitized_value['ignore_action_based_targeting'] = sanitize_text_field($input['ignore_action_based_targeting']);
 		}
 
-		$sanitized_input['widget_onload_customize_check'] = (isset($input['widget_onload_customize_check'])) ? 1 : 0;
-		if (isset($input['widget_render_delay_input'])) {
-			$sanitized_input['widget_render_delay_input'] = absint($input['widget_render_delay_input']);
+		$sanitized_value['widget_onload_customize'] = (isset($input['widget_onload_customize'])) ? 1 : 0;
+		if (isset($input['widget_render_delay'])) {
+			$sanitized_value['widget_render_delay'] = absint($input['widget_render_delay']);
 		}
 		if (isset($input['custom_js_onload'])) {
-			$sanitized_input['custom_js_onload'] = trim($input['custom_js_onload']);
+			$sanitized_value['custom_js_onload'] = trim($input['custom_js_onload']);
 		}
 
-		$sanitized_input['chat_event_action_check'] = (isset($input['chat_event_action_check'])) ? 1 : 0;
+		$sanitized_value['chat_event_action'] = (isset($input['chat_event_action'])) ? 1 : 0;
 		if (isset($input['custom_js_on_chat_started'])) {
-			$sanitized_input['custom_js_on_chat_started'] = trim($input['custom_js_on_chat_started']);
+			$sanitized_value['custom_js_on_chat_started'] = trim($input['custom_js_on_chat_started']);
 		}
-		if (isset($input['custom_js_on_chat_ended_input'])) {
-			$sanitized_input['custom_js_on_chat_ended_input'] = trim($input['custom_js_on_chat_ended_input']);
-		}
-
-		$sanitized_input['pre_chat_submit_action_check'] = (isset($input['pre_chat_submit_action_check'])) ? 1 : 0;
-		$sanitized_input['capture_pre_chat_data_check'] = (isset($input['capture_pre_chat_data_check'])) ? 1 : 0;
-		if (isset($input['custom_js_on_chat_submit_input'])) {
-			$sanitized_input['custom_js_on_chat_submit_input'] = trim($input['custom_js_on_chat_submit_input']);
+		if (isset($input['custom_js_on_chat_ended'])) {
+			$sanitized_value['custom_js_on_chat_ended'] = trim($input['custom_js_on_chat_ended']);
 		}
 
+		$sanitized_value['pre_chat_submit_action'] = (isset($input['pre_chat_submit_action'])) ? 1 : 0;
+		$sanitized_value['capture_pre_chat_data'] = (isset($input['capture_pre_chat_data'])) ? 1 : 0;
+		if (isset($input['custom_js_on_chat_submit'])) {
+			$sanitized_value['custom_js_on_chat_submit'] = trim($input['custom_js_on_chat_submit']);
+		}
 
-		return $sanitized_input;
+
+		return $sanitized_value;
 	}
 
 	/**
