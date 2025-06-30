@@ -15,23 +15,55 @@ if (! defined('WPINC')) {
     die;
 }
 
-/**
- * Get Config class
- */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+if (!$option_group || !$option_name || !$allowed_tabs) return new WP_Error('Could not find option_name');
+$options = get_option($option_name);
 
-// Define the allowed tabs
-$allowed_tabs = ['integration', 'appearance', 'behavior', 'events', 'pro'];
+if (has_action('qm/debug')) {
+    do_action('qm/debug', print_r('option group: ' . $option_group, true));
+    do_action('qm/debug', print_r('option name: ' . $option_name, true));
+    do_action('qm/debug', print_r('allowed tabs: ' . json_encode($allowed_tabs, JSON_PRETTY_PRINT), true));
+    do_action('qm/debug', print_r('stored options: ' . json_encode($options, JSON_PRETTY_PRINT), true));
+}
+/**
+ * Create HTML checked attribute
+ *
+ * @param string $value Value to use
+ * @return string
+ */
+$options['create_checked_attr'] = function ($value) {
+
+    if (!isset($value) || $value === '' || $value == 0) {
+
+        return '';
+    } else {
+
+        return 'checked';
+    }
+};
+
+/**
+ * Create HTML value attribute
+ *
+ * @param string $value Value to use
+ */
+$options['create_value_attr'] = function ($value) {
+    if (!isset($value) || $value === '' || $value == 0) {
+
+        return '';
+    } else {
+
+        return 'value = "' . esc_attr($value) . '"';
+    }
+};
 
 // Get the current tab from the URL, or set a default
 $active_tab = isset($_GET['tab']) && in_array($_GET['tab'], $allowed_tabs) ? $_GET['tab'] : 'integration';
-?>
-<?php
-// ==========================================================
+
 // Display "Settings saved." notice
 settings_errors();
-// ==========================================================
+
 ?>
+
 <div id="wp-tawk-to-integrator-wrapper" class="wp-tawk-to-integrator-wrapper bg-gray-100 p-6 flex items-center justify-center">
     <div class="max-w-4xl rounded-lg bg-white p-8 shadow-lg">
         <div class="plugin-header mb-8 flex items-center">
@@ -47,7 +79,7 @@ settings_errors();
             action="options.php"
             method="post">
             <?php
-            settings_fields(Wp_Tawk_To_Integrator_Config::get_option_group());
+            settings_fields($option_group);
             ?>
 
             <!-- Tabs convenience -->
@@ -106,7 +138,24 @@ settings_errors();
                     data-relation="integration"
                     id="integration-section"
                     class="tab-content <?php echo 'integration' === $active_tab ? '' : 'hidden'; ?>">
-                    <?php require_once __DIR__ . '/views/integration-view.php'; ?>
+
+                    <?php
+
+                    $data = array(
+                        'option_name' => $option_name,
+                        'property_id' => $options['property_id'] ?? '',
+                        'widget_id' => $options['widget_id'] ?? '',
+                        'z_index' => $options['z_index'] ?? '',
+                        'activate_widget' => $options['activate_widget'] ?? '',
+                        'create_checked_attr' => $options['create_checked_attr'],
+                        'create_value_attr' => $options['create_value_attr']
+                    );
+
+                    extract($data);
+                    require_once __DIR__ . '/views/integration-view.php';
+
+                    ?>
+
                 </div>
 
                 <!-- Appearance -->
@@ -114,7 +163,29 @@ settings_errors();
                     data-relation="appearance"
                     id="appearance-section"
                     class="tab-content <?php echo 'appearance' === $active_tab ? '' : 'hidden'; ?>">
-                    <?php require_once __DIR__ . '/views/appearance-view.php'; ?>
+
+                    <?php
+
+                    $data = array(
+                        'option_name' => $option_name,
+                        'pages_to_hide' => $options['pages_to_hide'] ?? '',
+                        'hide_widget_administrator_role' => $options['hide_widget_administrator_role'] ?? '',
+                        'hide_widget_editor_role' => $options['hide_widget_editor_role'] ?? '',
+                        'hide_widget_author_role' => $options['hide_widget_author_role'] ?? '',
+                        'hide_widget_contributor_role' => $options['hide_widget_contributor_role'] ?? '',
+                        'hide_widget_subscriber_role' => $options['hide_widget_subscriber_role'] ?? '',
+                        'hide_widget_customer_role' => $options['hide_widget_customer_role'] ?? '',
+                        'show_widget_to_guest' => $options['show_widget_to_guest'] ?? '',
+                        'create_checked_attr' => $options['create_checked_attr'],
+                        'create_value_attr' => $options['create_value_attr']
+                    );
+
+                    extract($data);
+
+                    require_once __DIR__ . '/views/appearance-view.php';
+
+                    ?>
+
                 </div>
 
                 <!-- Behavior -->
@@ -122,7 +193,25 @@ settings_errors();
                     data-relation="behavior"
                     id="behavior-section"
                     class="tab-content space-y-6 <?php echo 'behavior' === $active_tab ? '' : 'hidden'; ?>">
-                    <?php require_once __DIR__ . '/views/behavior-view.php'; ?>
+
+                    <?php
+
+                    $data = array(
+                        'option_name' => $option_name,
+                        'widget_maximize_element' => $options['widget_maximize_element'] ?? '',
+                        'auto_populate_userdata' => $options['auto_populate_userdata'] ?? '',
+                        'secure_mode' => $options['secure_mode'] ?? '',
+                        'tawk_api_key' => $options['tawk_api_key'] ?? '',
+                        'create_checked_attr' => $options['create_checked_attr'],
+                        'create_value_attr' => $options['create_value_attr']
+                    );
+
+                    extract($data);
+
+                    require_once __DIR__ . '/views/behavior-view.php';
+
+                    ?>
+
                 </div>
 
                 <!-- Events -->
@@ -130,7 +219,24 @@ settings_errors();
                     data-relation="events"
                     id="events-section"
                     class="tab-content space-y-6 <?php echo 'events' === $active_tab ? '' : 'hidden'; ?>">
-                    <?php require_once __DIR__ . '/views/events-view.php'; ?>
+
+                    <?php
+
+                    $data = array(
+                        'option_name' => $option_name,
+                        'widget_onload_customize' => $options['widget_onload_customize'] ?? '',
+                        'widget_render_delay' => $options['widget_render_delay'] ?? '',
+                        'custom_js_onload' => $options['custom_js_onload'] ?? '',
+                        'create_checked_attr' => $options['create_checked_attr'],
+                        'create_value_attr' => $options['create_value_attr']
+                    );
+
+                    extract($data);
+
+                    require_once __DIR__ . '/views/events-view.php';
+
+                    ?>
+
                 </div>
 
                 <!-- Pro -->
@@ -138,7 +244,13 @@ settings_errors();
                     data-relation="pro"
                     id="pro-section"
                     class="tab-content pro-section-container my-6 space-y-6 <?php echo 'pro' === $active_tab ? '' : 'hidden'; ?>">
-                    <?php require_once __DIR__ . '/views/pro-view.php'; ?>
+
+                    <?php
+
+                    require_once __DIR__ . '/views/pro-view.php';
+
+                    ?>
+
                 </div>
             </div>
 
@@ -154,7 +266,7 @@ settings_errors();
 
             <?php
             // Build the redirect URL explicitly to ensure correctness
-            $settings_page_url = menu_page_url(Wp_Tawk_To_Integrator_Config::get_plugin_name() . '-settings', false);
+            $settings_page_url = menu_page_url($option_name . '-settings', false);
             $redirect_url      = add_query_arg('tab', $active_tab, $settings_page_url);
             ?>
             <input type="hidden" id="active_tab_url" name="_wp_http_referer" value="<?php echo esc_url($redirect_url); ?>" />

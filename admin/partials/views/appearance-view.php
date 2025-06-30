@@ -13,26 +13,6 @@ if (! defined('WPINC')) {
     die;
 }
 
-/**
- * Get Config class
- */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
-
-/**
- * Get attributes helper functions
- */
-require_once dirname(__DIR__) . '/attributes-helper.php';
-
-$options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
-
-$pages_to_hide = $options['pages_to_hide'] ?? '';
-$hide_for_admin = $options['hide_widget_administrator_role'] ?? '';
-$hide_for_editor = $options['hide_widget_editor_role'] ?? '';
-$hide_for_author = $options['hide_widget_author_role'] ?? '';
-$hide_for_contributor = $options['hide_widget_contributor_role'] ?? '';
-$hide_for_subscriber = $options['hide_widget_subscriber_role'] ?? '';
-$hide_for_customer = $options['hide_widget_customer_role'] ?? '';
-$show_for_guest = $options['show_widget_to_guest'] ?? '';
 ?>
 
 <!-- Appearance tab content -->
@@ -69,13 +49,13 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                     class="pages-to-hide flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[pages_to_hide]"
+                        name="<?php echo $option_name . '[pages_to_hide]' ?>"
                         placeholder="568, 4452, 231"
                         id="hide-on-pages-input"
                         data-role="input-page-ids"
                         data-displayId="hidden-pages"
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                        <?php echo create_value_attr($pages_to_hide) ?> />
+                        <?php echo $create_value_attr($pages_to_hide) ?> />
                     <button
                         type="button"
                         data-role="clear"
@@ -114,10 +94,10 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                         <input
                             type="checkbox"
                             id="hide-for-administrator-checkbox"
-                            name="wp-tawk-to-integrator_options[hide_widget_administrator_role]"
+                            name="<?php echo $option_name . '[hide_widget_administrator_role]' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo create_checked_attr($hide_for_admin) ?> />
+                            <?php echo $create_checked_attr($hide_widget_administrator_role) ?> />
                         <span class="slider round"></span>
                     </label>
                     <label
@@ -129,10 +109,10 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                         <input
                             type="checkbox"
                             id="hide-for-editor-checkbox"
-                            name="wp-tawk-to-integrator_options[hide_widget_editor_role]"
+                            name="<?php echo $option_name . '[hide_widget_editor_role]' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo create_checked_attr($hide_for_editor) ?> />
+                            <?php echo $create_checked_attr($hide_widget_editor_role) ?> />
                         <span class="slider round"></span>
                     </label>
                     <label
@@ -144,10 +124,10 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                         <input
                             type="checkbox"
                             id="hide-for-author-checkbox"
-                            name="wp-tawk-to-integrator_options[hide_widget_author_role]"
+                            name="<?php echo $option_name . '[hide_widget_author_role]' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo create_checked_attr($hide_for_author) ?> />
+                            <?php echo $create_checked_attr($hide_widget_author_role) ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -160,10 +140,10 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                     <label class="switch"><input
                             type="checkbox"
                             id="hide-for-contributor-checkbox"
-                            name="wp-tawk-to-integrator_options[hide_widget_contributor_role]"
+                            name="<?php echo $option_name . '[hide_widget_contributor_role]' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo create_checked_attr($hide_for_contributor) ?> />
+                            <?php echo $create_checked_attr($hide_widget_contributor_role) ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -176,10 +156,10 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                         <input
                             type="checkbox"
                             id="hide-for-subscriber-checkbox"
-                            name="wp-tawk-to-integrator_options[hide_widget_subscriber_role]"
+                            name="<?php echo $option_name . '[hide_widget_subscriber_role]' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo create_checked_attr($hide_for_subscriber)  ?> />
+                            <?php echo $create_checked_attr($hide_widget_subscriber_role)  ?> />
 
                         <span class="slider round"></span>
                     </label>
@@ -193,10 +173,10 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                         <input
                             type="checkbox"
                             id="hide-for-customer-checkbox"
-                            name="wp-tawk-to-integrator_options[hide_widget_customer_role]"
+                            name="<?php echo $option_name . '[hide_widget_customer_role]' ?>"
                             class="w-4 h-4 accent-green-600 toggle"
                             role="switch"
-                            <?php echo create_checked_attr($hide_for_customer) ?> />
+                            <?php echo $create_checked_attr($hide_widget_customer_role) ?> />
                         <span class="slider round"></span>
                     </label>
 
@@ -222,11 +202,11 @@ $show_for_guest = $options['show_widget_to_guest'] ?? '';
                 <input
                     checked
                     id="show-widget-for-guests-toggle"
-                    name="wp-tawk-to-integrator_options[show_widget_to_guest]"
+                    name="<?php echo $option_name . '[show_widget_to_guest]' ?>"
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo create_checked_attr($show_for_guest) ?> />
+                    <?php echo $create_checked_attr($show_widget_to_guest) ?> />
                 <span class="slider round"></span>
             </label>
             <label

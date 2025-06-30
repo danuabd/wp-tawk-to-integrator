@@ -10,9 +10,6 @@
  * @subpackage Wp_Tawk_To_Integrator/public
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
-
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
-
 class Wp_Tawk_To_Integrator_Public
 {
 
@@ -24,15 +21,6 @@ class Wp_Tawk_To_Integrator_Public
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
 	private $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private $version;
 
 	/**
 	 * The options of this plugin.
@@ -48,12 +36,11 @@ class Wp_Tawk_To_Integrator_Public
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct()
+	public function __construct($plugin_name, $option_name)
 	{
 
-		$this->plugin_name = Wp_Tawk_To_Integrator_Config::get_plugin_name();
-		$this->version = Wp_Tawk_To_Integrator_Config::get_plugin_version();
-		$this->options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
+		$this->plugin_name = $plugin_name;
+		$this->options = get_option($option_name);
 	}
 
 	/**

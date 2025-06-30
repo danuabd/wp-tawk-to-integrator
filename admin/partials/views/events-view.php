@@ -14,21 +14,6 @@ if (! defined('WPINC')) {
     die;
 }
 
-/**
- * Get Config class
- */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
-
-/**
- * Get attributes helper functions
- */
-require_once dirname(__DIR__) . '/attributes-helper.php';
-
-$options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
-
-$widget_onload_customization = $options['widget_onload_customize'] ?? '';
-$widget_render_delay = $options['widget_render_delay'] ?? '';
-$custom_js_onload = $options['custom_js_onload'] ?? '';
 ?>
 
 <!-- Events Tab Content -->
@@ -56,8 +41,9 @@ $custom_js_onload = $options['custom_js_onload'] ?? '';
         <div class="space-y-4 p-4 border border-gray-200 rounded-md">
             <h4 class="text-md font-semibold text-gray-700">
                 Automatic Page Tagging
+                <span class="text-red-500">**Coming soon...</span>
             </h4>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-3 blur-[2px]">
                 <label class="switch">
                     <input
                         type="checkbox"
@@ -67,8 +53,9 @@ $custom_js_onload = $options['custom_js_onload'] ?? '';
                         data-role="reveal"
                         data-elementId="ignore-pages-from-auto-tagging"
                         role="switch"
-                        class="toggle" />
-                    <span class="slider round"></span>
+                        class="toggle"
+                        disabled />
+                    <span class="slider round cursor-not-allowed"></span>
                 </label>
                 <label
                     class="text-sm font-medium text-gray-700"
@@ -106,6 +93,7 @@ $custom_js_onload = $options['custom_js_onload'] ?? '';
                         placeholder="1123, 345, 23"
                         data-role="input-page-ids"
                         data-displayId="ignored-tagging-pages"
+                        data-toggleId="enable-auto-page-tagging-toggle"
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" />
                     <button
                         type="button"
@@ -214,12 +202,12 @@ $custom_js_onload = $options['custom_js_onload'] ?? '';
                     <input
                         type="checkbox"
                         id="enable-onload-customization-toggle"
-                        name="wp-tawk-to-integrator_options[widget_onload_customize]"
-                        data-role="reveal"
+                        name="<?php echo $option_name . '[widget_onload_customize]' ?>
+                        data-role=" reveal"
                         data-elementId="onLoad-customizations-fields"
                         role="switch"
                         class="toggle"
-                        <?php echo create_checked_attr($widget_onload_customization) ?> />
+                        <?php echo $create_checked_attr($widget_onload_customize) ?> />
                     <span class="slider round"></span>
                 </label>
                 <label
@@ -237,12 +225,12 @@ $custom_js_onload = $options['custom_js_onload'] ?? '';
                         class="max-w-2xs flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                         <input
                             type="number"
-                            name="wp-tawk-to-integrator_options[widget_render_delay]"
+                            name="<?php echo $option_name . '[widget_render_delay]' ?>"
                             id="delay-widget-display"
                             min="0"
                             placeholder="1000 milliseconds = 1 second "
                             class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                            <?php echo create_value_attr($widget_render_delay) ?> />
+                            <?php echo $create_value_attr($widget_render_delay) ?> />
                     </div>
 
                     <p class="mt-2 text-xs text-gray-500">
@@ -261,7 +249,7 @@ $custom_js_onload = $options['custom_js_onload'] ?? '';
                             name="wp-tawk-to-integrator_options[custom_js_onload]"
                             class="block w-full h-auto p-0.5 border border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                             id="custom-js-onload"
-                            <?php echo create_value_attr($custom_js_onload) ?>></code>
+                            <?php echo $create_value_attr($custom_js_onload) ?>></code>
                     </div>
 
                     <p class="mt-1 text-xs text-gray-500">

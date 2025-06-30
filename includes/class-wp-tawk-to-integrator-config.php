@@ -16,7 +16,7 @@ class Wp_Tawk_To_Integrator_Config
     /**
      * Get plugin name
      */
-    public static function get_plugin_name()
+    private static function get_plugin_name()
     {
         return 'wp-tawk-to-integrator';
     }
@@ -24,7 +24,7 @@ class Wp_Tawk_To_Integrator_Config
     /**
      * Get plugin version
      */
-    public static function get_plugin_version()
+    private static function get_plugin_version()
     {
         return '1.0.0';
     }
@@ -32,7 +32,7 @@ class Wp_Tawk_To_Integrator_Config
     /**
      * Get main plugin file path
      */
-    public static function get_main_file_path()
+    private static function get_main_file_path()
     {
         return plugin_dir_path(__FILE__) . '../' . self::get_plugin_name() . '.php';
     }
@@ -40,7 +40,7 @@ class Wp_Tawk_To_Integrator_Config
     /**
      * Get absolute path to plugin folder
      */
-    public static function get_plugin_path()
+    private static function get_plugin_path()
     {
         return (plugin_dir_path(self::get_main_file_path()));
     }
@@ -48,7 +48,7 @@ class Wp_Tawk_To_Integrator_Config
     /**
      * Get Plugin URL
      */
-    public static function get_plugin_url()
+    private static function get_plugin_url()
     {
         return plugin_dir_url(self::get_main_file_path());
     }
@@ -56,24 +56,38 @@ class Wp_Tawk_To_Integrator_Config
     /**
      * Get DB option key name
      */
-    public static function get_option_name()
+    private static function get_option_name()
     {
-        return self::get_plugin_name() . '_options';
+        return self::get_plugin_name() . '_option';
     }
 
     /**
      * Get Option group
      */
-    public static function get_option_group()
+    private static function get_option_group()
     {
-        return self::get_plugin_name() . '_options_group';
+        return self::get_plugin_name() . '_option_group';
     }
 
-    public static function get_default_options()
+    private static function get_default_options()
     {
         // Define the array of default settings.
         return array(
             'show_widget_to_guest' => 'on',
+        );
+    }
+
+    public static function get_all()
+    {
+        return array(
+            'plugin_name' => self::get_plugin_name(),
+            'plugin_version' => self::get_plugin_version(),
+            'main_file_path' => self::get_main_file_path(),
+            'plugin_path' => self::get_plugin_path(),
+            'plugin_url' => self::get_plugin_url(),
+            'option_name' => self::get_option_name(),
+            'option_group' => self::get_option_group(),
+            'default_options' => self::get_default_options(),
         );
     }
 }

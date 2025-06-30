@@ -13,22 +13,6 @@ if (! defined('WPINC')) {
     die;
 }
 
-/**
- * Get Config class
- */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
-
-/**
- * Get attributes helper functions
- */
-require_once dirname(__DIR__) . '/attributes-helper.php';
-
-$options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
-
-$element_trigger_widget = $options['widget_maximize_element'] ?? '';
-$auto_populate_userdata = $options['auto_populate_userdata'] ?? '';
-$secure_mode = $options['secure_mode'] ?? '';
-$tawk_api_key = $options['tawk_api_key'] ?? '';
 ?>
 
 <!-- Behavior tab content -->
@@ -46,9 +30,12 @@ $tawk_api_key = $options['tawk_api_key'] ?? '';
         <h3 class="text-lg font-semibold text-gray-700">
             Manage Widget State
         </h3>
-        <p class="text-gray-600 text-sm">
+        <p class="text-gray-600 text-sm mb-4">
             Control how and when the chat widget actively engages the user
             or becomes visible based on specific interactions or timing.
+        </p>
+        <p class="text-gray-600 text-sm">
+            <strong>Note:</strong> If you have enabled <strong>secure mode</strong> on Tawk.to administration settings, make sure to enable <strong>secure mode</strong> in the plugin settings too.
         </p>
         <div>
             <div class="space-y-3 mb-2 max-w-md">
@@ -58,13 +45,13 @@ $tawk_api_key = $options['tawk_api_key'] ?? '';
                     class="trigger-selector flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[widget_maximize_element]"
-                        value="<?php echo $element_trigger_widget ?>"
+                        name="<?php echo $option_name . '[widget_maximize_element]' ?>"
+                        value="<?php echo $widget_maximize_element ?>"
                         placeholder="#help-button or .chat-trigger"
                         id="element-to-trigger-widget-when-clicked"
                         data-role="input-selector"
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                        <?php echo create_value_attr($element_trigger_widget) ?> />
+                        <?php echo $create_value_attr($widget_maximize_element) ?> />
                     <button
                         type="button"
                         data-role="clear"
@@ -85,20 +72,23 @@ $tawk_api_key = $options['tawk_api_key'] ?? '';
         <h3 class="text-lg font-semibold text-gray-700">
             Visitor Information
         </h3>
-        <p class="text-gray-600 text-sm">
+        <p class="text-gray-600 text-sm mb-4">
             Personalize the chat experience by automatically providing
             visitor details to your Tawk.to agents, improving context and
             efficiency.
+        </p>
+        <p class="text-gray-600 text-sm">
+            <strong>Note:</strong> If you have enabled <strong>secure mode</strong> on Tawk.to administration settings, make sure to enable <strong>secure mode</strong> in the plugin settings too.
         </p>
         <div class="flex items-center space-x-3 mt-2">
             <label class="switch">
                 <input
                     id="auto-populate-user-data-toggle"
-                    name="wp-tawk-to-integrator_options[auto_populate_userdata]"
+                    name="<?php echo $option_name . '[auto_populate_userdata]' ?>"
                     type="checkbox"
                     role="switch"
                     class="toggle"
-                    <?php echo create_checked_attr($auto_populate_userdata) ?> />
+                    <?php echo $create_checked_attr($auto_populate_userdata) ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -166,13 +156,13 @@ $tawk_api_key = $options['tawk_api_key'] ?? '';
             <label class="switch">
                 <input
                     id="enable-secure-mode-toggle"
-                    name="wp-tawk-to-integrator_options[secure_mode]"
+                    name="<?php echo $option_name . '[secure_mode]' ?>"
                     type="checkbox"
                     data-role="reveal"
                     data-elementId="tawk-api-key-container"
                     role="switch"
                     class="toggle"
-                    <?php echo create_checked_attr($secure_mode) ?> />
+                    <?php echo $create_checked_attr($secure_mode) ?> />
                 <span class="slider round"></span>
             </label>
             <label
@@ -186,7 +176,7 @@ $tawk_api_key = $options['tawk_api_key'] ?? '';
             Tawk.to Property settings (Administration &gt; Overview &gt;
             JavaScript API) for this to work.
         </p>
-        <div class="hidden" id="tawk-api-key-container">
+        <div class="<?php echo $option_name . '[tawk_api_key]' ? '' : 'hidden' ?>" id="tawk-api-key-container">
             <div class="space-y-3 mb-2 max-w-4xl">
                 <span class="mb-2 block text-sm font-medium text-gray-700">Tawk.to API Key:
                 </span>
@@ -194,13 +184,13 @@ $tawk_api_key = $options['tawk_api_key'] ?? '';
                     class="tawk-api-key flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
                     <input
                         type="text"
-                        name="wp-tawk-to-integrator_options[tawk_api_key]"
+                        name="<?php echo $option_name . '[tawk_api_key]' ?>"
                         placeholder="01xx8219xxx7xxxx39x8xxxxxxxx1258xxx"
                         id="tawk-api-key-input"
                         data-role="tawk-api-key-input"
                         data-toggleId="enable-secure-mode-toggle"
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                        <?php echo create_value_attr($tawk_api_key) ?> />
+                        <?php echo $create_value_attr($tawk_api_key) ?> />
                     <button
                         type="button"
                         data-role="clear"

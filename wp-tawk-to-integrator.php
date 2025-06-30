@@ -31,15 +31,22 @@ define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 /**
  * Get plugin config class
  */
-require_once path_join(WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR, 'includes/class-wp-tawk-to-integrator-config.php');
+require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+
+$plugin_meta = Wp_Tawk_To_Integrator_Config::get_all();
 
 /**
  * The code that runs during plugin activation.
  */
 function activate_wp_tawk_to_integrator()
 {
+	if (!class_exists('Wp_Tawk_To_Integrator_Config'))
+		require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+
+	$plugin_meta = Wp_Tawk_To_Integrator_Config::get_all();
+
 	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-activator.php';
-	Wp_Tawk_To_Integrator_Activator::activate();
+	Wp_Tawk_To_Integrator_Activator::activate($plugin_meta['option_name'], $plugin_meta['default_options']);
 
 	// Set a transient flag to redirect on the next admin page load.
 	set_transient('wpti_redirect_on_activation', true, 30);
@@ -62,9 +69,11 @@ register_deactivation_hook(__FILE__, 'deactivate_wp_tawk_to_integrator');
  */
 function plugins_table_links($links)
 {
+	if (!class_exists('Wp_Tawk_To_Integrator_Config'))
+		require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
 
 	$reset_url = wp_nonce_url(
-		admin_url('plugins.php?plugin=' . Wp_Tawk_To_Integrator_Config::get_plugin_name() . '&action=reset'),
+		admin_url('plugins.php?plugin=' . Wp_Tawk_To_Integrator_Config::get_all()['plugin_name'] . '&action=reset'),
 		'reset_plugin_settings'
 	);
 
@@ -92,10 +101,10 @@ require WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator
  *
  * @since    1.0.0
  */
-function run_wp_tawk_to_integrator()
+function run_wp_tawk_to_integrator($plugin_meta)
 {
 
-	$plugin = new Wp_Tawk_To_Integrator();
+	$plugin = new Wp_Tawk_To_Integrator($plugin_meta);
 	$plugin->run();
 }
-run_wp_tawk_to_integrator();
+run_wp_tawk_to_integrator($plugin_meta);

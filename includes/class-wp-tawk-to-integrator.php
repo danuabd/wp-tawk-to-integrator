@@ -35,31 +35,13 @@ class Wp_Tawk_To_Integrator
 	protected $loader;
 
 	/**
-	 * The unique identifier of this plugin.
+	 * The meta data of the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      array    $plugin_meta    The meta data of the plugin.
 	 */
-	protected $plugin_name;
-
-	/**
-	 * The current version of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
-	 */
-	protected $version;
-
-	/**
-	 * The plugin path of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_path    The plugin path of the plugin.
-	 */
-	protected $plugin_path;
+	protected $plugin_meta;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -70,12 +52,10 @@ class Wp_Tawk_To_Integrator
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct()
+	public function __construct($plugin_meta)
 	{
 
-		$this->plugin_name = Wp_Tawk_To_Integrator_Config::get_plugin_name();
-		$this->version = Wp_Tawk_To_Integrator_Config::get_plugin_version();
-		$this->plugin_path = Wp_Tawk_To_Integrator_Config::get_plugin_path();
+		$this->plugin_meta = $plugin_meta;
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -93,8 +73,6 @@ class Wp_Tawk_To_Integrator
 	 * - Wp_Tawk_To_Integrator_Admin. Defines all hooks for the admin area.
 	 * - Wp_Tawk_To_Integrator_Public. Defines all hooks for the public side of the site.
 	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
 	 *
 	 * @since    1.0.0
 	 * @access   private
@@ -102,28 +80,30 @@ class Wp_Tawk_To_Integrator
 	private function load_dependencies()
 	{
 
+		$plugin_path = $this->plugin_meta['plugin_path'];
+
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once $this->plugin_path . 'includes/class-wp-tawk-to-integrator-loader.php';
+		require_once $plugin_path . 'includes/class-wp-tawk-to-integrator-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once $this->plugin_path . 'includes/class-wp-tawk-to-integrator-i18n.php';
+		require_once $plugin_path . 'includes/class-wp-tawk-to-integrator-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once $this->plugin_path . 'admin/class-wp-tawk-to-integrator-admin.php';
+		require_once $plugin_path . 'admin/class-wp-tawk-to-integrator-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once $this->plugin_path . 'public/class-wp-tawk-to-integrator-public.php';
+		require_once $plugin_path . 'public/class-wp-tawk-to-integrator-public.php';
 
 		$this->loader = new Wp_Tawk_To_Integrator_Loader();
 	}
@@ -155,7 +135,7 @@ class Wp_Tawk_To_Integrator
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Wp_Tawk_To_Integrator_Admin();
+		$plugin_admin = new Wp_Tawk_To_Integrator_Admin($this->plugin_meta);
 
 		$this->loader->add_action('admin_init', $plugin_admin, 'redirect_on_activation');
 
@@ -177,8 +157,10 @@ class Wp_Tawk_To_Integrator
 	 */
 	private function define_public_hooks()
 	{
+		$plugin_name = $this->plugin_meta['plugin_name'];
+		$option_name = $this->plugin_meta['option_name'];
 
-		$plugin_public = new Wp_Tawk_To_Integrator_Public();
+		$plugin_public = new Wp_Tawk_To_Integrator_Public($plugin_name, $option_name);
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles', 99999);
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');

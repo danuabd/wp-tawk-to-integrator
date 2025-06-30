@@ -13,22 +13,13 @@ if (! defined('WPINC')) {
     die;
 }
 
-/**
- * Get Config class
- */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
-
-/**
- * Get attributes helper functions
- */
-require_once dirname(__DIR__) . '/attributes-helper.php';
-
-$options = get_option(Wp_Tawk_To_Integrator_Config::get_option_name());
-
-$property_id = $options['property_id'] ?? '';
-$widget_id = $options['widget_id'] ?? '';
-$z_index = $options['z_index'] ?? '';
-$activate_widget = $options['activate_widget'] ?? '';
+if (has_action('qm/debug')) {
+    do_action('qm/debug', print_r('options name: ' . $option_name, true));
+    do_action('qm/debug', print_r('property id: ' . $property_id, true));
+    do_action('qm/debug', print_r('widget id: ' . $widget_id, true));
+    do_action('qm/debug', print_r('z-index: ' . $z_index, true));
+    do_action('qm/debug', print_r('activate widget?: ' . $activate_widget, true));
+}
 ?>
 
 <!-- Integration tab content -->
@@ -49,11 +40,11 @@ $activate_widget = $options['activate_widget'] ?? '';
             class="property-id max-w-lg flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="text"
-                name="wp-tawk-to-integrator_options[property_id]"
+                name="<?php echo $option_name . '[property_id]' ?>"
                 placeholder="1241211x44x6x67x27xx5"
                 id="property-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                <?php echo create_value_attr($property_id) ?> />
+                <?php echo $create_value_attr($property_id) ?> />
             <button
                 type="button"
                 data-role="clear"
@@ -69,11 +60,11 @@ $activate_widget = $options['activate_widget'] ?? '';
             class="widget-id max-w-lg flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="text"
-                name="wp-tawk-to-integrator_options[widget_id]"
+                name="<?php echo $option_name . '[widget_id]' ?>"
                 placeholder="1xxx4x8xx"
                 id="widget-id-input"
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                <?php echo create_value_attr($widget_id) ?> />
+                <?php echo $create_value_attr($widget_id) ?> />
             <button
                 type="button"
                 data-role="clear"
@@ -90,13 +81,13 @@ $activate_widget = $options['activate_widget'] ?? '';
             class="z-index max-w-48 flex items-center space-x-2 p-2 border border-gray-300 rounded-md">
             <input
                 type="number"
-                name="wp-tawk-to-integrator_options[z_index]"
+                name="<?php echo $option_name . '[z_index]' ?>"
                 placeholder="999"
                 min="1"
                 max="9999999"
                 id="z-index-input"
                 class="flex-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                <?php echo create_value_attr($z_index) ?> />
+                <?php echo $create_value_attr($z_index) ?> />
             <button
                 type="button"
                 data-role="clear"
@@ -109,12 +100,12 @@ $activate_widget = $options['activate_widget'] ?? '';
     <div class="mb-6 flex items-center space-x-3">
         <label class="switch">
             <input
-                name="wp-tawk-to-integrator_options[activate_widget]"
+                name="<?php echo $option_name . '[activate_widget]' ?>"
                 type="checkbox"
                 id="activate-widget-toggle"
                 class="toggle"
                 role="switch"
-                <?php echo create_checked_attr($activate_widget) ?> />
+                <?php echo $create_checked_attr($activate_widget) ?> />
             <span class="slider round"></span>
         </label>
         <label
