@@ -1,7 +1,7 @@
-# WP Tawk.to Integrator
+# Easy Tawk.to Integrator
 
-* **Contributors:** ABD Prasad (danukaprasad.com)
-* **Tags:** tawk.to chat, tawk.to chat widget, tawk.to integration, live chat, chat plugin, wordpress chat, wordpress live chat
+* **Contributors:** danukaprasad
+* **Tags:** tawk.to chat, tawk.to chat widget, tawk.to integration, live chat, chat plugin
 * **Requires at least:** 5.0
 * **Tested up to:** 6.4
 * **Requires PHP:** 8.0
@@ -13,7 +13,7 @@ Integrate Tawk.to live chat into your WordPress site with easy setup and powerfu
 
 == Description ==
 
-The **WP Tawk.to Integrator** plugin offers a straightforward and robust solution for adding the Tawk.to live chat widget to your WordPress website. Beyond simple integration, it provides a dedicated settings page to manage your Tawk.to **Property ID** and **Widget ID**, ensuring a seamless connection.
+The **Easy Tawk.to Integrator** plugin offers a straightforward and robust solution for adding the Tawk.to live chat widget to your WordPress website. Beyond simple integration, it provides a dedicated settings page to manage your Tawk.to **Property ID** and **Widget ID**, ensuring a seamless connection.
 
 Designed with **extensibility** in mind, this plugin lays a solid foundation for future enhancements related to widget appearance, behavior, and event handling. It adheres to WordPress plugin development best practices, making it reliable and easy to maintain.
 
@@ -26,7 +26,7 @@ Key Features:
 
 == Installation ==
 
-1.  **Upload:** Upload the `wp-tawk-to-integrator` folder to the `/wp-content/plugins/` directory.
+1.  **Upload:** Upload the `easy-tawk-to-integrator` folder to the `/wp-content/plugins/` directory.
 2.  **Activate:** Activate the plugin through the 'Plugins' menu in your WordPress dashboard.
 3.  **Configure:** Go to "**Configure Tawk.to Chat Widget**" in the WordPress admin menu (under "Settings" or a custom top-level menu item) to set up your Tawk.to Property ID and Widget ID.
 
@@ -51,7 +51,7 @@ This is the initial release. No upgrade notice is required.
 
 == Planned Updates for the Future ==
 
-The **WP Tawk.to Integrator** plugin is continuously evolving with exciting new features planned to enhance its capabilities:
+The **Easy Tawk.to Integrator** plugin is continuously evolving with exciting new features planned to enhance its capabilities:
 
 * **Advanced Visitor Information:** Future updates will enable passing custom attributes about logged-in WordPress users directly to Tawk.to, allowing for more personalized and informed chat interactions.
 * **Enhanced Tagging Features:**
