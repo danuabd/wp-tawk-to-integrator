@@ -163,7 +163,7 @@ class Wp_Tawk_To_Integrator_Admin
 		$data = array(
 			'option_name' => $this->plugin_meta['option_name'],
 			'option_group' => $this->plugin_meta['option_group'],
-			'allowed_tabs' => ['integration', 'appearance', 'behavior', 'events', 'pro']
+			'allowed_tabs' => ['integration', 'appearance', 'behavior', 'events',]
 		);
 
 		extract($data);
