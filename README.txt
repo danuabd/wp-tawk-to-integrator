@@ -6,8 +6,8 @@
 * **Tested up to:** 6.4
 * **Requires PHP:** 8.0
 * **Stable tag:** 1.0.0
-* **License:** GPL-3.0
-* **License URI:** https://www.gnu.org/licenses/gpl-3.0.en.html
+* **License:** GPL-2.0
+* **License URI:** https://www.gnu.org/licenses/gpl-2.0.en.html
 
 Integrate Tawk.to live chat into your WordPress site with easy setup and powerful customization options.
 
@@ -26,9 +26,10 @@ Key Features:
 
 == Installation ==
 
-1.  **Upload:** Upload the `easy-tawk-to-integrator` folder to the `/wp-content/plugins/` directory.
-2.  **Activate:** Activate the plugin through the 'Plugins' menu in your WordPress dashboard.
-3.  **Configure:** Go to "**Configure Tawk.to Chat Widget**" in the WordPress admin menu (under "Settings" or a custom top-level menu item) to set up your Tawk.to Property ID and Widget ID.
+1.  **Go to WP repository:** While on Admin dashboard of your wordpress site, visit plugin section.
+2.  **Search for plugin:** Type "easy tawk.to integrator" into the search bar.
+3.  **Install & activate:** Click on the plugin to install, then activate button to activate the plugin.
+4.  **Configure:** Go to "**Configure Tawk.to Chat Widget**" in the WordPress admin menu (under "Settings" or a custom top-level menu item) to set up your Tawk.to Property ID and Widget ID.
 
 == Frequently Asked Questions ==
 

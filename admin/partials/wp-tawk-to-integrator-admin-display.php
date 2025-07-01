@@ -16,14 +16,10 @@ if (! defined('WPINC')) {
 }
 
 if (!$option_group || !$option_name || !$allowed_tabs) return new WP_Error('Could not find option_name');
+
+// Get the options from the database
 $options = get_option($option_name);
 
-if (has_action('qm/debug')) {
-    do_action('qm/debug', print_r('option group: ' . $option_group, true));
-    do_action('qm/debug', print_r('option name: ' . $option_name, true));
-    do_action('qm/debug', print_r('allowed tabs: ' . json_encode($allowed_tabs, JSON_PRETTY_PRINT), true));
-    do_action('qm/debug', print_r('stored options: ' . json_encode($options, JSON_PRETTY_PRINT), true));
-}
 /**
  * Create HTML checked attribute
  *
@@ -61,7 +57,6 @@ $active_tab = isset($_GET['tab']) && in_array($_GET['tab'], $allowed_tabs) ? $_G
 
 // Display "Settings saved." notice
 settings_errors();
-
 ?>
 
 <div id="wp-tawk-to-integrator-wrapper" class="wp-tawk-to-integrator-wrapper bg-gray-100 p-6 flex items-center justify-center">
@@ -116,17 +111,6 @@ settings_errors();
                         role="button"
                         class="tab-btn rounded-t-md px-6 py-3 text-sm font-medium <?php echo $active_tab === 'events' ? 'tab-active' : ''; ?>">
                         Events
-                    </a>
-                    <a
-                        href="?page=wp-tawk-to-integrator-settings&tab=pro"
-                        data-relation="pro-section"
-                        id="pro"
-                        role="button"
-                        class="tab-btn relative rounded-t-md px-6 py-3 text-sm font-medium <?php echo $active_tab === 'pro' ? 'tab-active' : ''; ?>">
-                        Pro
-                        <span
-                            class="material-icons-outlined text-mint-2 absolute top-1 right-1 text-sm"
-                            style="font-size: 16px">diamond</span>
                     </a>
                 </div>
             </div>
@@ -234,20 +218,6 @@ settings_errors();
                     extract($data);
 
                     require_once __DIR__ . '/views/events-view.php';
-
-                    ?>
-
-                </div>
-
-                <!-- Pro -->
-                <div
-                    data-relation="pro"
-                    id="pro-section"
-                    class="tab-content pro-section-container my-6 space-y-6 <?php echo 'pro' === $active_tab ? '' : 'hidden'; ?>">
-
-                    <?php
-
-                    require_once __DIR__ . '/views/pro-view.php';
 
                     ?>
 
