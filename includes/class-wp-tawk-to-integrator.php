@@ -15,18 +15,14 @@
  * @subpackage Wp_Tawk_To_Integrator/includes
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
-
-/**
- * Get config class
- */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
-
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
 class Wp_Tawk_To_Integrator
 {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * The loader that's responsible for maintaining and registering all hooks that power the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected

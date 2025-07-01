@@ -52,11 +52,11 @@ class Wp_Tawk_To_Integrator_Public
 	public function embed_tawk_to_widget()
 	{
 
-		// --- Step 1: Guard Clauses - Check if we should show the widget at all ---
+		// Check if should show the widget at all
 
 		// Is the widget globally disabled?
 		if (empty($this->options['activate_widget'])) {
-			return; // Do nothing.
+			return;
 		}
 
 		// Are the required IDs missing?
@@ -67,7 +67,7 @@ class Wp_Tawk_To_Integrator_Public
 			return;
 		}
 
-		// Should we hide on this specific page?
+		// Hide on this specific page?
 		$pages_to_hide_str = isset($this->options['pages_to_hide']) ? $this->options['pages_to_hide'] : '';
 		if (! empty($pages_to_hide_str)) {
 			$pages_to_hide = array_map('trim', explode(',', $pages_to_hide_str));
@@ -76,25 +76,24 @@ class Wp_Tawk_To_Integrator_Public
 			}
 		}
 
-		// Should we hide based on user role?
+		// Hide based on user role?
 		$current_user = wp_get_current_user();
 		if (is_user_logged_in()) {
 			$user_roles = (array) $current_user->roles;
 			foreach ($user_roles as $role) {
 				$option_key = 'hide_widget_' . $role . '_role';
 				if (! empty($this->options[$option_key])) {
-					return; // Hide for this user role.
+					return;
 				}
 			}
 		} else {
 			// User is a guest (not logged in).
 			if (empty($this->options['show_widget_to_guest'])) {
-				return; // Do not show for guests.
+				return;
 			}
 		}
 
-		// --- Step 2: If all checks pass, build the scripts ---
-
+		// Build the scripts
 		$this->render_main_widget_script($property_id, $widget_id);
 		$this->render_api_configuration_script($current_user);
 	}
@@ -140,7 +139,7 @@ class Wp_Tawk_To_Integrator_Public
 				// This function runs once the widget is loaded.
 
 				<?php
-				// --- BEHAVIOR TAB: Maximize on element click ---
+				// Maximize on element click
 				$maximize_selector = isset($this->options['widget_maximize_element']) ? $this->options['widget_maximize_element'] : '';
 				if (! empty($maximize_selector)) :
 				?>
@@ -155,7 +154,7 @@ class Wp_Tawk_To_Integrator_Public
 
 			<?php if (is_user_logged_in()) : ?>
 				<?php
-				// --- BEHAVIOR TAB: Secure Mode ---
+				// Secure Mode
 				$api_key = isset($this->options['tawk_api_key']) ? $this->options['tawk_api_key'] : '';
 				if (! empty($this->options['secure_mode']) && ! empty($api_key)) :
 					$hash = hash_hmac("sha256", $current_user->user_email, $api_key);
@@ -166,7 +165,7 @@ class Wp_Tawk_To_Integrator_Public
 						hash: '<?php echo esc_js($hash); ?>'
 					};
 				<?php
-				// --- BEHAVIOR TAB: Auto-populate user data (if secure mode is off) ---
+				// Auto-populate user data (if secure mode is off)
 				elseif (! empty($this->options['auto_populate_userdata'])) :
 				?>
 					Tawk_API.visitor = {
@@ -177,7 +176,7 @@ class Wp_Tawk_To_Integrator_Public
 
 
 				<?php
-				// --- BEHAVIOR TAB: Custom Attributes ---
+				// Custom Attributes
 				$custom_attributes_str = isset($this->options['custom_attributes']) ? $this->options['custom_attributes'] : '';
 				if (! empty($custom_attributes_str)) :
 					$attributes = array();

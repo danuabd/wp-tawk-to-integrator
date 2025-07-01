@@ -14,7 +14,11 @@ if (! defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }
 
-include_once plugin_dir_path(__FILE__) . 'includes/class-wp-tawk-to-integrator-config.php';
+// Include the configuration class to access the option name. This is necessary to ensure we delete the correct option.
+if (! class_exists('Wp_Tawk_To_Integrator_Config')) {
+	include_once plugin_dir_path(__FILE__) . 'class-wp-tawk-to-integrator-config.php';
+}
+
 
 // Delete the main plugin options.
-delete_option(Wp_Tawk_To_Integrator_Config::get_all()['option_name']);
+delete_option(Wp_Tawk_To_Integrator_Config::$option_name);

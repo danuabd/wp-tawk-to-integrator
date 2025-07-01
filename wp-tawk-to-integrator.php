@@ -26,31 +26,49 @@ if (! defined('WPINC')) {
 	die;
 }
 
+/**
+ * Define plugin constants and paths
+ *
+ * @since 1.0.0
+ */
 define('WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 /**
- * Get plugin config class
+ * Get plugin config
+ *
+ * @since 1.0.0
+ * @return Wp_Tawk_To_Integrator_Config
  */
-require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+if (!class_exists('Wp_Tawk_To_Integrator_Config')) {
+	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+}
+$plugin_config = new Wp_Tawk_To_Integrator_Config(
+	'wp-tawk-to-integrator',
+	'1.0.0',
+	array('show_widget_to_guest' => 'on')
+);
 
-$plugin_meta = Wp_Tawk_To_Integrator_Config::get_all();
+/**
+ * Get all plugin configuration details
+ *
+ * @since 1.0.0
+ * @return array An associative array containing all plugin configuration details.
+ */
+$plugin_meta = $plugin_config->get_all();
 
 /**
  * The code that runs during plugin activation.
  */
-function activate_wp_tawk_to_integrator()
-{
-	if (!class_exists('Wp_Tawk_To_Integrator_Config'))
-		require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
-
-	$plugin_meta = Wp_Tawk_To_Integrator_Config::get_all();
-
+register_activation_hook(__FILE__, function () use ($plugin_meta) {
 	require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-activator.php';
-	Wp_Tawk_To_Integrator_Activator::activate($plugin_meta['option_name'], $plugin_meta['default_options']);
 
-	// Set a transient flag to redirect on the next admin page load.
+	Wp_Tawk_To_Integrator_Activator::activate(
+		$plugin_meta['option_name'],
+		$plugin_meta['default_options']
+	);
+
 	set_transient('wpti_redirect_on_activation', true, 30);
-}
+});
 
 /**
  * The code that runs during plugin deactivation.
@@ -61,30 +79,25 @@ function deactivate_wp_tawk_to_integrator()
 	Wp_Tawk_To_Integrator_Deactivator::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_wp_tawk_to_integrator');
 register_deactivation_hook(__FILE__, 'deactivate_wp_tawk_to_integrator');
 
 /**
  * Add plugin links
  */
-function plugins_table_links($links)
-{
-	if (!class_exists('Wp_Tawk_To_Integrator_Config'))
-		require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-wp-tawk-to-integrator-config.php';
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($links) use ($plugin_meta) {
 
 	$reset_url = wp_nonce_url(
-		admin_url('plugins.php?plugin=' . Wp_Tawk_To_Integrator_Config::get_all()['plugin_name'] . '&action=reset'),
+		admin_url('plugins.php?plugin=' . $plugin_meta['plugin_name'] . '&action=reset'),
 		'reset_plugin_settings'
 	);
 
 	$custom_links = [
-		'<a href="' . $reset_url . '" onclick="return confirm(\'Are you sure you want to reset all plugin settings?\');">Reset Settings</a>'
+		'<a href="' . esc_url($reset_url) . '" onclick="return confirm(\'Are you sure you want to reset all plugin settings?\');">Reset Settings</a>'
 	];
 
 	return array_merge($custom_links, $links);
-}
+});
 
-add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'plugins_table_links');
 
 /**
  * The core plugin class that is used to define internationalization,

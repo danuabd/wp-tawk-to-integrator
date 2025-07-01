@@ -14,6 +14,10 @@
  * @subpackage Wp_Tawk_To_Integrator/includes
  * @author     ABD Prasad <contact@danukaprasad.com>
  */
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+
 class Wp_Tawk_To_Integrator_Loader
 {
 

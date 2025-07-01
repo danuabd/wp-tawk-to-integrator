@@ -137,12 +137,12 @@ class Wp_Tawk_To_Integrator_Admin
 	public function add_admin_menu()
 	{
 		$this->settings_page_hook_suffix = add_menu_page(
-			__('Configure Tawk.to Chat Widget', 'wp-tawk-to-integrator'), // Page Title
-			__('WP Tawk.to Integrator', 'wp-tawk-to-integrator'), // Menu Title
-			'manage_options',                               // Capability
-			$this->plugin_meta['plugin_name'] . '-settings',               // Menu Slug
-			array($this, 'display_settings_page'),        // Callback function
-			'dashicons-format-chat', // Icon
+			__('Configure Tawk.to Chat Widget', 'wp-tawk-to-integrator'),
+			__('WP Tawk.to Integrator', 'wp-tawk-to-integrator'),
+			'manage_options',
+			$this->plugin_meta['plugin_name'] . '-settings',
+			array($this, 'display_settings_page'),
+			'dashicons-format-chat',
 			99
 		);
 	}
@@ -291,15 +291,10 @@ class Wp_Tawk_To_Integrator_Admin
 			$_GET['action'] === 'reset' &&
 			check_admin_referer('reset_plugin_settings')
 		) {
+			// Add default options
+			update_option($this->plugin_meta['option_name'], $this->plugin_meta['default_options']);
 
-			if (! class_exists('Plugin_Name_Activator')) {
-				require_once WP_TAWK_TO_INTEGRATOR_PLUGIN_DIR . 'includes/class-' . $this->plugin_meta['plugin_name'] . '-activator.php';
-			}
-
-			// // Add default options
-			// Wp_Tawk_To_Integrator_Activator::set_default_options($this->$options_name, $this->plugin_meta['default_options']);
-
-			// Optional: Add an admin notice (temporary)
+			// Add an admin notice
 			add_action('admin_notices', function () {
 				echo '<div class="notice notice-success is-dismissible"><p>Plugin settings have been reset.</p></div>';
 			});
